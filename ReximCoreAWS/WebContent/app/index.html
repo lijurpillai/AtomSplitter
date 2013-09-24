@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.png">
+	<title>REXIM</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">     
+      <!-- Custom styles for this template -->
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#/dashboard">Dashboard Secure</a></li>
+    <li><a href="#/admin">Admin Secure</a></li>
+    <li><a href="#/" ng-click="logout()">Logout</a></li>    
+  </ul>
+  <div>{{message}}</div>
+  <div>{{firstName}}</div>
+  <div>{{lastName}}</div>
+  <div ng-view></div>
+  </body>  
+  
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-resource.min.js"></script>
+  <script src="lib/util_lib/underscore-min.js"></script>
+  <script src="lib/util_lib/underscore-string-min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script> 
+  <script src="js/services/authService.js"></script>   
+  <script src="js/controllers/logincontrollers.js"></script>  
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+
+</html>
