@@ -1,0 +1,133 @@
+/*****************************************
+
+Created to include custom styles for REXIM
+
+Copyright: 2013 Perfomatix Solutions Private Limited
+
+*****************************************/
+/* ------- For login page ----- Start ------ */
+
+.form-signin {
+  max-width: 200px;
+  padding: 10px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 12px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+  border-color: #dd4814; /*Ubuntu orange color*/
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(200, 175, 102, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(200, 175, 102, 0.6);
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+/* ------- For login page ------ End ------- */
+/* ------- For Footer  ------ START ------- */
+
+.navbar {
+  min-height: 1em; /*making footer size smaller*/
+}
+
+/*Removing padding for navbar text (Powered by Perfomatix) smaller by removing top and bottom margins*/
+.navbar-text {
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+  .navbar-brand {
+  padding: 0.8em 0.8em;
+}
+/* ------- For Footer PAGE ------ End ------- */
+
+
+/* Widget */
+
+.widget {
+  border: 0px solid #c9c9c9;
+  border-radius: 0px;
+  margin-top: 5px;
+  margin-bottom: 10px; 
+  background: #fafafa url('') repeat;
+}
+.widget .widget-head,.modal-header{
+  
+  
+  
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  color: #666;
+  font-size: 13px;
+  font-weight: bold;
+    padding: 5px 9px;
+}
+
+/* Chart */
+
+#bar-chart,#bar-chart-black,#curve-chart,#live-chart,#pie-chart,#pie-chart2,#pie-chart3{
+  height: 140px;
+  max-width: 50%;
+}
+
+#pie-chart,#pie-chart2,#pie-chart3{
+  max-width: 300px;
+  margin: 10px auto;
+}
+
+.sidebar-dropdown
+{
+  background text-align: #FFFFFF;  
+}
+
+
+
+.demo-container {
+  box-sizing: border-box;
+  width: 850px;
+  height: 450px;
+  padding: 20px 15px 15px 15px;
+  margin: 15px auto 30px auto;
+  border: 1px solid #ddd;
+  background: #fff;
+  background: linear-gradient(#f6f6f6 0, #fff 50px);
+  background: -o-linear-gradient(#f6f6f6 0, #fff 50px);
+  background: -ms-linear-gradient(#f6f6f6 0, #fff 50px);
+  background: -moz-linear-gradient(#f6f6f6 0, #fff 50px);
+  background: -webkit-linear-gradient(#f6f6f6 0, #fff 50px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  -o-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  -ms-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.demo-placeholder {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.2em;
+}
+

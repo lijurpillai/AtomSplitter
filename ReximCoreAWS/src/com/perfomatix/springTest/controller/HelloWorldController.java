@@ -18,14 +18,7 @@ import com.perfomatix.springTest.model.User;
 import com.perfomatix.springTest.model.UserProfile;
 
 @Controller
-public class HelloWorldController {
-	
-	@RequestMapping("/hello")
-	public ModelAndView helloWorld(){
-		String message = "Another hello world";
-		System.out.println("logging in ---- >");
-		return new ModelAndView("hello","message",message);
-	}
+public class HelloWorldController {	
 	
 	@RequestMapping("/loggedin")
     public @ResponseBody UserProfile generateJsonResponse(HttpServletRequest request, HttpServletResponse response,HttpSession session){
@@ -49,10 +42,10 @@ public class HelloWorldController {
 		if(!user.getUserName().equals("admin") || !user.getPassword().equals("admin")){
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 		}
-		else //if(user.getUserName() == "admin" && user.getPassword() == "admin")
+		else
 		{   userProfile.setFirstName("Atom");
 			userProfile.setLastName("Splitter");
-			userProfile.setRole("SuperAdmin");
+			userProfile.setRole("Admin");
 			session.setAttribute("userProfile", userProfile);			
 		}
 		

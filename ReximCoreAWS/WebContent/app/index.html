@@ -1,42 +1,89 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = "myApp">
+<html lang="en" ng-app="myApp">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.png">
-	<title>REXIM</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">     
-      <!-- Custom styles for this template -->
-    <link href="css/custom.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="favicon.png">
+<title>REXIM</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<!-- Custom styles for this template -->
+<link href="css/rexim.css" rel="stylesheet">
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/dashboard">Dashboard Secure</a></li>
-    <li><a href="#/admin">Admin Secure</a></li>
-    <li><a href="#/" ng-click="logout()">Logout</a></li>    
-  </ul>
-  <div>{{message}}</div>
-  <div>{{firstName}}</div>
-  <div>{{lastName}}</div>
-  <div ng-view></div>
-  </body>  
-  
+   <div ng-controller = "NavCtrl">
+		<!--Navbr (Header)starts -->
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button ng-show="isLoggedIn" type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">REXIM</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul ng-show="isLoggedIn" class="nav navbar-nav">
+					<li class="active"><a href="#/dashboard"><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a></li>
+					<li><a href="#/admin"><span class="glyphicon glyphicon-tasks"></span> Action Tables</a></li>				
+				</ul>
+				<ul ng-show="isLoggedIn" class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						 <span class="glyphicon glyphicon-share"></span>More <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span>Users</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-list"></span>Rules</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+							<li><a href="#/" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+		<!-- navbar header ends-->
+		<!--footer navbar starts-->
+		<nav class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container">				
+				<p class="navbar-text pull-right">
+				 <a href="http://www.perfomatix.com" target='_blank' class="navbar-link">© 2013 Perfomatix Solutions Private Limited</a>
+				</p>
+			</div>
+			<!-- end of container-->
+		</nav>
+	</div>
+	<div ng-view></div>
+</body>
 
-  <!-- In production use:
+
+<!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular/angular-resource.min.js"></script>
-  <script src="lib/util_lib/underscore-min.js"></script>
-  <script src="lib/util_lib/underscore-string-min.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script> 
-  <script src="js/services/authService.js"></script>   
-  <script src="js/controllers/logincontrollers.js"></script>  
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+<!-- Angular libs -->
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.min.js"></script>
+<!-- Angular libs ends-->
+<!-- Util libs -->
+<script src="lib/util_lib/jquery.js"></script>
+<script src="lib/util_lib/bootstrap.min.js"></script>
+<script src="lib/util_lib/jquery.flot.js"></script>
+<script src="lib/util_lib/jquery.flot.categories.js"></script>
+<script src="lib/util_lib/jquery.flot.pie.js"></script>
+<!-- Util libs ends-->
+<!-- Application libs -->
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/services/authService.js"></script>
+<script src="js/controllers/indexController.js"></script>
+<script src="js/controllers/logincontrollers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<!-- Application libs ends-->
 
 </html>

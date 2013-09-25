@@ -7,7 +7,7 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location',f
 	return{
 		logIn : function(userName,password){
 			$log.info("Inside logIn service--");
-			$log.info("Username--" + userName);			
+			$log.info("Username--" + userName + "--");			
 		    $http.post('/ReximCoreAWS/api/login', {	      
 		      userName: userName,
 		      password: password

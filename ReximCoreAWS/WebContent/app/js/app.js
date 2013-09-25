@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directives', 'myApp.controllers','ngResource']).
+angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directives', 'myApp.authControllers','myApp.indexControllers','ngResource']).
   config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
 	
 	//================================================
@@ -16,14 +16,17 @@ angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directive
 	      $http.get('/ReximCoreAWS/api/loggedin').success(function(userProfile){
 	        // Authenticated
 	    	console.log(userProfile);
-	        if (userProfile !== null)
+	        if (userProfile !== null){
 	          $timeout(deferred.resolve, 0);
-
+	          	// setting navbar links on login
+	          $rootScope.isLoggedIn = true;
+	        }
 	        // Not Authenticated
 	        else {
-	          $rootScope.message = 'You need to log in.';
+	          $rootScope.message = 'You need to log in.';	          
 	          $timeout(function(){deferred.reject();}, 0);
 	          $location.url('/login');
+	          
 	        }
 	      });
 
@@ -83,12 +86,9 @@ angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directive
 
   	    // Logout function is available in any pages
   	    $rootScope.logout = function(){
-  	      console.log("inside logout");	
-  	      $rootScope.message = 'Logged out.';
+  	      console.log("inside logout");	  	      
   	      $http.post('/ReximCoreAWS/api/logout').success(function(resCode) {
-			$rootScope.firstName = null;
-			$rootScope.lastName = null;
-			$rootScope.showError = null;
+  	    	$rootScope.isLoggedIn = false;
 		});
   	    };
   	
