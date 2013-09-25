@@ -16,13 +16,15 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location',f
 		      // No error: authentication OK
 		    	  
 		    	  $rootScope.FIRST_NAME = user.firstName;
-		    	  $rootScope.LAST_NAME = user.lastName;		    	  
-			      $location.url('/view2');
+		    	  $rootScope.LAST_NAME = user.lastName;	
+		    	  	// resetting auth error cause by incorrect login
+		    	  $rootScope.SHOW_AUTH_ERROR = false;
+			      $location.url('/dashboard');
 		      
 		    })
 		    .error(function(){
 		      // Error: authentication failed
-		      $rootScope.showError = true;
+		      $rootScope.SHOW_AUTH_ERROR = true;
 		      $location.url('/login');
 		    });
 		  

@@ -1,15 +1,19 @@
 
  <div class="container">
-	<form name="loginForm" class="form-signin" ng-submit="login()">
+	<form name="loginForm" novalidate class="form-signin" ng-submit="login()">
 		<h3 class="form-signin-heading">Login to REXIM</h3>
-		<input id="username" type="text" class="form-control" placeholder="username" ng-model="user.userName" required="" autofocus> 
-		  <input id="password" type="password" class="form-control" placeholder="password" ng-model="user.password"	required="">
+		<input name = "inputUser" id="username" type="text" class="form-control" placeholder="username" 
+			ng-model="user.userName" ng-minlength="1" ng-maxlegth = "20" required autofocus>
+		<div class="alert alert-danger" ng-show="loginForm.inputUser.$dirty && loginForm.inputUser.$invalid">Username is required</div>				
+		<input name = "inputPwd" id="password" type="password" class="form-control" placeholder="password" ng-model="user.password"	required>
+		<div class="alert alert-danger" ng-show="loginForm.inputPwd.$dirty && loginForm.inputPwd.$invalid">Password is required</div>
 		   <!--label class="checkbox">
 		    <input type="checkbox" data-color="green" value="remember-me">Remember me</label-->
 		<!-- /Error message for invalid credentials -->
-		<div ng-show="showError" class="alert alert-danger">username or password is incorrect</div>
-		<button class="btn btn-md btn-primary btn-block" type="submit">Login</button>
+		
+        
+		<div ng-show="SHOW_AUTH_ERROR" class="alert alert-danger">Username or Password is incorrect</div>
+		<h1></h1>
+		<button type="submit" class="btn btn-md btn-primary btn-block">Login</button>
 	</form>
- </div>	
-
-
+ </div>
