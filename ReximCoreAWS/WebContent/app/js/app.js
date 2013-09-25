@@ -20,6 +20,8 @@ angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directive
 	          $timeout(deferred.resolve, 0);
 	          	// setting navbar links on login
 	          $rootScope.isLoggedIn = true;
+	          $rootScope.FIRST_NAME = userProfile.firstName;
+	          $rootScope.LAST_NAME = userProfile.lastName;
 	        }
 	        // Not Authenticated
 	        else {
@@ -69,7 +71,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directive
   	        }
     		
     	});
-    $routeProvider.when('/admin',
+    $routeProvider.when('/actiontable',
     	{
     		templateUrl: 'partials/admin.html',
     		controller: 'adminCtrl',

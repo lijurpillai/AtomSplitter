@@ -13,7 +13,7 @@
 <link href="css/rexim.css" rel="stylesheet">
 </head>
 <body>
-   <div ng-controller = "NavCtrl">
+   <div>
 		<!--Navbr (Header)starts -->
 		<nav class="navbar navbar-default" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -28,19 +28,17 @@
 				<a class="navbar-brand" href="#">REXIM</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller = "NavCtrl">
 				<ul ng-show="isLoggedIn" class="nav navbar-nav">
-					<li class="active"><a href="#/dashboard"><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a></li>
-					<li><a href="#/admin"><span class="glyphicon glyphicon-tasks"></span> Action Tables</a></li>				
-				</ul>
+					<li ng-class="{active:isActive('/dashboard')}"><a href="#/dashboard"><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a></li>
+					<li ng-class="{active:isActive('/actiontable')}"><a href="#/actiontable"><span class="glyphicon glyphicon-tasks"></span> Action Tables</a></li>				
+				</ul>				
 				<ul ng-show="isLoggedIn" class="nav navbar-nav navbar-right">
+					<div></div>					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						 <span class="glyphicon glyphicon-share"></span>More <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span>Users</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-list"></span>Rules</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{FIRST_NAME + " " + LAST_NAME}}<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">							
 							<li><a href="#/" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 						</ul></li>
 				</ul>

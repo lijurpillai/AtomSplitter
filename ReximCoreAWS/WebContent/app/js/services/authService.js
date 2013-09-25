@@ -14,10 +14,9 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location',f
 		    })
 		    .success(function(user){
 		      // No error: authentication OK
-		      
-		    	  $rootScope.firstName = user.firstName;
-			      $rootScope.lastName = user.lastName;
-			      $rootScope.message = 'Authentication successful!';
+		    	  
+		    	  $rootScope.FIRST_NAME = user.firstName;
+		    	  $rootScope.LAST_NAME = user.lastName;		    	  
 			      $location.url('/view2');
 		      
 		    })

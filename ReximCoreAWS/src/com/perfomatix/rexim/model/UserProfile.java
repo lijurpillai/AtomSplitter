@@ -1,4 +1,4 @@
-package com.perfomatix.springTest.model;
+package com.perfomatix.rexim.model;
 
 public class UserProfile {
 	private String firstName;
