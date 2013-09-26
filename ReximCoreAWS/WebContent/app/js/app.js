@@ -2,7 +2,11 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directives', 'myApp.authControllers','myApp.indexControllers','ngResource']).
+angular.module('myApp', ['myApp.filters',
+                         'myApp.authServices','myApp.pubNubServices','myApp.utilServices',
+                         'myApp.authDirectives',
+                         'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers',
+                         'ngResource']).
   config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
 	
 	//================================================
@@ -65,7 +69,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directive
     $routeProvider.when('/dashboard',
     	{
     		templateUrl: 'partials/dashboard.html',
-    		controller: 'dashboardCtrl',
+    		//controller: 'dashboardCtrl',
     		resolve: {
   	          loggedin: checkLoggedin
   	        }
@@ -74,7 +78,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.authServices', 'myApp.directive
     $routeProvider.when('/actiontable',
     	{
     		templateUrl: 'partials/admin.html',
-    		controller: 'adminCtrl',
+    		//controller: 'adminCtrl',
     		resolve: {
     	          loggedin: checkLoggedin
     	        }

@@ -67,6 +67,9 @@
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular/angular-resource.min.js"></script>
 <!-- Angular libs ends-->
+<!-- Pubnub lib -->
+<script src="http://cdn.pubnub.com/pubnub-3.5.3.1.min.js"></script>
+<!-- Pubnub lib ends-->
 <!-- Util libs -->
 <script src="lib/util_lib/jquery.js"></script>
 <script src="lib/util_lib/bootstrap.min.js"></script>
@@ -76,12 +79,18 @@
 <!-- Util libs ends-->
 <!-- Application libs -->
 <script src="js/app.js"></script>
-<script src="js/services.js"></script>
+	<!-- Services -->
 <script src="js/services/authService.js"></script>
+<script src="js/services/pubNubService.js"></script>
+<script src="js/services/utilService.js"></script>
+	<!-- Controllers -->
 <script src="js/controllers/indexController.js"></script>
 <script src="js/controllers/logincontrollers.js"></script>
+<script src="js/controllers/dashBoardControllers.js"></script>
+	<!-- Filters-->
 <script src="js/filters.js"></script>
-<script src="js/directives.js"></script>
+	<!-- Directives -->
+<script src="js/directives/authDirectives.js"></script>
 <!-- Application libs ends-->
 
 </html>

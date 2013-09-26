@@ -46,6 +46,8 @@ public class ReximCoreController {
 			userProfile.setFirstName("Atom");
 			userProfile.setLastName("Splitter");
 			userProfile.setRole("Admin");
+			userProfile.setOrg("Super Store");
+			userProfile.setOrgId("sstore");
 			session.setAttribute("userProfile", userProfile);
 		}
 

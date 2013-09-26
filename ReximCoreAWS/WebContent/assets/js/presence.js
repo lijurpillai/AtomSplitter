@@ -4,8 +4,8 @@
       subscribe_key : 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe'
   });
   pubnub.publish({
-          channel : "analyticsData",
-          message : "from AWS"
+          channel : "sstore_analyticsData",
+          message : "from OpenShift"
       });
   pubnub.subscribe({
       channel : "analyticsData",
