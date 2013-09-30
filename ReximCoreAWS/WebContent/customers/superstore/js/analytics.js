@@ -1,16 +1,21 @@
 jQ(function(){ 
-
+	_fingerPrint = new Fingerprint();
+	  console.log("browser fingerprint " + _fingerPrint.get()); 
   var pubnub = PUBNUB.init({
       publish_key   : 'pub-c-43e4e48b-0a32-4edc-8555-58875edc6cbc',
-      subscribe_key : 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe'
+      subscribe_key : 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe',
+      restore    : true, 
+      uuid: _fingerPrint.get()
   });
 
-  _fingerPrint = new Fingerprint();
-  console.log("browser fingerprint " + _fingerPrint.get()); 
+  
   var custId = "SuperStore";
   var adminClientId = "";   
   console.log(document.cookie);
-  //if (document.cookie) {};
+  pubnub.subscribe({
+      channel : "sstore_analyticsData" ,
+      message : function(m){ console.log(m);}
+  	});
 
 
 //  AnalyticsData constructor
@@ -19,6 +24,7 @@ jQ(function(){
     this.apiKey = apiKey;
     this.version = version;
     this.trackingId = _fingerPrint.get();
+    this.ruleName = "Active User";
     this.userId = getUserId();
     this.clientId = "";
     this.pageData = {};
@@ -38,7 +44,7 @@ jQ(function(){
 //    analyticsData.userId = getUserId();
     analyticsData.pageData.url = window.location.href;
     analyticsData.pageData.host = window.location.host;
-    analyticsData.pageData.hostname = window.location.hostname
+    analyticsData.pageData.hostname = window.location.hostname;
     analyticsData.pageData.hash = window.location.hash;
     analyticsData.pageData.pathname = window.location.pathname;
     analyticsData.pageData.params = window.location.search;
@@ -51,17 +57,10 @@ jQ(function(){
     analyticsData.pageData.referrer = document.referrer;
     console.log(JSON.stringify(analyticsData));
     
-     // socket.emit('setCust', { custKey: 'owaCustomer1' });
      pubnub.publish({
           channel : "sstore_analyticsData",
           message : analyticsData
       });
-      
-   
-
-   /*window.onhashchange = function () {
-       socket.emit('analyticsData',analyticsData); // send page data  
-   } */
      
     function getUserId(){
       var userId = "";

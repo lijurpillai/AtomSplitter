@@ -2,21 +2,22 @@
 
 var pubNubModule = angular.module('myApp.pubNubServices', []);
 
-pubNubModule.factory('pubnubInit',['$log','$rootScope','Constants',function($log,$rootScope,Constants){
+pubNubModule.factory('pubnubInit',['$log','$rootScope','Constants','AuthService',function($log,$rootScope,Constants,AuthService){
 	var pubnub = PUBNUB.init({
 	      publish_key   : Constants.PUB_KEY,
-	      subscribe_key : Constants.SUB_KEY
+	      subscribe_key : Constants.SUB_KEY,
+	      uuid          : 'myCustomUUID'
 	  });
 	var userProfile = $rootScope.USER_PROFILE;
 	
 	return{
 			log:function(){
 				$log.info("inside pubnubInit Service");
-				console.log($rootScope.USER_PROFILE);
-				console.log(userProfile.orgId+Constants.SEPERATOR+Constants.PUBNUB_ANALYTICS_CHANNEL);
+				console.log(AuthService.getUserProfile());
+				console.log(AuthService.getUserProfile().orgId+Constants.SEPERATOR+Constants.PUBNUB_ANALYTICS_CHANNEL);
 			},
 			PUBNUB:pubnub,
-			PUBNUB_ANALYTICS_CHANNEL: userProfile.orgId+Constants.SEPERATOR+Constants.PUBNUB_ANALYTICS_CHANNEL
+			PUBNUB_ANALYTICS_CHANNEL:AuthService.getUserProfile().orgId+Constants.SEPERATOR+Constants.PUBNUB_ANALYTICS_CHANNEL
 	      };
 	
 }]);

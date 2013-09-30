@@ -5,14 +5,14 @@
 angular.module('myApp', ['myApp.filters',
                          'myApp.authServices','myApp.pubNubServices','myApp.utilServices',
                          'myApp.authDirectives',
-                         'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers',
+                         'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers','myApp.actionTableCtrl',
                          'ngResource']).
   config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
 	
 	//================================================
 	    // Check if the user is connected
 	    //================================================
-	    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
+	    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope,SessionManager,Constants){
 	      // Initialize a new promise
 	      var deferred = $q.defer();
 
@@ -29,10 +29,9 @@ angular.module('myApp', ['myApp.filters',
 	        }
 	        // Not Authenticated
 	        else {
-	          $rootScope.message = 'You need to log in.';	          
+	          SessionManager.clearSession(Constants.SESS_KEY_USER_PROFILE);
 	          $timeout(function(){deferred.reject();}, 0);
-	          $location.url('/login');
-	          
+	          $location.url('/login');	          
 	        }
 	      });
 
@@ -77,7 +76,7 @@ angular.module('myApp', ['myApp.filters',
     	});
     $routeProvider.when('/actiontable',
     	{
-    		templateUrl: 'partials/admin.html',
+    		templateUrl: 'partials/actiontable.html',
     		//controller: 'adminCtrl',
     		resolve: {
     	          loggedin: checkLoggedin
@@ -86,15 +85,15 @@ angular.module('myApp', ['myApp.filters',
     $routeProvider.otherwise({redirectTo: '/dashboard'});
   }])
   
-  	.run(['$rootScope', '$http', function ($rootScope, $http) {
+  	.run(['$rootScope', '$http','SessionManager','Constants',function ($rootScope, $http,SessionManager,Constants) {
   		
   		$rootScope.message = '';
-
   	    // Logout function is available in any pages
   	    $rootScope.logout = function(){
-  	      console.log("inside logout");	  	      
+  	      console.log("inside logout");
+  	      SessionManager.clearSession(Constants.SESS_KEY_USER_PROFILE);
   	      $http.post('/ReximCoreAWS/api/logout').success(function(resCode) {
-  	    	$rootScope.isLoggedIn = false;
+  	      $rootScope.isLoggedIn = false;
 		});
   	    };
   	

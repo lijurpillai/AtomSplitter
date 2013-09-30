@@ -2,12 +2,11 @@
 
 var myServiceModule = angular.module('myApp.authServices', []);
 
-myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location',function($log,$rootScope,$http,$location){
+myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location','Constants',function($log,$rootScope,$http,$location,Constants){
 	var userProfile = "";	
 	return{
 		logIn : function(userName,password){
-			$log.info("Inside logIn service--");
-			$log.info("Username--" + userName + "--");	
+			$log.info("Inside logIn service--");				
 			if(userName == null || userName == " "){
 				$rootScope.SHOW_USER_ERROR = true;				
 			}
@@ -20,14 +19,14 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location',f
 				      password: password
 				    })
 				    .success(function(user){
-				      // No error: authentication OK
-				    	  $rootScope.USER_PROFILE = user;
-				    	  $rootScope.FIRST_NAME = user.firstName;
-				    	  $rootScope.LAST_NAME = user.lastName;	
-				    	  	// resetting auth error cause by incorrect login
+				    	//No error: authentication OK
+				    	if(sessionStorage){
+				    		// setting userProfile in session storage
+				    		sessionStorage.setItem(Constants.SESS_KEY_USER_PROFILE,angular.toJson(user));
+				    	}
+				    	   // resetting auth error cause by incorrect login
 				    	  $rootScope.SHOW_AUTH_ERROR = false;
-					      $location.url('/dashboard');
-				      
+					      $location.url('/dashboard');				      
 				    })
 				    .error(function(){
 				      // Error: authentication failed
@@ -36,7 +35,14 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location',f
 				    });				
 			}
 		},
-		USERPROFILE: userProfile
+		getUserProfile: function(){
+			var userProfile = "";
+			$log.info("Inside getUserProfile");
+			if(sessionStorage){
+				userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+			}			
+			return userProfile;
+		}
 	};
 }]);
 

@@ -1,0 +1,109 @@
+<div class="row">
+<div class="container">
+<div class="col-xs-12 col-sm-6 col-md-12"> 
+<!-- table starts-->
+<div class="table-responsive" ng-controller="TableCtrl"> 
+<table class="table table-hover table-bordered">
+	<tr>
+	<th>
+	 <div class="dropdown">
+	     <a href="" class="dropdown-toggle" data-toggle="dropdown"><b>Rules</b><b class="caret"></b></a>
+	     <ul class="dropdown-menu">
+	       <li><a href="#">Rule1</a></li>
+	       <li><a href="#">Rule2</a></li>
+	       <li><a href="#">Rule3</a></li>
+	      </ul>
+	  </div>
+	</th>
+	<th>Page</th>
+	<th>Time</th>
+	<th>Tracking Id</th>
+	<th>Action</th>
+	<th>Assigned to</th>
+	<th>
+	 <div class="dropdown">
+	              <a href="" class="dropdown-toggle" data-toggle="dropdown"><b>Status</b><b class="caret"></b></a>
+	              <ul class="dropdown-menu">
+	                <li><a href="#">Active</a></li>
+	                <li><a href="#">In active</a></li>
+	                
+	                </ul>
+	            </div> 
+	
+	<th>Action</th>
+	</tr>
+	<tr  ng-repeat="data in ruleData"><!-- Table body -->
+		<td>{{data.ruleName}}</td>
+		<td>{{data.pageData.pathname}}</td>
+		<td>data3</td>
+		<td>{{data.trackingId}}</td>	
+		<td>		
+		<a data-toggle="modal" href="#myModal" class="btn btn-default btn-xs">
+		<span class="glyphicon glyphicon-share"></span></a>		
+		<!-- /.modal starts -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title">Action</h4>
+		        <form name="input" action="" method="get">		      
+			      <div class="btn btn-default btn-xs"><span class="glyphicon glyphicon-comment">
+			      </span> Chat</div>
+				  <div class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove">
+				  </span> Remove</div>
+			  </div>
+		      <div class="modal-body">
+		      <h4>Send offer code</h4>
+		 <input type="text">
+		 <div align="center">
+		 <button type="button" class="btn btn-default btn-xs">Send</button>
+		 <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+		 </div>
+		      </div>
+		      </form>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal ends -->
+		
+		</td>
+		<td>data5</td>
+		<td>
+			<span ng-show = "data.online" class="label label-success">Online</span>
+			<span ng-show = "!data.online" class="label label-danger">Offline</span></td>
+		<td>
+		
+		 <div class="btn btn-default btn-xs"><span class="glyphicon glyphicon-comment"></span> Chat</div>
+		<a data-toggle="modal" href="#myModal1" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-send"></span> Push</a>
+		
+		<!-- /.modal1 starts -->
+		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title">Push offer code</h4>
+		      </div>
+		      
+		      <form name="input" action="" method="get">
+		      <div class="modal-body">
+		      
+		        <textarea></textarea>
+		      </div>
+		      <div class="modal-footer">
+		      <button type="button" class="btn btn-default">Send</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		         </div>
+		      </form>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal1 ends -->
+		
+		<div class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span> Remove</div></td>
+	</tr>
+</table>
+</div><!--responsive table ends -->
+</div><!-- column ends -->
+</div><!-- container ends -->
+</div><!--row ends -->
