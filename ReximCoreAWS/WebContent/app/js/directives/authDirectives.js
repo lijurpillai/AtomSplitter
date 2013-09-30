@@ -14,8 +14,7 @@ angular.module('myApp.authDirectives', []).
   }).
   directive('reximPassword', function($log,$rootScope) {
 	    return function(scope,element,attrs){
-	    	scope.$watch(attrs.reximPassword, function(value) {	
-	    		console.log(value);
+	    	scope.$watch(attrs.reximPassword, function(value) {		    		
 				$rootScope.SHOW_PWD_ERROR = false;
 		      });    	
 	    };
