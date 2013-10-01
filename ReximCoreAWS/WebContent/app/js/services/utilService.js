@@ -61,7 +61,8 @@ utilService.factory('AnalyticsData',['$log',function($log){
 	return{	
 		setAnalyticsData:function(data){
 			var trackingId = data.trackingId;
-			data.online = true;	// set online status as true				
+			data.online = true;	// set online status as true
+			data.timeStamp = Date.now();
 			$log.info("inside AnalyticsData>setAnalyticsData");
 			  // Remove existing data for same user.
 			for (var i = 0; i < analyticsData.length; i++) {				

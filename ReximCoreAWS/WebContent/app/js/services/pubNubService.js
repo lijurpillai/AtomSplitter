@@ -6,7 +6,7 @@ pubNubModule.factory('pubnubInit',['$log','$rootScope','Constants','AuthService'
 	var pubnub = PUBNUB.init({
 	      publish_key   : Constants.PUB_KEY,
 	      subscribe_key : Constants.SUB_KEY,
-	      uuid          : 'myCustomUUID'
+	      uuid          : 'admin'
 	  });
 	var userProfile = $rootScope.USER_PROFILE;
 	
