@@ -3,10 +3,10 @@
 		<div class="col-xs-12 col-sm-6 col-md-12">
 			<!-- table starts-->
 			<div class="table-responsive" ng-controller="TableCtrl">
-				Rule Name <input ng-model="search.ruleName"> Tracking Id <input
-					ng-model="search.trackingId"> Status <input
-					ng-model="search.online"> Page Name<input
-					ng-model="search.pageData.pathname">
+				Rule Name <input ng-model="search.ruleName"> 
+				Tracking Id <input ng-model="search.trackingId"> 
+				Status <input ng-model="search.online"> 
+				Page Name<input ng-model="search.pageData">
 				<hr>
 				<table class="table table-hover table-bordered">
 					<tr>
@@ -58,9 +58,8 @@
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
 												aria-hidden="true">&times;</button>
-											<h4 class="modal-title">Action</h4>
-											<form name="input" action="" method="get">
-												<div class="btn btn-default btn-xs">
+											<h4 class="modal-title">Action</h4>											
+												<div class="btn btn-default btn-xs" ng-click="chat(data.trackginId)">
 													<span class="glyphicon glyphicon-comment"> </span> Chat
 												</div>
 												<div class="btn btn-default btn-xs">
@@ -75,8 +74,7 @@
 												<button type="button" class="btn btn-default btn-xs"
 													data-dismiss="modal">Close</button>
 											</div>
-										</div>
-										</form>
+										</div>										
 									</div>
 									<!-- /.modal-content -->
 								</div>
@@ -86,12 +84,12 @@
 						<td><span ng-show="data.online" class="label label-success">Online</span>
 							<span ng-show="!data.online" class="label label-danger">Offline</span></td>
 						<td>
-
-							<div class="btn btn-default btn-xs">
+							
+							<button class="btn btn-default btn-xs" ng-disabled = "!data.online" ng-click="chat(data.trackingId)">
 								<span class="glyphicon glyphicon-comment"></span> Chat
-							</div> <a data-toggle="modal" href="#myModal1"
-							class="btn btn-default btn-xs"><span
-								class="glyphicon glyphicon-send"></span> Push</a> <!-- /.modal1 starts -->
+							</button> 
+							<a data-toggle="modal" href="#myModal1" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
+								<span class="glyphicon glyphicon-send"></span> Push</a> <!-- /.modal1 starts -->
 							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
 								aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
@@ -134,3 +132,4 @@
 	<!-- container ends -->
 </div>
 <!--row ends -->
+<div class="chatWindow"></div>

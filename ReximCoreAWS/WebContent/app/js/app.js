@@ -3,7 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters',
-                         'myApp.authServices','myApp.pubNubServices','myApp.utilServices',
+                         'myApp.authServices','myApp.pubNubServices','myApp.utilServices','myApp.commServices',
                          'myApp.authDirectives',
                          'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers','myApp.actionTableCtrl',
                          'ngResource']).

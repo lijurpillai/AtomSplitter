@@ -11,6 +11,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <!-- Custom styles for this template -->
 <link href="css/rexim.css" rel="stylesheet">
+<!-- Chat box styles for this template -->
+<link rel="stylesheet" href="lib/util_lib/jquery.ui.chatbox/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" type="text/css" media="screen" />
+<link type="text/css" href="lib/util_lib/jquery.ui.chatbox/jquery.ui.chatbox.css" rel="stylesheet" />
 </head>
 <body>
    <div>
@@ -48,12 +51,13 @@
 		<!-- navbar header ends-->
 		<!--footer navbar starts-->
 		<nav class="navbar navbar-default navbar-fixed-bottom">
+		
 			<div class="container">				
 				<p class="navbar-text pull-right">
 				 <a href="http://www.perfomatix.com" target='_blank' class="navbar-link">© 2013 Perfomatix Solutions Private Limited</a>
 				</p>
 			</div>
-			<!-- end of container-->
+			<!-- end of container -->
 		</nav>
 	</div>
 	<div ng-view></div>
@@ -73,9 +77,9 @@
 <!-- Util libs -->
 <script src="lib/util_lib/jquery.js"></script>
 <script src="lib/util_lib/bootstrap.min.js"></script>
-<script src="lib/util_lib/jquery.flot.js"></script>
-<script src="lib/util_lib/jquery.flot.categories.js"></script>
-<script src="lib/util_lib/jquery.flot.pie.js"></script>
+<script src="lib/util_lib/jquery.ui.chatbox/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="lib/util_lib/jquery.ui.chatbox/jquery.ui.chatbox.js"></script>
+<script src="lib/util_lib/jquery.ui.chatbox/chatboxManager.js"></script>
 <!-- Util libs ends-->
 <!-- Application libs -->
 <script src="js/app.js"></script>
@@ -83,6 +87,7 @@
 <script src="js/services/authService.js"></script>
 <script src="js/services/pubNubService.js"></script>
 <script src="js/services/utilService.js"></script>
+<script src="js/services/communicationService.js"></script>
 	<!-- Controllers -->
 <script src="js/controllers/indexController.js"></script>
 <script src="js/controllers/logincontrollers.js"></script>
@@ -91,7 +96,7 @@
 	<!-- Filters-->
 <script src="js/filters.js"></script>
 	<!-- Directives -->
-<script src="js/directives/authDirectives.js"></script>
+<script src="js/directives/authDirectives.js"></script>	
 <!-- Application libs ends-->
 
 
