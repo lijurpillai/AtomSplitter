@@ -20,13 +20,13 @@
 							<div class="col-xs-3">
 								<div class="input-group">
 									<span class="input-group-addon">Page</span> <input type="text"
-										ng-model="search.pageData.pathname" class="form-control"
+										ng-model="search.pageData" class="form-control"
 										placeholder="type to search">
 								</div>
 							</div>
 							<div class="col-xs-3	">
-								<div class="input-group">
-									<span class="input-group-addon">Tracking Id</span> <input
+								<div class="input-group">								
+									<span class="input-group-addon ">Tracking Id</span> <input
 										type="text" ng-model="search.trackingId" class="form-control"
 										placeholder="type to search">
 								</div>
@@ -52,15 +52,29 @@
 								<thead>
 
 									<tr>
-										<th>Rule</th>
+										<th><a href=""
+											ng-click="predicate = 'ruleName'; reverse=!reverse">Rule</a>
+											<a href="" ng-click="predicate = 'ruleName'; reverse=!reverse">
+											<span class="glyphicon glyphicon-sort"></span></a>
+										</th>
 										<th>Page</th>
 										<th><a href=""
-											ng-click="predicate = 'timeStamp'; reverse=!reverse">Time</a></th>
+											ng-click="predicate = 'timeStamp'; reverse=!reverse">Time</a>
+											<a href="" ng-click="predicate = 'timeStamp'; reverse=!reverse">
+											<span class="glyphicon glyphicon-sort"></span></a>
+										</th>
 										<th><a href=""
-											ng-click="predicate = 'trackingId'; reverse=!reverse">Tracking Id</a></th>
+											ng-click="predicate = 'trackingId'; reverse=!reverse">Tracking Id</a>
+											<a href="" ng-click="predicate = 'trackingId'; reverse=!reverse">
+											<span class="glyphicon glyphicon-sort"></span></a>
+										</th>
 										<th class="visible-xs">More</th>
 										<th>Req Status</th>
-										<th>Online</th>
+										<th><a href=""
+											ng-click="predicate = 'online'; reverse=!reverse">Online</a>
+											<a href="" ng-click="predicate = 'online'; reverse=!reverse">
+											<span class="glyphicon glyphicon-sort"></span></a>
+										</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -72,7 +86,7 @@
 										<td>{{data.timeStamp|date:'medium'}}</td>
 										<td>{{data.trackingId}}</td>
 										<td class="visible-xs"><a data-toggle="modal"
-											href="#myModal" class="btn btn-default btn-xs"> <span
+											href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs"> <span
 												class="glyphicon glyphicon-share"></span></a></td>
 										<!-- /.modal starts -->
 										
@@ -88,15 +102,15 @@
 										<span ng-show="!data.online" class="label label-danger">Offline</span>
 										</td>
 										<td>
-											<a data-toggle="modal" href="#myModal" class="btn btn-default btn-xs">
+											<a data-toggle="modal" href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs">
 											<span class="glyphicon glyphicon-share"></span> More</a>								
 											
-											<button class="btn btn-default btn-xs" ng-disabled = "!data.online" ng-click="chat(data.trackingId)">
+											<button class="btn btn-default btn-xs" ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
 												<span class="glyphicon glyphicon-comment"></span> Chat
 											</button>											
-											<a data-toggle="modal" href="#myModal1" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
+											<a data-toggle="modal" href="#pushModal" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
 												<span class="glyphicon glyphicon-send"></span> Push</a>
-											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+											<div class="modal fade" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 												aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
@@ -114,35 +128,23 @@
 																			Status<span class="label label-default">Value</span>
 																		</h4>
 																	</div>
-																	<h4>
-																		Name <span class="label label-default">Value</span>
-																	</h4>
-																	<h4>
-																		Name <span class="label label-default">Value</span>
-																	</h4>
-																	<h4>
-																		Name <span class="label label-default">Value</span>
-																	</h4>
-																	<h4>
-																		Name <span class="label label-default">Value</span>
-																	</h4>
-																	<h4>
-																		Name <span class="label label-default">Value</span>
-																	</h4>
-																</div>
+																		 <span><strong>Cookie enabled : </strong>{{data.pageData.cookieEnabled}}</span><br>
+																		 <span><strong>Search Params : </strong>{{data.pageData.params}}</span><br>
+																		 <span><strong>User Agent : </strong>{{data.pageData.navigatorAgent}}</span><br>
+																		 <span><strong>Data : </strong></span>	
+																	</div>
 															</div>
 	
 															<hr>
 															<h3>Action</h3>														
-															<button class="btn btn-default btn-xs" ng-click="chat(data.trackingId)">
+															<button class="btn btn-default btn-xs" ng-click="chat(data.trackingId,$index)">
 																<span class="glyphicon glyphicon-comment"></span> Chat
 															</button>															
 															<h4>Push offer code</h4>
 															<input type="text">
 															<div align="center">
 																<button type="button" class="btn btn-default btn-xs">Push</button>
-																<button type="button" class="btn btn-default btn-xs"
-																	data-dismiss="modal">Close</button>
+																<button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
 															</div>
 														</div>													
 													</div>
@@ -152,7 +154,7 @@
 											</div>
 											<!-- /.modal ends -->																				
 										<!-- /.modal1 starts -->
-										<div class="modal fade" id="myModal1" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal fade" id="pushModal" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">

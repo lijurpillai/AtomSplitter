@@ -15,9 +15,10 @@ angular.module('myApp.actionTableCtrl', []).
 		  PubnubService.PUBNUB_PUB(Constants.MSG_TYP_SCREENSHOT,msg,clientChannel); 	  
 	  };*/
 	  
-	  $scope.chat = function(trackingId){
-		  $log.info("inside TableCtrl>Chat()");	
-		  $('#myModal').modal('hide');
+	  $scope.chat = function(trackingId,modalIndex){		  	
+		  var modalId = '#moreInfoModal'+modalIndex;
+		  $log.info("inside TableCtrl>Chat()" + modalId);
+		  $(modalId).modal('hide');
 		  var clientChannel = ChatService.getClientChannel(trackingId);
 		  var agentChannel = ChatService.getAgentChannel(trackingId);
 		  var box = ChatService.getWindows(trackingId);
