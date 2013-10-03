@@ -1,12 +1,10 @@
 angular.module('myApp.dashBoardControllers', []).
- controller('PresenceCtrl',['$scope','$location','pubnubInit','AnalyticsData','PresenceManager'
-                            ,function($scope,$location,pubnubInit,AnalyticsData,PresenceManager){
-	 console.log("inside PresenceCtrl -->");
-	 pubnubInit.log();
+ controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager'
+                            ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager){	 
 	 
-	 var channelName = pubnubInit.PUBNUB_ANALYTICS_CHANNEL;	 
-	 console.log("Channel ----> " + pubnubInit.PUBNUB_ANALYTICS_CHANNEL);
-	 pubnubInit.PUBNUB.subscribe({
+	 var channelName = PubnubService.PUBNUB_ANALYTICS_CHANNEL;	 
+	 console.log("Channel ----> " + PubnubService.PUBNUB_ANALYTICS_CHANNEL);
+	 PubnubService.PUBNUB.subscribe({
 	        channel : channelName,
 	        message : function(analyticsData){	        	
 	        	AnalyticsData.setAnalyticsData(analyticsData);

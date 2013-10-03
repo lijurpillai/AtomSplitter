@@ -7,10 +7,15 @@ utilService.factory('Constants',['$log',function($log){
     //channels
 	var analyticsChannel = "analyticsData";
 	var chatChannel = "chat";
-	//session ket
+	var msgTypeScreenShot = 98; // screen shot
+	var msgTypeChatClose = 99; // Clinet closes window
+	var msgTypeChat = 1; // Chat
+	//session key
 	var session_key_userProfile = "userProfile";
 	//other
-	var seperator = '_';	
+	var seperator = '_';
+	// error message
+	var maxWindowLimit = "Reached max window limit of : ";
 	
 	return{	
 		PUB_KEY:publish_key,
@@ -18,7 +23,11 @@ utilService.factory('Constants',['$log',function($log){
 		PUBNUB_ANALYTICS_CHANNEL:analyticsChannel,
 		PUBNUB_CHAT_CHANNEL: chatChannel,
 		SEPERATOR: seperator,
-		SESS_KEY_USER_PROFILE:session_key_userProfile
+		SESS_KEY_USER_PROFILE:session_key_userProfile,
+		MSG_TYP_SCREENSHOT:msgTypeScreenShot,
+		MSG_TYP_CHAT_CLOSE:msgTypeChatClose,
+		MSG_TYP_CHAT:msgTypeChat,
+		ERR_MSG_MAX_WINDOW:maxWindowLimit
       };
 }]);
 

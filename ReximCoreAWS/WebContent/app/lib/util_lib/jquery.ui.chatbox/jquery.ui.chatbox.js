@@ -180,7 +180,7 @@
                     // anything?
                 })
                 .appendTo(uiChatboxContent),
-            uiChatboxInputBox = (self.uiChatboxInputBox = $('<textarea></textarea>'))
+            uiChatboxInputBox = (self.uiChatboxInputBox = $('<textarea autofocus></textarea>'))
                 .addClass('ui-widget-content ' +
                           'ui-chatbox-input-box ' +
                           'ui-corner-all'

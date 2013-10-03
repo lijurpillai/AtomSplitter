@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.perfomatix.rexim.model.ScreenShot;
 import com.perfomatix.rexim.model.User;
 import com.perfomatix.rexim.model.UserProfile;
 
@@ -60,5 +62,14 @@ public class ReximCoreController {
 		session.invalidate();
 		response.setStatus(HttpServletResponse.SC_OK);
 	}
-
+	
+	@RequestMapping(value="/screenShot")//,  = {"application/x-javascript", "application/json", "application/xml"})
+	public @ResponseBody ScreenShot
+	 screenShot(HttpSession session, HttpServletResponse response,HttpServletRequest request) {
+		response.setContentType("application/x-javascript");
+		System.out.println("inside callback");
+		ScreenShot screenShot = new ScreenShot();
+		screenShot.setSuccess("200");
+		return screenShot;
+	}
 }

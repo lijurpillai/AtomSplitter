@@ -22,4 +22,19 @@
 	        <property name="prefix" value="/WEB-INF/jsp/" />
 	        <property name="suffix" value=".jsp" />
 	    </bean>
+	    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <property name="favorPathExtension" value="true"/>
+    <property name="mediaTypes">
+        <map>
+            <entry key="json" value="application/json"/>
+            <entry key="jsonp" value="application/javascript"/>
+        </map>
+    </property>
+    <property name="defaultViews">
+        <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
+            <bean class="com.perfomatix.rexim.jsonp.MappingJacksonJsonpView"/>
+        </list>
+    </property>
+</bean>
 </beans>
