@@ -52,28 +52,29 @@
 								<thead>
 
 									<tr>
+										<th>Sl No</th>
+										<th><a href=""
+											ng-click="predicate = 'trackingId'; reverse=!reverse">Tracking Id</a>
+											<a href="" ng-click="predicate = 'trackingId'; reverse=!reverse">
+											<span class="glyphicon glyphicon-collapse-up"></span></a>
+										</th>
 										<th><a href=""
 											ng-click="predicate = 'ruleName'; reverse=!reverse">Rule</a>
 											<a href="" ng-click="predicate = 'ruleName'; reverse=!reverse">
-											<span class="glyphicon glyphicon-sort"></span></a>
+											<span class="glyphicon glyphicon-collapse-up"></span></a>
 										</th>
 										<th>Page</th>
 										<th><a href=""
 											ng-click="predicate = 'timeStamp'; reverse=!reverse">Time</a>
 											<a href="" ng-click="predicate = 'timeStamp'; reverse=!reverse">
-											<span class="glyphicon glyphicon-sort"></span></a>
-										</th>
-										<th><a href=""
-											ng-click="predicate = 'trackingId'; reverse=!reverse">Tracking Id</a>
-											<a href="" ng-click="predicate = 'trackingId'; reverse=!reverse">
-											<span class="glyphicon glyphicon-sort"></span></a>
-										</th>
+											<span class="glyphicon glyphicon-collapse-up"></span></a>
+										</th>										
 										<th class="visible-xs">More</th>
 										<th>Req Status</th>
 										<th><a href=""
 											ng-click="predicate = 'online'; reverse=!reverse">Online</a>
 											<a href="" ng-click="predicate = 'online'; reverse=!reverse">
-											<span class="glyphicon glyphicon-sort"></span></a>
+											<span class="glyphicon glyphicon-collapse-up"></span></a>
 										</th>
 										<th>Action</th>
 									</tr>
@@ -81,21 +82,31 @@
 								<tbody>
 									<tr ng-animate="'animate'" ng-repeat="data in ruleData | orderBy:predicate:reverse | filter:search">
 										<!-- Table body -->
+										<td>{{$index+1}}</td>
+										<td>{{data.trackingId}}</td>
 										<td>{{data.ruleName}}</td>
 										<td>{{data.pageData.pathname}}</td>
-										<td>{{data.timeStamp|date:'medium'}}</td>
-										<td>{{data.trackingId}}</td>
+										<td>{{data.timeStamp|date:'medium'}}</td>										
 										<td class="visible-xs"><a data-toggle="modal"
 											href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs"> <span
 												class="glyphicon glyphicon-share"></span></a></td>
 										<!-- /.modal starts -->
 										
-										<td>
-											<div class="btn-group">
-											  <button type="button" class="btn btn-default btn-xs">New</button>
-											  <button type="button" class="btn btn-default btn-xs">Closed</button>
-											  <button type="button" class="btn btn-default btn-xs">Ignore</button>
-											</div>
+										<td>											
+											<!-- <select class="form-control">
+											  <option selected="selected" >New</option>
+											  <option>In Progress</option>
+											  <option>Close - Chat</option>
+											  <option>Close - Push</option>											  
+											</select> -->
+											<span ng-show="data.reqStatus" class="label label-success">New</span>
+											<span ng-show="!data.reqStatus" class="label label-danger">In Progress</span>
+											<span  class="nullable">
+											<select ng-model="reqOption" ng-options="o.name for o in requestOptions">
+												<option selected="selected" value="">--select--</option>
+											</select>
+											
+											</span>
 										</td>
 										<td>
 										<span ng-show="data.online" class="label label-success">Online</span>
@@ -105,9 +116,9 @@
 											<a data-toggle="modal" href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs">
 											<span class="glyphicon glyphicon-share"></span> More</a>								
 											
-											<button class="btn btn-default btn-xs" ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
+											<button type="button" class="btn btn-default btn-xs" data-loading-text="Loading..." ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
 												<span class="glyphicon glyphicon-comment"></span> Chat
-											</button>											
+											</button>																																	
 											<a data-toggle="modal" href="#pushModal" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
 												<span class="glyphicon glyphicon-send"></span> Push</a>
 											<div class="modal fade" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

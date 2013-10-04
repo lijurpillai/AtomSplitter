@@ -15,20 +15,26 @@ angular.module('myApp.actionTableCtrl', []).
 		  PubnubService.PUBNUB_PUB(Constants.MSG_TYP_SCREENSHOT,msg,clientChannel); 	  
 	  };*/
 	  
-	  $scope.chat = function(trackingId,modalIndex){		  	
-		  var modalId = '#moreInfoModal'+modalIndex;
-		  $log.info("inside TableCtrl>Chat()" + modalId);
-		  $(modalId).modal('hide');
+	  $scope.requestOptions = [	                   
+	                   {name:'Close - Chat', value:1},
+	                   {name:'Close - Push', value:2}	                   
+	                 ];	  
+	  
+	  $scope.chat = function(trackingId,index){
+		  
+		  ChatService.changeReqStatus(trackingId);
+		  //data.reqStatus		  
+		  var modalId = '#moreInfoModal'+index;
+		  $(modalId).modal('hide'); // Hide More Info modal.Req if chat clicked from modal		  
 		  var clientChannel = ChatService.getClientChannel(trackingId);
 		  var agentChannel = ChatService.getAgentChannel(trackingId);
-		  var box = ChatService.getWindows(trackingId);
+		  var box = ChatService.getWindows(trackingId);// get chat box object
 		  var msg = "";		
 		  if(box) {
-			  console.log("box true do nothing");			  
-			  //ChatService.BOX.chatbox("option", "boxManager").toggleBox();
+			  $log.info("box true do nothing");			  
 		  }
 		  else {
-			  console.log("new box");			  
+			  $log.info("new box");			  
 			  box = ChatService.initBox(trackingId);
 		  }
           PubnubService.PUBNUB.subscribe({

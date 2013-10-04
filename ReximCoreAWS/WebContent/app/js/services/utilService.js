@@ -1,6 +1,20 @@
 'use strict';
 
 var utilService = angular.module('myApp.utilServices', []);
+
+utilService.factory('$exceptionHandler',['$log',function($log){
+	$log.info("$exceptionHandler");
+	return function (exception, cause) {		
+		$log.info(exception.errMsg);
+		$log.info(cause);
+		if(exception.errId){
+			var displayMsg = "Message : " + exception.errMsg;
+			alert(displayMsg);
+		}
+        
+    };
+}]);
+
 utilService.factory('Constants',['$log',function($log){
 	var publish_key = 'pub-c-43e4e48b-0a32-4edc-8555-58875edc6cbc';
     var subscribe_key = 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe';
@@ -15,7 +29,7 @@ utilService.factory('Constants',['$log',function($log){
 	//other
 	var seperator = '_';
 	// error message
-	var maxWindowLimit = "Reached max window limit of : ";
+	var maxWindowLimit = {id: 1 , msg:"Reached max chat window limit of : "};
 	
 	return{	
 		PUB_KEY:publish_key,
@@ -74,8 +88,9 @@ utilService.factory('AnalyticsData',['$log',function($log){
 	var analyticsData = [];	
 	return{	
 		setAnalyticsData:function(data){
-			var trackingId = data.trackingId;
+			var trackingId = data.trackingId;			
 			data.online = true;	// set online status as true
+			data.reqStatus = true ;// set data status to new. On click of chat change it to false.
 			data.timeStamp = Date.now();
 			$log.info("inside AnalyticsData>setAnalyticsData");
 			  // Remove existing data for same user.

@@ -85,7 +85,7 @@ angular.module('myApp', ['myApp.filters',
     $routeProvider.otherwise({redirectTo: '/dashboard'});
   }])
   
-  	.run(['$rootScope', '$http','SessionManager','Constants',function ($rootScope, $http,SessionManager,Constants) {
+  	.run(['$rootScope', '$http','SessionManager','Constants','$location',function ($rootScope, $http,SessionManager,Constants,$location) {
   		
   		$rootScope.message = '';
   	    // Logout function is available in any pages
@@ -95,6 +95,7 @@ angular.module('myApp', ['myApp.filters',
   	      $http.post('/ReximCoreAWS/api/logout').success(function(resCode) {
   	      $rootScope.isLoggedIn = false;
 		});
+  	    $location.url('/login');
   	    };
   	
   	}]);

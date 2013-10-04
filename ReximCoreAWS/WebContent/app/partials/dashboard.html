@@ -1,85 +1,75 @@
-<div class="container">
+<div class="container" ng-controller="PresenceCtrl">
 	<div class="row">
-		<div class="col-lg-4">
+		<div class="col-lg-2">
+
+			<!--nav pills starts -->
+			<div class="alert alert-danger">
+				<ul class="nav nav-pills nav-justified">
+					<li class="active"><a href="#/actiontable"><span class="badge"><h1>
+									<b>{{activeUsers}}</b>
+								</h1></span> <span class="badge pull-right"></span>
+							<h4>
+								<b>Active Users Right Now</b>
+							</h4> </a></li>
+				</ul>
+				<!--nav pills ends -->
+
+			</div>
+		</div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-9">
 			<br>
 			<br>
-			<!--Well starts -->
-			<div class="well well-lg" ng-controller ="PresenceCtrl">
-				<div class="container">
-					<h2>Active users <span class="label label-default">{{activeUsers}}</span>
-					</h2>
-				</div>
+			<br>
+			<!--nav pills starts -->
+			<div class="col-lg-2">
+				<ul class="nav nav-pills nav-justified">
+					<li class="active"><a href="#"> <span
+							class="badge pull-center"><h4>42</h4></span>
+							<h5>All users</h5>
+					</a></li>
+				</ul>
 			</div>
-			<!--Well ends -->
-		</div>
-		<div class="col-lg-6">
-			<!--pie chart1 starts -->
-			<h2><span class="glyphicons globe"><i></i></span> Page Hits</h2>
-			<hr>
-			<div class="content">
-				<div class="verticalChart" verticalchart>
-					<div id="{{$index}}" class="singleBar" ng-repeat="data in verticalChartInputs">					
-						<div class="bar">						
-							<div class="value">
-								<span ng-bind="data.PER"></span>
-							</div>						
-						</div>
-						<div class="title" ng-bind="data.CN"></div>
-					</div>
-				</div>
+			<div class="col-lg-2">
+				<ul class="nav nav-pills nav-justified">
+					<li class="active"><a href="#"> <span
+							class="badge pull-center"><h4>10</h4></span>
+							<h5>PaymentError</h5>
+					</a></li>
+				</ul>
 			</div>
-			<!--pie chart1 ends -->
+			<div class="col-lg-2">
+				<ul class="nav nav-pills nav-justified">
+					<li class="active"><a href="#"> <span
+							class="badge pull-center"><h4>42</h4></span>
+							<h5>No Results</h5>
+					</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-2">
+				<ul class="nav nav-pills nav-justified">
+					<li class="active"><a href="#"> <span
+							class="badge pull-center"><h4>10</h4></span>
+							<h5>Add to cart</h5>
+					</a></li>
+				</ul>
+			</div>
+			<!--nav pills ends -->
 		</div>
+
+	</div>
+	<!--row ends -->
+
+
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-9">
+
+			<!--nav pills starts -->
+
+			<!--nav pills ends -->
+		</div>
+
 	</div>
 </div>
-<div class="row">
-	<div class="col-lg-1"></div>
-	<div class="col-lg-2">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#"><span class="badge">42</span>
-					<span class="badge pull-right"></span> No result </a></li>
-		</ul>
-	</div>
-	<div class="col-lg-2">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#"><span class="badge">42</span>
-					<span class="badge pull-right"></span> Add to chat </a>
-			</li>
-		</ul>
-	</div>
-	<div class="col-lg-2">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#"><span class="badge">42</span>
-					<span class="badge pull-right"></span> Coupon error </a>
-			</li>
-		</ul>
-	</div>
-	<div class="col-lg-2">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#"><span class="badge">42</span>
-					<span class="badge pull-right"></span> Payment error </a>
-			</li>
-		</ul>
-	</div>
-	<div class="col-lg-2">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#"><span class="badge">42</span>
-					<span class="badge pull-right"></span> Login error </a></li>
-		</ul>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-2"></div>
-	<div class="col-lg-6">
-		<!--bar chart starts -->
-		<div id="content">
-			<div class="demo-container">
-				<div id="placeholder" class="demo-placeholder"></div>
-			</div>
-		</div>
-		<!--bar chart ends -->
-	</div>
-</div>
-<br>
-<br>
 
