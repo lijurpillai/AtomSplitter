@@ -1,23 +1,88 @@
 <div class="container" ng-controller="PresenceCtrl">
 	<div class="row">
-		<div class="col-lg-2">
-
+		<div>
+		<div class="col-lg-2">			
 			<!--nav pills starts -->
 			<div class="alert alert-danger">
 				<ul class="nav nav-pills nav-justified">
-					<li class="active"><a href="#/actiontable"><span class="badge"><h1>
-									<b>{{activeUsers}}</b>
-								</h1></span> <span class="badge pull-right"></span>
-							<h4>
-								<b>Active Users Right Now</b>
-							</h4> </a></li>
+					<li class="active"><a href="#/dashboard">
+					<h4>There are</h4>
+					<span class="badge">
+					 <h1><b>{{allUsers}}</b></h1>
+					</span> 
+					<span class="badge pull-right"></span>
+							<h4>users</h4> </a>
+					</li>
 				</ul>
 				<!--nav pills ends -->
-
+			</div>
+		</div>		
+		<div class="col-lg-2">
+			<!--nav pills starts -->
+			<div class="alert alert-danger">
+				<ul class="nav nav-pills nav-justified">
+					<li class="active"><a href="#/actiontable">
+						<h4>There are</h4>
+						<span class="badge"><h1><b>{{activeUsers}}</b></h1></span> <span class="badge pull-right"></span>
+							<h4>active users</h4> </a></li>
+				</ul>
+				<!--nav pills ends -->
 			</div>
 		</div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-9">
+		</div>
+		<div class="col-lg-8">
+			<!-- <chart ng-model="data"></chart> -->
+			<div class="col-md-8" ng-controller="TableCtrl">
+              <div class="panel panel-danger">
+				<div class="panel-heading"><h4>User Type</h4></div>
+				  <div class="panel-body">
+				    <table class="table table-bordered table-hover">
+				                    <tr>
+				                    <th>Type</th>
+				                      <th><center>#</center></th>
+				                      <th>Operating System</th>
+				                      <th>Visits</th>
+				                    </tr>
+				                   
+				                    <tr>
+				                    <td><h4>Dekstop <span class="badge"><h4>42</h4></span>
+				                    <button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-send"></span> Push</button>
+									</h4>
+				                    </td>
+				                     
+				                      <td><img src="img/icons/windows.png" alt="" ><br><img src="img/icons/mac.png" alt="" /><br>
+				                      	<img src="img/icons/linux.png" alt="" /></td>
+				                      <td><br><center> Windows/Mac/Linux</center></td>
+				                      <td><br>{{deskTop}}</td>
+				                    </tr>
+				                    <td rowspan="5"><h4>Handheld <span class="badge"><h4>42</h4></span>
+				                    <button type="button" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-send"></span> Push</button>
+				                    </h4>
+				                    </td>
+				
+				                    <tr>
+				                      <td><img src="img/icons/android.png" alt="" />
+				                      <td>Android</td>
+				                      <td>{{androidDevice}}</td>
+				                    </tr> 
+				                    <tr>
+				                      <td><img src="img/icons/ios.png" alt="" />
+				                      <td>Apple iOS</td>
+				                      <td>{{iOSDevice}}</td>
+				                    </tr>  
+				                     <tr>                                                                                             <tr>
+				                      <td><img src="img/icons/metro.png" alt="" />
+				                      <td>Windows Mobile</td>
+				                      <td>{{winDevice}}</td>
+				                    </tr>                                                                   
+				                  </table>
+				    </div><!-- end panel body-->
+				  </div><!-- end panel danger-->
+            </div> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-8">
 			<br>
 			<br>
 			<br>

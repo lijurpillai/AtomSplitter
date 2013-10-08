@@ -21,7 +21,7 @@ pubNubModule.factory('PubnubService',['$log','$rootScope','Constants','AuthServi
 			PUBNUB_PUB:function(msgType,msg,channel){
 						pubnub.publish({
 				            channel : channel,
-				            message : {msgType:msgType,msg:msg} // screenshot
+				            message : {msgType:msgType,msg:msg}
 				        });		  
 			},
 			PUBNUB_SUB:function(channel){

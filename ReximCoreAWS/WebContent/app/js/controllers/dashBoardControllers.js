@@ -1,14 +1,24 @@
 angular.module('myApp.dashBoardControllers', []).
- controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager'
-                            ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager){	 
+ controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager','Constants'
+                            ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants){	 
 	 
 	 var channelName = PubnubService.PUBNUB_ANALYTICS_CHANNEL;	 
-	 console.log("Channel ----> " + PubnubService.PUBNUB_ANALYTICS_CHANNEL);
+	 console.log("Channel ----> " + PubnubService.PUBNUB_ANALYTICS_CHANNEL); 
+	 $scope.$watch('allUsers', function() {	       
+	       $scope.activeUsers = AnalyticsData.getActiveUsers().length;
+	       $scope.androidDevice = AnalyticsData.getTotalDevice(Constants.ANDROID_DEVICE);
+	       $scope.iOSDevice = AnalyticsData.getTotalDevice(Constants.I_OS_DEVICE);
+	       $scope.winDevice = AnalyticsData.getTotalDevice(Constants.WIN_DEVICE);
+	       $scope.deskTop = AnalyticsData.getTotalDevice(Constants.DESKTOP);
+	   });
+	 
+	 
 	 PubnubService.PUBNUB.subscribe({
 	        channel : channelName,
 	        message : function(analyticsData){	        	
 	        	AnalyticsData.setAnalyticsData(analyticsData);
-	        	console.log(AnalyticsData.getAnalyticsData());
+	        	console.log(AnalyticsData.getAnalyticsData());	        	
+            	
 			 },
 			 presence   : function( message, env, channel ) {   // PRESENCE
 		            console.log( "Channel: ",            channel           );
@@ -18,7 +28,15 @@ angular.module('myApp.dashBoardControllers', []).
 		            $scope.$apply(function () {
 		            	PresenceManager.setPresenceData(message);
 		            	console.log(PresenceManager.getPresenceData().occupancy);
-		            	$scope.activeUsers = PresenceManager.getPresenceData().occupancy;
+		            	// all users 
+		            	$scope.allUsers = PresenceManager.getPresenceData().occupancy;
+		            	//$scope.activeUsers = AnalyticsData.getActiveUsers().length;
+		            	/*$scope.androidDevice = AnalyticsData.getTotalDevice(Constants.ANDROID_DEVICE);
+		            	$scope.iOSDevice = AnalyticsData.getTotalDevice(Constants.I_OS_DEVICE);
+		            	$scope.winDevice = AnalyticsData.getTotalDevice(Constants.WIN_DEVICE);
+		            	$scope.deskTop = AnalyticsData.getTotalDevice(Constants.DESKTOP);*/
+		            	
+		            	
 		            });
 		        }
 	 });	 

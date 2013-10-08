@@ -83,7 +83,7 @@
 									<tr ng-animate="'animate'" ng-repeat="data in ruleData | orderBy:predicate:reverse | filter:search">
 										<!-- Table body -->
 										<td>{{$index+1}}</td>
-										<td>{{data.trackingId}}</td>
+										<td>{{data.trackingId}} <img ng-src="{{data.deviceUrl}}" alt="" ></td>
 										<td>{{data.ruleName}}</td>
 										<td>{{data.pageData.pathname}}</td>
 										<td>{{data.timeStamp|date:'medium'}}</td>										
@@ -152,9 +152,9 @@
 																<span class="glyphicon glyphicon-comment"></span> Chat
 															</button>															
 															<h4>Push offer code</h4>
-															<input type="text">
+															<input type="text" ng-model = "pushData">
 															<div align="center">
-																<button type="button" class="btn btn-default btn-xs">Push</button>
+																<button type="button" class="btn btn-default btn-xs" ng-click = "push(data.trackingId,pushData)">Push</button>
 																<button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
 															</div>
 														</div>													
@@ -173,10 +173,10 @@
 														<h4 class="modal-title">Push offer code</h4>
 													</div>													
 													<div class="modal-body">
-															<textarea></textarea>
+															<textarea ng-model = "pushData"></textarea>
 													</div>
 													<div class="modal-footer">
-														<button type="button" class="btn btn-default">Send</button>
+														<button ng-click = "push(data.trackingId,pushData)" type="button" class="btn btn-default">Send</button>
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 													</div>													
 												</div>

@@ -4,9 +4,15 @@
 
 angular.module('myApp.actionTableCtrl', []).
   controller('TableCtrl',['$scope','AnalyticsData','$log','ChatService','PubnubService','Constants',
-                          function($scope,AnalyticsData,$log,ChatService,PubnubService,Constants){	  	  
-	  $scope.ruleData = AnalyticsData.getAnalyticsData();	  
-	  $scope.predicate = '-timeStamp'; // sort by time ascending order	  
+                          function($scope,AnalyticsData,$log,ChatService,PubnubService,Constants){	  
+	 // $scope.$watch('activeUsers', function() {	
+		//console.log("IN THIS WORLD");
+		var device = AnalyticsData.getAnalyticsData().device;
+		$scope.ruleData = AnalyticsData.getAnalyticsData();	  
+		$scope.predicate = '-timeStamp';		
+		  
+	 // });
+	   // sort by time ascending order	  
 	  /*$scope.screenShot =function(trackingId){ // screen shot
 		  $log.info("inside TableCtrl>screenShot()");
 		  var clientChannel = ChatService.getClientChannel(trackingId);
@@ -21,7 +27,7 @@ angular.module('myApp.actionTableCtrl', []).
 	                 ];	  
 	  
 	  $scope.chat = function(trackingId,index){
-		  
+		  // change status from new to in progress
 		  ChatService.changeReqStatus(trackingId);
 		  //data.reqStatus		  
 		  var modalId = '#moreInfoModal'+index;
@@ -65,4 +71,12 @@ angular.module('myApp.actionTableCtrl', []).
 	          }
 	      });
 	 };// end scope.chat
+	 $scope.push = function(trackingId,msg){
+		 console.log("PUSH");
+		 //var msg = $scope.pushData;
+		 console.log(msg);
+		 var clientChannel = ChatService.getClientChannel(trackingId);
+		 PubnubService.PUBNUB_PUB(Constants.MSG_TYP_PUSH,msg,clientChannel);
+		 
+	 };
   }]);

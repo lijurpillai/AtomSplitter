@@ -15,7 +15,7 @@ jQ(function() {
 		// user closed chat window
 		});
 	};
-
+	
 	jQ(".footer-container").append("<div id ='chatBox'></div>");
 	if (box) {
 		box.chatbox("option", "boxManager").toggleBox();
@@ -43,41 +43,28 @@ jQ(function() {
 			.subscribe({
 				channel : channelChatClient,
 				message : function(msg) {
-					if (msg.msgType != 98) {
+					if (msg.msgType == 21) {
+						jQ(".footer-container").append("<div id ='offerCode'><span></span></div>");
+						jQ('#offerCode').append('<div id="dialogBox" title="Basic dialog"></div>');
+						jQ( "#offerCode" )
+						.dialog({autoOpen: false,show: {effect: "slide",duration: 1000},
+						hide: {effect: "puff",duration: 1000}
+					    },{ title: "Offer Code" },
+							{ position: { my: "right ", at: "bottom", of: ".footer-container" } },
+								{ buttons: [ { text: "OK", click: function() { jQ( this ).dialog( "close" ); } } ] 
+						});						
+						
+						console.log("OFFer");
+				        console.log(msg.msg);				        
+				        jQ( "#offerCode span" ).text(msg.msg);
+				        jQ( "#offerCode" ).dialog( "open" );
+						
+					}
+					if (msg.msgType == 1) {
 						jQ('.ui-chatbox').show(500);
 						box.chatbox("option", "boxManager").addMsg("Agent",
 								msg.msg);
-					} else {
-						console.log("requesting for screen shot");
-						html2canvas(
-								document.body,
-								{
-									onrendered : function(canvas) {
-										console.log(canvas.toDataURL());
-										var dataURL = canvas.toDataURL();
-										// need to replace this with Ajax call
-										/*
-										 * pubnub.publish({ channel :
-										 * channelChatDashBorard, message :
-										 * {msgType:msg.msgType,msg:"test"} });
-										 */
-										jQ
-												.ajax({
-													type : 'GET',
-													url : "http://localhost:8080/ReximCoreAWS/api/screenShot",
-													data : "dataURL",
-													async : false,
-													jsonpCallback : 'getEmployeeCallback',
-													dataType : 'jsonp',
-													success : function(json) {
-														// implement your own
-														// logic here
-														console.log("succsess");
-													}
-												});
-									}
-								});
-					}
+					} 
 
 				}
 			});
