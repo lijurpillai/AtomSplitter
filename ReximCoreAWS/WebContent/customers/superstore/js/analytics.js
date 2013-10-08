@@ -1,6 +1,7 @@
 jQ(function(){ 
 	_fingerPrint = new Fingerprint();
 	  console.log("browser fingerprint " + _fingerPrint.get()); 
+  var channel = "sstore_analyticsData_qa";
   var pubnub = PUBNUB.init({
       publish_key   : 'pub-c-43e4e48b-0a32-4edc-8555-58875edc6cbc',
       subscribe_key : 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe',
@@ -13,7 +14,7 @@ jQ(function(){
   var adminClientId = "";   
   console.log(document.cookie);
   pubnub.subscribe({
-      channel : "sstore_analyticsData" ,
+      channel : channel ,
       message : function(m){ console.log(m);}
   	});
 
@@ -58,7 +59,7 @@ jQ(function(){
     console.log(JSON.stringify(analyticsData));
     
      pubnub.publish({
-          channel : "sstore_analyticsData",
+          channel : channel,
           message : analyticsData
       });
      

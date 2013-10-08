@@ -3,6 +3,7 @@
 var utilService = angular.module('myApp.utilServices', []);
 
 utilService.value('version', '0.1');
+utilService.value('env', 'qa');
 
 utilService.factory('$exceptionHandler',['$log',function($log){
 	$log.info("$exceptionHandler");
@@ -43,6 +44,9 @@ utilService.factory('Constants',['$log',function($log){
 		urlAndroid ="img/icons/android.png" ,
 		urlWinMobile="img/icons/metro.png" ,
 		urlIOs = "img/icons/ios.png";
+	// env
+	//var env = "qa";
+	var env = "dev";
 	
 	
 	return{	
@@ -64,7 +68,8 @@ utilService.factory('Constants',['$log',function($log){
 		URL_WIN:urlWindows,
 		URL_ANDROID:urlAndroid,
 		URL_IOS:urlIOs,
-		URL_WINMOB:urlWinMobile
+		URL_WINMOB:urlWinMobile,
+		ENV:env
       };
 }]);
 

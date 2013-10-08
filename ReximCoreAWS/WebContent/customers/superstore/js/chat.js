@@ -36,9 +36,9 @@ jQ(function() {
 
 	var trackingId = _fingerPrint.get();
 	var channelChatClient = trackingId + "_" + "sstore" + "_" + "chat" + "_"
-			+ "client";
+			+ "client" + "_" + "qa";
 	var channelChatDashBorard = trackingId + "_" + "sstore" + "_" + "chat"
-			+ "_" + "agent";
+			+ "_" + "agent"+"_" + "qa";
 	pubnub
 			.subscribe({
 				channel : channelChatClient,

@@ -32,13 +32,13 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 	return{			
 		getClientChannel:function(trackingId){
 			var clientChannel = trackingId+Constants.SEPERATOR+AuthService.getUserProfile().orgId+
-			   Constants.SEPERATOR+Constants.PUBNUB_CHAT_CHANNEL+Constants.SEPERATOR+"client";
+			   Constants.SEPERATOR+Constants.PUBNUB_CHAT_CHANNEL+Constants.SEPERATOR+"client"+Constants.SEPERATOR+Constants.ENV;
 			$log.info("inside ChatService>getClinetChannel");
 			return clientChannel;
 		},
 		getAgentChannel:function(trackingId){
 			var agentChannel = trackingId+Constants.SEPERATOR+AuthService.getUserProfile().orgId+
-							   Constants.SEPERATOR+Constants.PUBNUB_CHAT_CHANNEL+Constants.SEPERATOR+"agent"; 
+							   Constants.SEPERATOR+Constants.PUBNUB_CHAT_CHANNEL+Constants.SEPERATOR+"agent"+Constants.SEPERATOR+Constants.ENV; 
 			$log.info("inside ChatService>getAgentChannel");
 			return agentChannel;
 		},

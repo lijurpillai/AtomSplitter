@@ -17,7 +17,8 @@ pubNubModule.factory('PubnubService',['$log','$rootScope','Constants','AuthServi
 				console.log(AuthService.getUserProfile().orgId+Constants.SEPERATOR+Constants.PUBNUB_ANALYTICS_CHANNEL);
 			},
 			PUBNUB:pubnub,
-			PUBNUB_ANALYTICS_CHANNEL:AuthService.getUserProfile().orgId+Constants.SEPERATOR+Constants.PUBNUB_ANALYTICS_CHANNEL,
+			PUBNUB_ANALYTICS_CHANNEL:AuthService.getUserProfile().orgId+Constants.SEPERATOR+
+									 Constants.PUBNUB_ANALYTICS_CHANNEL+Constants.SEPERATOR+Constants.ENV,
 			PUBNUB_PUB:function(msgType,msg,channel){
 						pubnub.publish({
 				            channel : channel,
