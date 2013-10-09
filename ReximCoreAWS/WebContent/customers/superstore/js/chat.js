@@ -1,8 +1,10 @@
 jQ(function() {
 	var box = null;
 	var pubnub = PUBNUB.init({
-		publish_key : 'pub-c-43e4e48b-0a32-4edc-8555-58875edc6cbc',
-		subscribe_key : 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe'
+		publish_key   : 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537',
+	      subscribe_key : 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe',
+	    	  restore    : true, 
+	          uuid: _fingerPrint.get()
 	});
 	var boxClosedCallback = function(id) {
 		console.log(id);

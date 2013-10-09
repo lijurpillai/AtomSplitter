@@ -3,28 +3,42 @@
 var commService = angular.module('myApp.commServices', []);
 
 commService.factory('ChatService',['$log','AuthService','Constants','$rootScope','AnalyticsData',function($log,AuthService,Constants,$rootScope,AnalyticsData){
-	$log.info("inside ChatService");
+	$log.info("inside ChatService");	
 	var boxList = [];
 	var box = null;
 	var chatWindows = [];
+	var currentPosn = "";
 	var config = {
 			width : 220, //px
 			gap : 20,
 			maxBoxes : 5					
 		    };
-	var getNextOffset = function() {		  
-			return (config.width + config.gap) * chatWindows.length;
+	var posnMapper = [];// total available posn for the given maxBox limit
+	var freePositions = []; // list of free position for chat window
+	// to find min array position
+	Array.min = function( array ){
+	    return Math.min.apply( Math, array );
+	};	
+	// setting array based on maxbox length
+	for ( var i = 0; i < config.maxBoxes; i++) {
+		posnMapper.push(i); // overall available posn, like a const
+		freePositions.push(i);// list of free positions.Initially equal to posnmapper
+	}	
+	var getNextOffset = function() {	
+			var posnMultiplier = Array.min(freePositions);
+			currentPosn = posnMultiplier;
+			var deletePosn = freePositions.indexOf(Array.min(freePositions));
+			freePositions.splice(deletePosn,1);
+			console.log(freePositions);			
+			return (config.width + config.gap) * posnMultiplier;
 		    };
     var boxClosedCallback = function(id){
-		  var el = '#'+id;
+		  var el = '#'+id;		  	  
 		  console.log($(el).parents('.ui-chatbox'));
-		  $(el).parents('.ui-chatbox').remove();
-		  /*var idx =  boxList.indexOf(id);
-		  if(idx != -1) {
-			  boxList.splice(idx, 1);
-		  }	*/	
+		  $(el).parents('.ui-chatbox').remove();		  	
 		  for ( var i = 0; i < chatWindows.length; i++) {
 				if(chatWindows[i].id == id){
+					freePositions.push(chatWindows[i].posn);
 					chatWindows.splice(i,1);
 				}
 			}
@@ -45,7 +59,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 		BOX_LIST:boxList,
 		BOX:box,
 		initBox : function(trackingId){
-			console.log("inside initBox");
+			console.log("inside initBox");			
 			if(chatWindows.length < config.maxBoxes ){
 				var obj = {};	
 				var el = document.createElement('div');
@@ -73,6 +87,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 				}
 				obj.id = trackingId;
 				obj.box = box;
+				obj.posn =currentPosn;  
 				chatWindows.push(obj);
 				return obj.box;				
 			}

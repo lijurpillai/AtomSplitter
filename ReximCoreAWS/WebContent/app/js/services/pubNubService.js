@@ -8,7 +8,7 @@ pubNubModule.factory('PubnubService',['$log','$rootScope','Constants','AuthServi
 	      subscribe_key : Constants.SUB_KEY,
 	      uuid          : 'admin'
 	  });
-	var userProfile = $rootScope.USER_PROFILE;
+	//var userProfile = $rootScope.USER_PROFILE;
 	
 	return{
 			log:function(){

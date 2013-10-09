@@ -3,7 +3,6 @@
 var utilService = angular.module('myApp.utilServices', []);
 
 utilService.value('version', '0.1');
-utilService.value('env', 'qa');
 
 utilService.factory('$exceptionHandler',['$log',function($log){
 	$log.info("$exceptionHandler");
@@ -19,8 +18,12 @@ utilService.factory('$exceptionHandler',['$log',function($log){
 }]);
 
 utilService.factory('Constants',['$log',function($log){
-	var publish_key = 'pub-c-43e4e48b-0a32-4edc-8555-58875edc6cbc';
-    var subscribe_key = 'sub-c-95086202-154f-11e3-9b93-02ee2ddab7fe';
+	// env
+	//var env = "qa";
+	var env = "dev";
+	// pubnub key
+	var publish_key = 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537';
+    var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';
     //channels
 	var analyticsChannel = "analyticsData";
 	var chatChannel = "chat";
@@ -44,10 +47,6 @@ utilService.factory('Constants',['$log',function($log){
 		urlAndroid ="img/icons/android.png" ,
 		urlWinMobile="img/icons/metro.png" ,
 		urlIOs = "img/icons/ios.png";
-	// env
-	//var env = "qa";
-	var env = "dev";
-	
 	
 	return{	
 		PUB_KEY:publish_key,

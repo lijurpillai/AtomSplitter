@@ -7,7 +7,7 @@ angular.module('myApp.actionTableCtrl', []).
                           function($scope,AnalyticsData,$log,ChatService,PubnubService,Constants){	  
 	 // $scope.$watch('activeUsers', function() {	
 		//console.log("IN THIS WORLD");
-		var device = AnalyticsData.getAnalyticsData().device;
+		//var device = AnalyticsData.getAnalyticsData().device;
 		$scope.ruleData = AnalyticsData.getAnalyticsData();	  
 		$scope.predicate = '-timeStamp';		
 		  
