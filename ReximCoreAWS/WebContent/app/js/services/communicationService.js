@@ -10,7 +10,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 	var config = {
 			width : 220, //px
 			gap : 20,
-			maxBoxes : 4					
+			maxBoxes : 5					
 		    };
 	var getNextOffset = function() {		  
 			return (config.width + config.gap) * chatWindows.length;
@@ -46,7 +46,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 		BOX:box,
 		initBox : function(trackingId){
 			console.log("inside initBox");
-			if(chatWindows.length <= config.maxBoxes ){
+			if(chatWindows.length < config.maxBoxes ){
 				var obj = {};	
 				var el = document.createElement('div');
 				el.setAttribute('id', trackingId);
@@ -79,8 +79,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 			
 			else {
 				console.log("reached max window limit");
-				throw { errId: Constants.ERR_MSG_MAX_WINDOW.id , errMsg: Constants.ERR_MSG_MAX_WINDOW.msg + config.maxBoxes + 1};
-				//$rootScope.maxWindowErrMsg = Constants.ERR_MSG_MAX_WINDOW + config.maxBoxes;
+				throw { errId: Constants.ERR_MSG_MAX_WINDOW.id , errMsg: Constants.ERR_MSG_MAX_WINDOW.msg + config.maxBoxes};				
 			}
 			
 		},

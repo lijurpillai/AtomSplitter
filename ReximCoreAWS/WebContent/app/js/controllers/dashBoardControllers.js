@@ -10,6 +10,7 @@ angular.module('myApp.dashBoardControllers', []).
 	       $scope.iOSDevice = AnalyticsData.getTotalDevice(Constants.I_OS_DEVICE);
 	       $scope.winDevice = AnalyticsData.getTotalDevice(Constants.WIN_DEVICE);
 	       $scope.deskTop = AnalyticsData.getTotalDevice(Constants.DESKTOP);
+	       //geolocator.locateByIP(onGeoSuccess, onGeoError, cmbSource.selectedIndex, 'map-canvas');
 	   });
 	 
 	 

@@ -6,9 +6,7 @@
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
 				<div class="panel-heading">
-
 					<div class="hidden-xs">
-
 						<div class="container">
 							<div class="col-xs-3">
 								<div class="input-group">
@@ -116,10 +114,10 @@
 											<a data-toggle="modal" href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs">
 											<span class="glyphicon glyphicon-share"></span> More</a>								
 											
-											<button type="button" class="btn btn-default btn-xs" data-loading-text="Loading..." ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
+											<button type="button" class="btn btn-default btn-xs"  ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
 												<span class="glyphicon glyphicon-comment"></span> Chat
 											</button>																																	
-											<a data-toggle="modal" href="#pushModal" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
+											<a data-toggle="modal" href="#pushModal{{$index}}" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
 												<span class="glyphicon glyphicon-send"></span> Push</a>
 											<div class="modal fade" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 												aria-hidden="true">
@@ -165,7 +163,7 @@
 											</div>
 											<!-- /.modal ends -->																				
 										<!-- /.modal1 starts -->
-										<div class="modal fade" id="pushModal" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal fade" id="pushModal{{$index}}" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
