@@ -8,23 +8,17 @@ angular.module('myApp.actionTableCtrl', []).
 	 // $scope.$watch('activeUsers', function() {	
 		//console.log("IN THIS WORLD");
 		//var device = AnalyticsData.getAnalyticsData().device;
-		$scope.ruleData = AnalyticsData.getAnalyticsData();	  
-		$scope.predicate = '-timeStamp';		
-		  
-	 // });
-	   // sort by time ascending order	  
-	  /*$scope.screenShot =function(trackingId){ // screen shot
-		  $log.info("inside TableCtrl>screenShot()");
-		  var clientChannel = ChatService.getClientChannel(trackingId);
-		  var agentChannel = ChatService.getAgentChannel(trackingId);
-		  var msg = "";		  
-		  PubnubService.PUBNUB_PUB(Constants.MSG_TYP_SCREENSHOT,msg,clientChannel); 	  
-	  };*/
+	  $scope.ruleData = AnalyticsData.getAnalyticsData();	  
+	  $scope.predicate = '-timeStamp'; 
 	  
 	  $scope.requestOptions = [	                   
 	                   {name:'Close - Chat', value:1},
 	                   {name:'Close - Push', value:2}	                   
 	                 ];	  
+	  /*$scope.$watch('ruleData.online', function(changed) {
+		  console.log("IN THIS WORLD");
+		  console.log(changed);
+	  },true);*/
 	  
 	  $scope.chat = function(trackingId,index){
 		  // change status from new to in progress
@@ -35,9 +29,10 @@ angular.module('myApp.actionTableCtrl', []).
 		  var clientChannel = ChatService.getClientChannel(trackingId);
 		  var agentChannel = ChatService.getAgentChannel(trackingId);
 		  var box = ChatService.getWindows(trackingId);// get chat box object
-		  var msg = "";		
+		  var msg = "";		  
 		  if(box) {
-			  $log.info("box true do nothing");			  
+			  $log.info("box true do nothing");	
+			  box.chatbox("option", "boxManager").highlightBox();
 		  }
 		  else {
 			  $log.info("new box");			  
