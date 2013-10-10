@@ -67,7 +67,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 				box=$(el).chatbox({
 		        		id:trackingId,
 		        	    //user:{key : "value"},
-		        	    title : "REXIM Chat "+ trackingId,
+		        	    title : trackingId,
 		        	    width : config.width,
 		        	    offset : getNextOffset(),
 		                messageSent : function(id, user, msg) {

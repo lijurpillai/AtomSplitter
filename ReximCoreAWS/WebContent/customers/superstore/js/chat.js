@@ -27,7 +27,7 @@ jQ(function() {
 			user : {
 				key : "value"
 			},
-			title : "REXIM Chat",
+			title : "Live Chat",
 			boxClosed : boxClosedCallback,
 			messageSent : function(id, user, msg) {
 				jQ("#chatBox").chatbox("option", "boxManager").addMsg(id, msg);

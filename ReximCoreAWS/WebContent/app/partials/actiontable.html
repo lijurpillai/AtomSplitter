@@ -117,7 +117,7 @@
 											<button type="button" class="btn btn-primary btn-xs"  ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
 												<span class="glyphicon glyphicon-comment"></span> Chat
 											</button>																																	
-											<a data-toggle="modal" href="#pushModal{{$index}}" class="btn btn-primary btn-xs" ng-class="{disabled:!data.online}">
+											<a data-toggle="modal" href="#pushModal{{$index}}"  class="btn btn-primary btn-xs" ng-class="{disabled:!data.online}">
 												<span class="glyphicon glyphicon-send"></span> Push</a>
 											<div class="modal fade" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 												aria-hidden="true">
@@ -163,9 +163,9 @@
 											</div>
 											<!-- /.modal ends -->																				
 										<!-- /.modal1 starts -->
-										<div class="modal fade" id="pushModal{{$index}}" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal fade" ng-model="open" id="pushModal{{$index}}" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
-												<div class="modal-content">
+												<div  class="modal-content">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 														<h4 class="modal-title">Push offer code</h4>

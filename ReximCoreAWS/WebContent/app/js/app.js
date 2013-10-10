@@ -87,7 +87,7 @@ angular.module('myApp', ['myApp.filters',
   
   	.run(['$rootScope', '$http','SessionManager','Constants','$location',function ($rootScope, $http,SessionManager,Constants,$location) {
   		
-  		$rootScope.message = '';
+  		$rootScope.message = '';  		
   	    // Logout function is available in any pages
   	    $rootScope.logout = function(){
   	      console.log("inside logout");
