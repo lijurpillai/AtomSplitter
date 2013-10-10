@@ -28,13 +28,7 @@ Copyright: 2013 Perfomatix Solutions Private Limited
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.form-signin .form-control:focus {
-  z-index: 2;
-  border-color: #dd4814; /*Ubuntu orange color*/
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(200, 175, 102, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(200, 175, 102, 0.6);
-}
+
 .form-signin input[type="text"] {
   margin-bottom: -1px;
   border-bottom-left-radius: 0;
@@ -132,17 +126,7 @@ Copyright: 2013 Perfomatix Solutions Private Limited
 }
 
 /* Table */
-.table th {
- 
-   color: #dd4814;
- }
-.btn-default {
- background-color: #dd4814;
-}
-.btn-default:hover
-{
-background-color: #FFA500;
-}
+
 .panel-body {
  padding: 1px;
 }
@@ -152,15 +136,16 @@ padding: 3px
 .label-default {
   background-color: #dd4814;
 }
-.input-group-addon {
-  background-color: #dd4814;
-  color:#FFFFFF;
-}
- .form-control:focus {
-  border-color: #dd4814;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px #dd4814;
-}
 .scrolltable {  
     height: 470px !important;
     overflow: scroll;
+}
+.alert-info{
+  background-color: #FFFFFF;
+  border: 1px solid #12A5F4;
+  color: #000000;
+}
+.btn-inverse{
+ border: 1px solid #12A5F4;
+ background-color: #B2F0FF;
 }
