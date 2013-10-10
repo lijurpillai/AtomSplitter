@@ -133,9 +133,6 @@ Copyright: 2013 Perfomatix Solutions Private Limited
 .nav-pills > li {
 padding: 3px
 }
-.label-default {
-  background-color: #dd4814;
-}
 .scrolltable {  
     height: 470px !important;
     overflow: scroll;
@@ -148,4 +145,9 @@ padding: 3px
 .btn-inverse{
  border: 1px solid #12A5F4;
  background-color: #B2F0FF;
+}
+a.list-group-item:hover,
+a.list-group-item:focus {
+  background-color: #12A5F4;
+  color: #FFFFFF;
 }
