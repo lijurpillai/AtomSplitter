@@ -86,7 +86,7 @@
 										<td>{{data.pageData.pathname}}</td>
 										<td>{{data.timeStamp|date:'medium'}}</td>										
 										<td class="visible-xs"><a data-toggle="modal"
-											href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs"> <span
+											href="#moreInfoModal{{$index}}" class="btn btn-primary btn-xs"> <span
 												class="glyphicon glyphicon-share"></span></a></td>
 										<!-- /.modal starts -->
 										
@@ -111,13 +111,13 @@
 										<span ng-show="!data.online" class="label label-danger">Offline</span>
 										</td>
 										<td>
-											<a data-toggle="modal" href="#moreInfoModal{{$index}}" class="btn btn-default btn-xs">
+											<a data-toggle="modal" href="#moreInfoModal{{$index}}" class="btn btn-primary btn-xs">
 											<span class="glyphicon glyphicon-share"></span> More</a>								
 											
-											<button type="button" class="btn btn-default btn-xs"  ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
+											<button type="button" class="btn btn-primary btn-xs"  ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
 												<span class="glyphicon glyphicon-comment"></span> Chat
 											</button>																																	
-											<a data-toggle="modal" href="#pushModal{{$index}}" class="btn btn-default btn-xs" ng-class="{disabled:!data.online}">
+											<a data-toggle="modal" href="#pushModal{{$index}}" class="btn btn-primary btn-xs" ng-class="{disabled:!data.online}">
 												<span class="glyphicon glyphicon-send"></span> Push</a>
 											<div class="modal fade" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 												aria-hidden="true">
@@ -146,14 +146,14 @@
 	
 															<hr>
 															<h3>Action</h3>														
-															<button class="btn btn-default btn-xs" ng-click="chat(data.trackingId,$index)">
+															<button class="btn btn-primary btn-xs" ng-click="chat(data.trackingId,$index)">
 																<span class="glyphicon glyphicon-comment"></span> Chat
 															</button>															
 															<h4>Push offer code</h4>
 															<input type="text" ng-model = "pushData">
 															<div align="center">
-																<button type="button" class="btn btn-default btn-xs" ng-click = "push(data.trackingId,pushData)">Push</button>
-																<button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+																<button type="button" class="btn btn-primary btn-xs" ng-click = "push(data.trackingId,pushData)">Push</button>
+																<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
 															</div>
 														</div>													
 													</div>
@@ -174,8 +174,8 @@
 															<textarea ng-model = "pushData"></textarea>
 													</div>
 													<div class="modal-footer">
-														<button ng-click = "push(data.trackingId,pushData)" type="button" class="btn btn-default">Send</button>
-														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+														<button ng-click = "push(data.trackingId,pushData)" type="button" class="btn btn-primary">Send</button>
+														<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													</div>													
 												</div>
 												<!-- /.modal-content -->
