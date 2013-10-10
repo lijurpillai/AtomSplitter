@@ -81,7 +81,7 @@
 									<tr ng-animate="'animate'" ng-repeat="data in ruleData | orderBy:predicate:reverse | filter:search">
 										<!-- Table body -->
 										<td>{{$index+1}}</td>
-										<td>{{data.trackingId}} <img ng-src="{{data.deviceUrl}}" alt="" ></td>
+										<td><img ng-src="{{data.deviceUrl}}" alt="" > {{data.trackingId}}</td>
 										<td>{{data.ruleName}}</td>
 										<td>{{data.pageData.pathname}}</td>
 										<td>{{data.timeStamp|date:'medium'}}</td>										
