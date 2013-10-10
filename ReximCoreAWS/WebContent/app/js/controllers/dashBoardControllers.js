@@ -3,13 +3,17 @@ angular.module('myApp.dashBoardControllers', []).
                             ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants){	 
 	 
 	 var channelName = PubnubService.PUBNUB_ANALYTICS_CHANNEL;	 
-	 console.log("Channel ----> " + PubnubService.PUBNUB_ANALYTICS_CHANNEL); 
+	 console.log("Channel ----> " + PubnubService.PUBNUB_ANALYTICS_CHANNEL);
+	 /*if(!($scope.allUsers)){
+		 $scope.allUsers = 0;
+	 }*/
 	 $scope.$watch('allUsers', function() {	       
 	       $scope.activeUsers = AnalyticsData.getActiveUsers().length;
 	       $scope.androidDevice = AnalyticsData.getTotalDevice(Constants.ANDROID_DEVICE);
 	       $scope.iOSDevice = AnalyticsData.getTotalDevice(Constants.I_OS_DEVICE);
 	       $scope.winDevice = AnalyticsData.getTotalDevice(Constants.WIN_DEVICE);
 	       $scope.deskTop = AnalyticsData.getTotalDevice(Constants.DESKTOP);
+	       $scope.$apply();
 	       //geolocator.locateByIP(onGeoSuccess, onGeoError, cmbSource.selectedIndex, 'map-canvas');
 	   });
 	 

@@ -43,7 +43,7 @@ utilService.factory('Constants',['$log',function($log){
 		winDevice = "IEMobile";		
 	var desktopDevice = "Desktop";
 	//device img url
-	var urlWindows = "img/icons/windows.png",
+	var urlWindows = "img/icons/desktop.png",
 		urlAndroid ="img/icons/android.png" ,
 		urlWinMobile="img/icons/metro.png" ,
 		urlIOs = "img/icons/ios.png";
