@@ -19,8 +19,8 @@ utilService.factory('$exceptionHandler',['$log',function($log){
 
 utilService.factory('Constants',['$log',function($log){
 	// env
-	var env = "qa";
-	//var env = "dev";
+	//var env = "qa";
+	var env = "dev";
 	// pubnub key
 	var publish_key = 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537';
     var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';
@@ -83,7 +83,7 @@ utilService.factory('SessionManager',['$log',function($log){
 		}
       };
 }]);
-utilService.factory('PresenceManager',['$log','AnalyticsData',function($log,AnalyticsData){
+utilService.factory('PresenceManager',['$log','AnalyticsData','ChatService',function($log,AnalyticsData,ChatService){
 	$log.info("inside PresenceManager");
 	var presence = {};
 	return{	
@@ -91,16 +91,19 @@ utilService.factory('PresenceManager',['$log','AnalyticsData',function($log,Anal
 			$log.info("inside PresenceManager>setPresenceData");
 			// change status from online to offline
 			presence = data;
+			var trackingId = presence.uuid;
 			if(data.action == "leave"){
-				console.log("inside LEAVE");
-				var trackingId = presence.uuid;
+				console.log("inside LEAVE");				
 				var analyticsData = AnalyticsData.getAnalyticsData();
 				for (var i = 0; i < analyticsData.length; i++) {				
 					if(trackingId == analyticsData[i].trackingId){
 						analyticsData[i].online = false;					
 					};  
 				}
-				
+				ChatService.displayUserStatus(trackingId,"Offline");				
+			}
+			if(data.action == "join"){
+				ChatService.displayUserStatus(trackingId,"online");
 			}
 		},
 		getPresenceData:function(){

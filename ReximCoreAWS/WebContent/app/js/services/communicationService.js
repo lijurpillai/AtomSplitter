@@ -112,6 +112,20 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 					return chatWindows[i].box; 
 				}
 			}
+		},
+		displayUserStatus:function(trackingId,status){
+			var box = null;
+			var msg = null;
+			console.log("inside DISPLAY USER STAT" + trackingId);
+			for ( var i = 0; i < chatWindows.length; i++) {
+				if(chatWindows[i].id == trackingId){
+					box = chatWindows[i].box; 
+				}
+			}
+		    if(box){
+		    	msg = "User "+status;
+		    	box.chatbox("option", "boxManager").addMsg(trackingId,msg);
+		    }
 		}
       };
 }]);

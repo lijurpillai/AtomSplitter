@@ -30,6 +30,11 @@
 								</div>
 							</div>
 							<div class="col-xs-3">
+								<div class="input-group">								
+									<span class="input-group-addon ">Device</span> <input
+										type="text" ng-model="search.device" class="form-control"
+										placeholder="type to search">
+								</div>
 							</div>
 							<!-- end of col-sm-3"-->
 						</div>
@@ -57,6 +62,11 @@
 											<span class="glyphicon glyphicon-collapse-up"></span></a>
 										</th>
 										<th><a href=""
+											ng-click="predicate = 'isNewUser'; reverse=!reverse">User Type</a>
+											<a href="" ng-click="predicate = 'online'; reverse=!reverse">
+											<span class="glyphicon glyphicon-collapse-up"></span></a>
+										</th>
+										<th><a href=""
 											ng-click="predicate = 'ruleName'; reverse=!reverse">Rule</a>
 											<a href="" ng-click="predicate = 'ruleName'; reverse=!reverse">
 											<span class="glyphicon glyphicon-collapse-up"></span></a>
@@ -81,7 +91,11 @@
 									<tr ng-animate="'animate'" ng-repeat="data in ruleData | orderBy:predicate:reverse | filter:search">
 										<!-- Table body -->
 										<td>{{$index+1}}</td>
-										<td><img ng-src="{{data.deviceUrl}}" alt="" > {{data.trackingId}}</td>
+										<td><img ng-src="{{data.deviceUrl}}" alt="" >{{data.trackingId}}</td>										
+										<td>
+										<span ng-show="data.isNewUser" class="label label-success">New User</span>
+										<span ng-show="!data.isNewUser" class="label label-danger">Return User</span>
+										</td>
 										<td>{{data.ruleName}}</td>
 										<td>{{data.pageData.pathname}}</td>
 										<td>{{data.timeStamp|date:'medium'}}</td>										
@@ -107,7 +121,7 @@
 											</span>
 										</td>
 										<td>
-										<span ng-show="data.online" class="label label-success">Online</span>
+										<span ng-show="data.online"  class="label label-success">Online</span>
 										<span ng-show="!data.online" class="label label-danger">Offline</span>
 										</td>
 										<td>

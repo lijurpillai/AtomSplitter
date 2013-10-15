@@ -22,7 +22,11 @@ angular.module('myApp.actionTableCtrl', []).
 	  $scope.chat = function(trackingId,index){
 		  // change status from new to in progress
 		  ChatService.changeReqStatus(trackingId);
-		  //data.reqStatus		  
+		  
+		  $scope.$watch('online', function() {
+			  console.log('ONLINE TO OFFLINE');
+		  });
+		  
 		  var modalId = '#moreInfoModal'+index;
 		  $(modalId).modal('hide'); // Hide More Info modal.Req if chat clicked from modal		  
 		  var clientChannel = ChatService.getClientChannel(trackingId);
