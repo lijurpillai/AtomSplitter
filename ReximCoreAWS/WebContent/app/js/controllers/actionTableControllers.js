@@ -49,7 +49,7 @@ angular.module('myApp.actionTableCtrl', []).
 		          box.chatbox("option", "boxManager").addMsg(trackingId,msg.msg);  
 	          }
 	          else if(msg.msgType == Constants.MSG_TYP_CHAT_CLOSE){
-	        	  box.chatbox("option", "boxManager").addMsg(trackingId,"User closed chat window");
+	        	  box.chatbox("option", "boxManager").addMsg("System Message","User closed chat window");
 	          }
 	          else if(msg.msgType == Constants.MSG_TYP_CHAT_CLOSE){
 	        	  console.log("sending screen shot");

@@ -1,16 +1,74 @@
 jQ(function(){ 
+	var channel = "sstore_analyticsData_qa";
 	_fingerPrint = new Fingerprint();
-	if(!jQ.cookie('the_cookie')){
-		console.log("no suck cookie");
+	_fPrint = _fingerPrint.get();
+	var uatma = null;
+	var newUser = false;
+	var cookieData = {};
+	//Storagedata constructor
+	function StorageData(_fPrint,firstVisit,visit){
+	       this.tId = _fPrint;
+	       this.firstVisit = firstVisit;
+	       this.lastVisit = Date.now();
+	       this.visit = visit;
+	  }
+	StorageData.prototype ={
+	    constuctor : StorageData	    
+	  };
+	 	// Const ends  
+	    
+	 
+	
+	var hasStorage = (function() {
+	      try {
+	        localStorage.setItem("test", "value");
+	        localStorage.removeItem("test");
+	        return true;
+	      } catch(e) {
+	        return false;
+	      }
+	    }());
+	
+	function setStorageData(storageData){
+			localStorage.setItem( '__userData', JSON.stringify(storageData) );
 	}
 	
-	  console.log("browser fingerprint " + _fingerPrint.get()); 
-  var channel = "sstore_analyticsData_qa";
+	function getStorageData(){
+		return JSON.parse( localStorage.getItem( '__userData' ) );
+	}
+	
+	if(!jQ.cookie('__uatma')){
+		console.log("first time user");
+		newUser = true;
+		cookieData = {tId:_fPrint , firstVisit:Date.now()};
+		jQ.cookie('__uatma',JSON.stringify(cookieData), { expires: 1000, path: '/' });
+		uatma = JSON.parse(jQ.cookie('__uatma'));
+	}
+	else{		
+		uatma = JSON.parse(jQ.cookie('__uatma'));
+		var fristVisit = uatma.firstVisit;
+		var currentTime =Date.now();
+		if((currentTime-fristVisit)<6000){		//86400000	
+			newUser = true;			
+		}
+		if(_fPrint!=uatma.tId){
+			_fPrint = uatma.tId;
+		}
+	}
+	if(hasStorage){
+		var visit = 1;
+		if(!newUser && getStorageData()){
+			visit = getStorageData().visit + 1;
+		}
+		var storageData = new StorageData(_fPrint,uatma.firstVisit,visit);
+		setStorageData(storageData);
+	}
+  console.log("browser fingerprint " + _fingerPrint.get()); 
   var pubnub = PUBNUB.init({
-	  publish_key   : 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537',
+      publish_key   : 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537',
       subscribe_key : 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe',
       restore    : true, 
-      uuid: _fingerPrint.get()
+      uuid: _fPrint
   });
 
   
@@ -28,11 +86,13 @@ jQ(function(){
     this.custId = custId;
     this.apiKey = apiKey;
     this.version = version;
-    this.trackingId = _fingerPrint.get();
+    this.trackingId = _fPrint;
     this.ruleName = "Active User";
     this.userId = getUserId();
     this.clientId = "";
     this.pageData = {};
+    this.isNewUser = newUser;    
+     
 
     /*this.pageData.url = window.location.href;
     this.pageData.referrer = document.referrer;*/    
@@ -59,7 +119,13 @@ jQ(function(){
     analyticsData.pageData.platform = navigator.platform;
 //    analyticsData.pageData.geoLocation = navigator.geolocation.getCurrentPosition();
     analyticsData.pageData.cookieEnabled = navigator.cookieEnabled;
+    analyticsData.pageData.localStorageEnabled = hasStorage;
     analyticsData.pageData.referrer = document.referrer;
+    if(hasStorage){
+    	analyticsData.pageData.firstVisit = getStorageData().firstVisit;
+    	analyticsData.pageData.lastVisit = getStorageData().lastVisit;
+    	analyticsData.pageData.totalVisit = getStorageData().visit;
+    }    
     console.log(JSON.stringify(analyticsData));
     
      pubnub.publish({

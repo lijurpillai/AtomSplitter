@@ -5,12 +5,17 @@
     padding: 2px;
     background:  #CCCCCC;
     z-index: 99999;
+    border:2px solid #000000;
 }
 
 .ui-chatbox-titlebar {
     padding: 3px;
-    height: 20px;
+    height: 25px;
     cursor: pointer;
+    font-family:'Pasarela';
+    colour:#FFFFFF;
+    background:#000000;
+    font-weight:bold;
 }
 
 .ui-chatbox-content {
@@ -25,6 +30,8 @@
     overflow-y: auto;
     overflow-x: hidden;
     background: #FFFFFF;
+    font-family:'DINPro_Regular';
+    font-size:14px;
 }
 
 .ui-chatbox-input {
@@ -45,7 +52,7 @@
 }
 
 .ui-chatbox-input-focus {
-    border-color: #6699FF;
+    border-color: #FFAD5C;
 }
 
 .ui-chatbox-msg {
@@ -67,4 +74,8 @@
     bottom:0px !important;
     padding: 2px;    */ 
     z-index: 99999 !important;
+}
+.ui-state-focus{
+    color:#FFFFFF;
+    font-weight:bold;
 }

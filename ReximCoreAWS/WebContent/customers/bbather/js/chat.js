@@ -4,7 +4,7 @@ jQ(function() {
 		publish_key   : 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537',
 	    subscribe_key : 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe',
     	restore    : true, 
-        uuid: _fingerPrint.get()
+        uuid: _fPrint
 	});
 	var boxClosedCallback = function(id) {
 		console.log(id);
@@ -36,7 +36,7 @@ jQ(function() {
 		jQ('.ui-chatbox').hide();
 	}
 
-	var trackingId = _fingerPrint.get();
+	var trackingId = _fPrint;
 	var channelChatClient = trackingId + "_" + "sstore" + "_" + "chat" + "_"
 			+ "client" + "_" + "qa";
 	var channelChatDashBorard = trackingId + "_" + "sstore" + "_" + "chat"

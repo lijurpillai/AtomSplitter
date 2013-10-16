@@ -124,7 +124,7 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 			}
 		    if(box){
 		    	msg = "User "+status;
-		    	box.chatbox("option", "boxManager").addMsg(trackingId,msg);
+		    	box.chatbox("option", "boxManager").addMsg("System Message",msg);
 		    }
 		}
       };

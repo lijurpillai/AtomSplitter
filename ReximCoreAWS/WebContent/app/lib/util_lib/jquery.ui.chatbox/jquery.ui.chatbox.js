@@ -43,8 +43,8 @@
 
                     var systemMessage = false;
 
-                    if (peer) {
-                        var peerName = document.createElement("b");
+                    if (peer) {                    	
+                    	var peerName = document.createElement("b");
                         $(peerName).text(peer + ": ");
                         e.appendChild(peerName);
                     } else {
@@ -113,7 +113,7 @@
                     self.uiChatboxTitlebar.removeClass('ui-state-focus');
                 }),
             // titlebar
-            uiChatboxTitlebar = (self.uiChatboxTitlebar = $('<div></div>'))
+            uiChatboxTitlebar = (self.uiChatboxTitlebar = $('<div id="chatTitle"></div>'))
                 .addClass('ui-widget-header ' +
                           'ui-corner-top ' +
                           'ui-chatbox-titlebar ' +
@@ -183,7 +183,8 @@
             uiChatboxInputBox = (self.uiChatboxInputBox = $('<textarea autofocus></textarea>'))
                 .addClass('ui-widget-content ' +
                           'ui-chatbox-input-box ' +
-                          'ui-corner-all'
+                          'ui-corner-all' +
+                          'ui-chatbox-input-focus'
                          )
                 .appendTo(uiChatboxInput)
                 /*.keydown(function(event) {

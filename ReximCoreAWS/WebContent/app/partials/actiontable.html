@@ -152,9 +152,13 @@
 																		</h4>
 																	</div>
 																		 <span><strong>Cookie enabled : </strong>{{data.pageData.cookieEnabled}}</span><br>
-																		 <span><strong>Search Params : </strong>{{data.pageData.params}}</span><br>
-																		 <span><strong>User Agent : </strong>{{data.pageData.navigatorAgent}}</span><br>
-																		 <span><strong>Data : </strong></span>	
+																		 <span><strong>LocalStorage enabled : </strong>{{data.pageData.localStorageEnabled}}</span><br>
+																		 <span><strong>First Visited : </strong>{{data.pageData.firstVisit|date:'medium'}}</span><br>
+																		 <span><strong>Last Visited : </strong>{{data.pageData.lastVisit|date:'medium'}}</span><br>
+																		 <span><strong>Total Visits : </strong>{{data.pageData.totalVisit}}</span><br>
+																		 <span><strong>Browser : </strong>{{data.browser}}</span><br>
+																		 <span><strong>Referrer : </strong>{{data.pageData.referrer}}</span><br>
+																		 <span><strong>User Agent : </strong>{{data.pageData.navigatorAgent}}</span>
 																	</div>
 															</div>
 	
@@ -164,7 +168,7 @@
 																<span class="glyphicon glyphicon-comment"></span> Chat
 															</button>															
 															<h4>Push offer code</h4>
-															<input type="text" ng-model = "pushData">
+															<textarea ng-model = "pushData"></textarea>
 															<div align="center">
 																<button type="button" class="btn btn-primary btn-xs" ng-click = "push(data.trackingId,pushData)">Push</button>
 																<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>

@@ -19,8 +19,8 @@ utilService.factory('$exceptionHandler',['$log',function($log){
 
 utilService.factory('Constants',['$log',function($log){
 	// env
-	//var env = "qa";
-	var env = "dev";
+	var env = "qa";
+	//var env = "dev";
 	// pubnub key
 	var publish_key = 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537';
     var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';
@@ -46,7 +46,7 @@ utilService.factory('Constants',['$log',function($log){
 	var urlWindows = "img/icons/desktop.png",
 		urlAndroid ="img/icons/android.png" ,
 		urlWinMobile="img/icons/metro.png" ,
-		urlIOs = "img/icons/ios.png";
+		urlIOs = "img/icons/ios.png";	
 	
 	return{	
 		PUB_KEY:publish_key,
@@ -136,6 +136,26 @@ utilService.factory('AnalyticsData',['$log','UserAgentService','Constants',funct
 		}
 	}
 	return{	
+		getReturnUsers : function(){
+			var count = 0;
+			for (var i = 0; i < analyticsData.length; i++) {
+				if(!analyticsData[i].isNewUser && analyticsData[i].online){
+					count ++;
+				}
+			}
+			
+			return count;
+		},
+		getNewUsers : function(){
+			var count = 0;
+			for (var i = 0; i < analyticsData.length; i++) {
+				if(analyticsData[i].isNewUser && analyticsData[i].online){
+					count ++;
+				}
+			}
+			
+			return count;
+		},
 		getTotalDevice : function(deviceType){
 			var count = 0;
 			for (var i = 0; i < analyticsData.length; i++) {
@@ -153,6 +173,7 @@ utilService.factory('AnalyticsData',['$log','UserAgentService','Constants',funct
 			UserAgentService.setUserAgent(data.pageData.navigatorAgent);
 			data.isMobile = UserAgentService.isMobile();			
 			data.device =  UserAgentService.getDeviceType();
+			data.browser = UserAgentService.getBrowserType();
 			data.deviceUrl = getDeviceImgUrl(data.device);
 			$log.info("inside AnalyticsData>setAnalyticsData");
 			  // Remove existing data for same user.
@@ -180,7 +201,12 @@ utilService.factory('UserAgentService',['$log',function($log){
 	$log.info("UserAgentService");
 	var uAgent = null;	
 	
-	 return{		
+	 return{
+		 getBrowserType:function(){
+				$log.info("UserAgentService > getBrowserType");
+				var browser = uAgent.match(/(Firefox|Chrome|Safari|Opera|;MSIE)/i);
+				return browser[0];				
+			},
 		getDeviceType:function(){
 			var device = "Desktop";
 			$log.info("UserAgentService > getDevice");
