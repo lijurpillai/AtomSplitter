@@ -2,7 +2,8 @@
 
 var myServiceModule = angular.module('myApp.authServices', []);
 
-myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location','Constants',function($log,$rootScope,$http,$location,Constants){
+myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location','Constants','RuleData'
+                                       ,function($log,$rootScope,$http,$location,Constants,RuleData){
 	var userProfile = "";	
 	return{
 		logIn : function(userName,password){
@@ -26,6 +27,18 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location','
 				    	}
 				    	   // resetting auth error cause by incorrect login
 				    	  $rootScope.SHOW_AUTH_ERROR = false;
+				    	  $http.post('/ReximCoreAWS/api/getrule', {	      
+						      orgName: user.org,
+						      orgId: user.orgId
+						    }).success(function(rule){
+						    	console.log(rule);
+						    	if(sessionStorage){
+						    		// setting userProfile in session storage
+						    		//sessionStorage.setItem(Constants.SESS_KEY_RULE_PROFILE,angular.toJson(rule));
+						    		//**set rule config data**//
+						    		RuleData.setRuleConfig(rule);
+						    	}
+						    });
 					      $location.url('/dashboard');				      
 				    })
 				    .error(function(){
@@ -39,7 +52,7 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location','
 			var userProfile = "";
 			$log.info("Inside getUserProfile");
 			if(sessionStorage){
-				userProfile = JSON.parse(sessionStorage.getItem("userProfile"));
+				userProfile = JSON.parse(sessionStorage.getItem(Constants.SESS_KEY_USER_PROFILE));
 			}			
 			return userProfile;
 		}

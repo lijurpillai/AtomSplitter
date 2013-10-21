@@ -28,20 +28,21 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Atom</a>
+				<a class="navbar-brand" href="#">ATOM</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller = "NavCtrl">
 				<ul ng-show="isLoggedIn" class="nav navbar-nav">
 					<li ng-class="{active:isActive('/dashboard')}"><a href="#/dashboard"><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a></li>
-					<li ng-class="{active:isActive('/actiontable')}"><a href="#/actiontable"><span class="glyphicon glyphicon-tasks"></span> Action Tables</a></li>				
+					<li ng-class="{active:isActive('/actiontable')}"><a href="#/actiontable"><span class="glyphicon glyphicon-tasks"></span> Action Tables</a></li>
+					<li ng-class="{active:isActive('/ruleactiontable')}"><a href="#/ruleactiontable"><span class="glyphicon glyphicon-tasks"></span> Rule Action Tables</a></li>				
 				</ul>				
 				<ul ng-show="isLoggedIn" class="nav navbar-nav navbar-right">
 					<div></div>					
 					<li class="dropdown ng-cloak">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{FIRST_NAME + " " + LAST_NAME}}<b class="caret"></b>
 						</a>
-						<ul class="dropdown-menu">							
+						<ul class="dropdown-menu">														
 							<li><a href="#/" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 						</ul></li>
 				</ul>
@@ -90,11 +91,15 @@
 <script src="js/services/pubNubService.js"></script>
 <script src="js/services/utilService.js"></script>
 <script src="js/services/communicationService.js"></script>
+<script src="js/services/analyticsService.js"></script>
+<script src="js/services/ruleService.js"></script>
+
 	<!-- Controllers -->
 <script src="js/controllers/indexController.js"></script>
 <script src="js/controllers/logincontrollers.js"></script>
 <script src="js/controllers/dashBoardControllers.js"></script>
 <script src="js/controllers/actionTableControllers.js"></script>
+<script src="js/controllers/ruleActionTableControllers.js"></script> 
 	<!-- Filters-->
 <script src="js/filters.js"></script>
 	<!-- Directives -->

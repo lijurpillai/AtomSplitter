@@ -4,19 +4,6 @@ var utilService = angular.module('myApp.utilServices', []);
 
 utilService.value('version', '0.1');
 
-utilService.factory('$exceptionHandler',['$log',function($log){
-	$log.info("$exceptionHandler");
-	return function (exception, cause) {		
-		$log.info(exception.errMsg);
-		$log.info(cause);
-		if(exception.errId){
-			var displayMsg = "Message : " + exception.errMsg;
-			alert(displayMsg);
-		}
-        
-    };
-}]);
-
 utilService.factory('Constants',['$log',function($log){
 	// env
 	var env = "qa";
@@ -26,13 +13,13 @@ utilService.factory('Constants',['$log',function($log){
     var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';
     //channels
 	var analyticsChannel = "analyticsData";
-	var chatChannel = "chat";
-	var msgTypeScreenShot = 98; // screen shot
+	var chatChannel = "chat";	
 	var msgTypeChatClose = 99; // Clinet closes window
 	var msgTypeChat = 1; // Chat
 	var msgTypePush = 21; // Push
 	//session key
 	var session_key_userProfile = "userProfile";
+	var session_key_ruleProfile = "ruleProfile";
 	//other
 	var seperator = '_';
 	// error message
@@ -46,8 +33,9 @@ utilService.factory('Constants',['$log',function($log){
 	var urlWindows = "img/icons/desktop.png",
 		urlAndroid ="img/icons/android.png" ,
 		urlWinMobile="img/icons/metro.png" ,
-		urlIOs = "img/icons/ios.png";	
-	
+		urlIOs = "img/icons/ios.png";
+	// Rule Column Name
+	var ruleColName = "Rule Name";
 	return{	
 		PUB_KEY:publish_key,
 		SUB_KEY:subscribe_key,		
@@ -55,7 +43,7 @@ utilService.factory('Constants',['$log',function($log){
 		PUBNUB_CHAT_CHANNEL: chatChannel,
 		SEPERATOR: seperator,
 		SESS_KEY_USER_PROFILE:session_key_userProfile,
-		MSG_TYP_SCREENSHOT:msgTypeScreenShot,
+		SESS_KEY_RULE_PROFILE:session_key_ruleProfile,
 		MSG_TYP_CHAT_CLOSE:msgTypeChatClose,
 		MSG_TYP_CHAT:msgTypeChat,
 		MSG_TYP_PUSH : msgTypePush,
@@ -68,55 +56,42 @@ utilService.factory('Constants',['$log',function($log){
 		URL_ANDROID:urlAndroid,
 		URL_IOS:urlIOs,
 		URL_WINMOB:urlWinMobile,
-		ENV:env
+		ENV:env,
+		RULE_COL_NAME:ruleColName
       };
 }]);
 
-utilService.factory('SessionManager',['$log',function($log){
+utilService.factory('SessionManager',['$log','Constants','RuleData',function($log,Constants,RuleData){
 	$log.info("inside Sessionmanager");
 	return{	
 		clearSession:function(key){
 			$log.info("inside Sessionmanager>clearSession");
 			if(sessionStorage){		  
 				sessionStorage.clear(key);			
+			}			
+		},
+		resetOnLogOut:function(){
+			$log.info("resetOnLogOut");
+			//** clear user profile from session **//			
+			if(sessionStorage){		  
+				sessionStorage.clear(Constants.SESS_KEY_USER_PROFILE);			
+			}
+			//** clear rule profile array **//
+			RuleData.resetRuleConfig();
+			
+		},
+		getSessionData:function(key){
+			$log.info("inside Sessionmanager>getrSession");
+			if(sessionStorage){		  
+				return JSON.parse(sessionStorage.getItem(key));		
 			}
 		}
       };
 }]);
-utilService.factory('PresenceManager',['$log','AnalyticsData','ChatService',function($log,AnalyticsData,ChatService){
-	$log.info("inside PresenceManager");
-	var presence = {};
-	return{	
-		setPresenceData:function(data){
-			$log.info("inside PresenceManager>setPresenceData");
-			// change status from online to offline
-			presence = data;
-			var trackingId = presence.uuid;
-			if(data.action == "leave"){
-				console.log("inside LEAVE");				
-				var analyticsData = AnalyticsData.getAnalyticsData();
-				for (var i = 0; i < analyticsData.length; i++) {				
-					if(trackingId == analyticsData[i].trackingId){
-						analyticsData[i].online = false;					
-					};  
-				}
-				ChatService.displayUserStatus(trackingId,"Offline");				
-			}
-			if(data.action == "join"){
-				ChatService.displayUserStatus(trackingId,"online");
-			}
-		},
-		getPresenceData:function(){
-			$log.info("inside PresenceManager>getPresenceData");
-	    	return presence;
-	    }
-      };
-}]);
 
-utilService.factory('AnalyticsData',['$log','UserAgentService','Constants',function($log,UserAgentService,Constants){
-	$log.info("inside Sessionmanager");
-	var analyticsData = [];	
-	function getDeviceImgUrl(device){
+utilService.factory('UtilService',['$log','Constants',function($log,Constants){
+return{
+	getDeviceImgUrl :function(device){
 		switch (device) {
 		case "Desktop":
 			return Constants.URL_WIN;
@@ -134,67 +109,9 @@ utilService.factory('AnalyticsData',['$log','UserAgentService','Constants',funct
 			return Constants.URL_WIN;
 			break;
 		}
-	}
-	return{	
-		getReturnUsers : function(){
-			var count = 0;
-			for (var i = 0; i < analyticsData.length; i++) {
-				if(!analyticsData[i].isNewUser && analyticsData[i].online){
-					count ++;
-				}
-			}
-			
-			return count;
-		},
-		getNewUsers : function(){
-			var count = 0;
-			for (var i = 0; i < analyticsData.length; i++) {
-				if(analyticsData[i].isNewUser && analyticsData[i].online){
-					count ++;
-				}
-			}
-			
-			return count;
-		},
-		getTotalDevice : function(deviceType){
-			var count = 0;
-			for (var i = 0; i < analyticsData.length; i++) {
-				if(analyticsData[i].device == deviceType && analyticsData[i].online ){
-					count ++;
-				}
-			}
-			return count;					
-		},
-		setAnalyticsData:function(data){
-			var trackingId = data.trackingId;			
-			data.online = true;	// set online status as true
-			data.reqStatus = true ;// set data status to new. On click of chat change it to false.
-			data.timeStamp = Date.now();			
-			UserAgentService.setUserAgent(data.pageData.navigatorAgent);
-			data.isMobile = UserAgentService.isMobile();			
-			data.device =  UserAgentService.getDeviceType();
-			data.browser = UserAgentService.getBrowserType();
-			data.deviceUrl = getDeviceImgUrl(data.device);
-			$log.info("inside AnalyticsData>setAnalyticsData");
-			  // Remove existing data for same user.
-			for (var i = 0; i < analyticsData.length; i++) {				
-				if(trackingId == analyticsData[i].trackingId){
-					analyticsData.splice(i,1);					
-				};  
-			}
-			analyticsData.push(data);
-		},		
-	    getAnalyticsData:function(){
-	    	console.log(analyticsData);
-	    	return analyticsData;
-	    },
-	    getActiveUsers:function(){
-	    	var activeUsers = analyticsData.filter(function(obj) {
-	    	    return (obj.online );
-	    	});
-	    	return activeUsers;
-	    }
-      };
+	}	
+};
+	
 }]);
 
 utilService.factory('UserAgentService',['$log',function($log){
@@ -205,7 +122,12 @@ utilService.factory('UserAgentService',['$log',function($log){
 		 getBrowserType:function(){
 				$log.info("UserAgentService > getBrowserType");
 				var browser = uAgent.match(/(Firefox|Chrome|Safari|Opera|;MSIE)/i);
-				return browser[0];				
+				if(browser!=null){
+					return browser[0];
+				}
+				else {
+					return "Other";
+				}				
 			},
 		getDeviceType:function(){
 			var device = "Desktop";

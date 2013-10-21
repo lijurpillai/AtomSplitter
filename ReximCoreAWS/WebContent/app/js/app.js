@@ -3,9 +3,9 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters',
-                         'myApp.authServices','myApp.pubNubServices','myApp.utilServices','myApp.commServices',
+                         'myApp.authServices','myApp.pubNubServices','myApp.utilServices','myApp.commServices','myApp.analyticsServices','myApp.ruleServices',
                          'myApp.authDirectives',
-                         'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers','myApp.actionTableCtrl',
+                         'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers','myApp.actionTableCtrl','myApp.ruleActionTableCtrl',
                          'ngResource']).
   config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
 	
@@ -82,6 +82,14 @@ angular.module('myApp', ['myApp.filters',
     	          loggedin: checkLoggedin
     	        }
     	});
+    $routeProvider.when('/ruleactiontable',
+        	{
+        		templateUrl: 'partials/ruleactiontable.html',
+        		//controller: 'adminCtrl',
+        		resolve: {
+        	          loggedin: checkLoggedin
+        	        }
+        	});
     $routeProvider.otherwise({redirectTo: '/dashboard'});
   }])
   
@@ -91,7 +99,8 @@ angular.module('myApp', ['myApp.filters',
   	    // Logout function is available in any pages
   	    $rootScope.logout = function(){
   	      console.log("inside logout");
-  	      SessionManager.clearSession(Constants.SESS_KEY_USER_PROFILE);
+  	      //SessionManager.clearSession();
+  	      SessionManager.resetOnLogOut();
   	      $http.post('/ReximCoreAWS/api/logout').success(function(resCode) {
   	      $rootScope.isLoggedIn = false;
 		});

@@ -1,18 +1,20 @@
 jQ(function() {
 	var box = null;
-	var pubnub = PUBNUB.init({
+	var trackingId = _fPrint;
+	/*var pubnub = PUBNUB.init({
 		publish_key   : 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537',
 	    subscribe_key : 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe',
     	restore    : true, 
         uuid: _fPrint
-	});
+	});*/
 	var boxClosedCallback = function(id) {
 		console.log(id);
-		pubnub.publish({
+		__PUBNUB.publish({
 			channel : channelChatDashBorard,
 			message : {
 				msgType : 99,
-				msg : "closed"
+				msg : "closed",
+				trackingId:id
 			}
 		// user closed chat window
 		});
@@ -23,7 +25,7 @@ jQ(function() {
 		box.chatbox("option", "boxManager").toggleBox();
 	} else {
 		box = jQ("#chatBox").chatbox({
-			id : "CSR",
+			id : trackingId,
 			user : {
 				key : "value"
 			},
@@ -36,12 +38,12 @@ jQ(function() {
 		jQ('.ui-chatbox').hide();
 	}
 
-	var trackingId = _fPrint;
-	var channelChatClient = trackingId + "_" + "sstore" + "_" + "chat" + "_"
+	
+	var channelChatClient = trackingId + "_" + "bbather" + "_" + "chat" + "_"
 			+ "client" + "_" + "qa";
-	var channelChatDashBorard = trackingId + "_" + "sstore" + "_" + "chat"
+	var channelChatDashBorard = trackingId + "_" + "bbather" + "_" + "chat"
 			+ "_" + "agent"+"_" + "qa";
-	pubnub.subscribe({
+	__PUBNUB.subscribe({
 				channel : channelChatClient,
 				message : function(msg) {
 					if (msg.msgType == 21) {
@@ -55,7 +57,7 @@ jQ(function() {
 							show: {effect: "bounce",duration: 1000},
 							hide: {effect: "puff",duration: 1000}		
 							},
-							{ title: "Offer Code" },
+							{ title: "Message from Bondi Bather" },
 						  //, at: "left bottom"},
 						  { buttons: [ { text: "OK", click: function() { jQ( this ).dialog( "close" ); } } ] 
 						}).parent().css('position', 'fixed');						
@@ -81,11 +83,12 @@ jQ(function() {
 			msg = jQ.trim(jQ(this).val());
 			if (msg.length > 0) {
 				box.chatbox("option", "boxManager").addMsg("Me", msg);
-				pubnub.publish({
+				__PUBNUB.publish({
 					channel : channelChatDashBorard,
 					message : {
 						msgType : 1,
-						msg : msg
+						msg : msg,
+						trackingId:trackingId
 					}
 				});
 

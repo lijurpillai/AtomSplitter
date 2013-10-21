@@ -35,21 +35,44 @@
 	</div><!--nav col-sm-4 col-xs-12 -->
 
 		<div class="col-sm-8">			
-			<h4><center><strong>Alerts</strong></center></h4>
+			<!-- <h4><center><strong>Alerts</strong></center></h4> -->
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-3">
 					<div class="list-group">
   					<a href="#" class="list-group-item">New Users <span class="badge"><strong>{{newUsers}}</strong></span></a>
   					<a href="#" class="list-group-item">Return Users<span class="badge"><strong>{{returnUsers}}</strong></span></a>
+  					<a href="#" class="list-group-item">Active Rules<span class="badge"><strong>{{totalRules}}</strong></span></a>
 				</div>
 			</div><!--end col-sm-6 -->
 
-			<div class="col-sm-6">
-				<div class="list-group">
-  				<a href="#" class="list-group-item">No results<span class="badge"><strong>12</strong></span></a>
-  				<a href="#" class="list-group-item">Out of stock<span class="badge"><strong>12</strong></span></a>
+			<div class="col-sm-6" >
+				<table class="table table-bordered table-hover">
+  					<thead>
+  						<tr>
+  							<th>Rule Name</th>
+  							<th>Rule Id</th>
+  							<th>Rule Count</th>
+  						</tr>  						
+  					</thead>
+  					<tbody ng-repeat="ruleDetails in ruleDetailsName" >
+  						<tr>
+  							<td>{{ruleDetails.displayName}}</td>
+  							<td>{{ruleDetails.ruleId}}</td>  
+  							<td><button ng-click = "goToRuleTable(ruleDetails.ruleId)" type="button" class="btn btn-success">{{ruleDetails.ruleCount}}</button></td>
+  						</tr>
+  					</tbody>
+				</table>
+				<!-- <ul class="list-group" >
+				  <li  ng-repeat="ruleDetailsName in ruleDetailsName" >				    
+				    <a href="#" class="list-group-item" >{{ruleDetailsName.displayName}}
+				    	<span class="badge"><strong>{{ruleDetailsName.ruleCount}}</strong></span>
+				    </a>
+				  </li>
+				</ul> -->
+				<!-- <div class="list-group" ng-repeat="ruleDetailsName in ruleDetailsName">
+	  				<a href="#" class="list-group-item">{{ruleDetailsName.displayName}}<span class="badge"><strong>12</strong></span></a>	  				
+				</div> -->
 			</div>
-			</div><!--end col-sm-6 -->
 
 			</div><!--end row-->
 		</div> <!--end col-sm-8 -->
@@ -111,8 +134,8 @@
 
 	<div class=" col-md-6 col-xs-12 hidden-xs">
 		<!-- end col-md-6 col-md-12-->
-		<div class="alert alert-info">
+		<!-- <div class="alert alert-info">
 		<img src="img/map.png" width="450" height="257">
-		</div>
+		</div> -->
 	</div>
 </div><!--enc controller -->

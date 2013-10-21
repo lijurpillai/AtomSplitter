@@ -1,11 +1,11 @@
 jQ(function(){ 
-	var channel = "sstore_analyticsData_qa";
+	_channel = "bbather_analyticsData_qa";
 	_fingerPrint = new Fingerprint();
 	_fPrint = _fingerPrint.get();
 	var uatma = null;
 	var newUser = false;
 	var cookieData = {};
-	//Storagedata constructor
+	//***Storagedata constructor*//
 	function StorageData(_fPrint,firstVisit,visit){
 	       this.tId = _fPrint;
 	       this.firstVisit = firstVisit;
@@ -15,11 +15,30 @@ jQ(function(){
 	StorageData.prototype ={
 	    constuctor : StorageData	    
 	  };
-	 	// Const ends  
-	    
-	 
+	//***Storagedata constructor ends*//
 	
-	var hasStorage = (function() {
+	//***AnalyticsData constructor*//
+	  function AnalyticsData(custId,apiKey,version){
+	    this.custId = custId;
+	    this.apiKey = apiKey;
+	    this.version = version;
+	    this.trackingId = _fPrint;
+	    this.ruleName = "Active User";
+	    this.userId = getUserId();
+	    this.clientId = "";
+	    this.pageData = {};	    
+	    this.isNewUser = newUser; 
+	  }
+	  AnalyticsData.prototype ={
+	    constuctor : AnalyticsData,
+	    getCustId : function(){
+	      alert(this.custId);
+	    }
+	  };
+	  //***AnalyticsData constructor ends*// 
+	
+	//***Check if browser supports storage Set as Global*//
+	__hasStorage = (function() {
 	      try {
 	        localStorage.setItem("test", "value");
 	        localStorage.removeItem("test");
@@ -28,7 +47,8 @@ jQ(function(){
 	        return false;
 	      }
 	    }());
-	
+	//***Storage check ends*//
+	//***Storage setter getter*//
 	function setStorageData(storageData){
 			localStorage.setItem( '__userData', JSON.stringify(storageData) );
 	}
@@ -36,7 +56,8 @@ jQ(function(){
 	function getStorageData(){
 		return JSON.parse( localStorage.getItem( '__userData' ) );
 	}
-	
+	//***Storage setter getter ends*//
+	//***Check for first time user*//
 	if(!jQ.cookie('__uatma')){
 		console.log("first time user");
 		newUser = true;
@@ -44,18 +65,21 @@ jQ(function(){
 		jQ.cookie('__uatma',JSON.stringify(cookieData), { expires: 1000, path: '/' });
 		uatma = JSON.parse(jQ.cookie('__uatma'));
 	}
+	//***Check for repeat user*//
 	else{		
 		uatma = JSON.parse(jQ.cookie('__uatma'));
 		var fristVisit = uatma.firstVisit;
 		var currentTime =Date.now();
-		if((currentTime-fristVisit)<6000){		//86400000	
+		if((currentTime-fristVisit)<60000){//86400000	
 			newUser = true;			
 		}
 		if(_fPrint!=uatma.tId){
 			_fPrint = uatma.tId;
 		}
 	}
-	if(hasStorage){
+	//***Check for first time/repeat user ends*//
+	//***Set storage data to localstorage*//
+	if(__hasStorage){
 		var visit = 1;
 		if(!newUser && getStorageData()){
 			visit = getStorageData().visit + 1;
@@ -64,49 +88,21 @@ jQ(function(){
 		setStorageData(storageData);
 	}
   console.log("browser fingerprint " + _fingerPrint.get()); 
-  var pubnub = PUBNUB.init({
+  //***Pub nub global variable*//
+  __PUBNUB = PUBNUB.init({
       publish_key   : 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537',
       subscribe_key : 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe',
       restore    : true, 
       uuid: _fPrint
   });
-
-  
-  var custId = "SuperStore";
-  var adminClientId = "";   
-  console.log(document.cookie);
-  pubnub.subscribe({
-      channel : channel ,
+  //***Dummy subscription so that presence feature of pubnub works*//
+  __PUBNUB.subscribe({
+      channel : _channel ,
       message : function(m){ console.log(m);}
   	});
-
-
-//  AnalyticsData constructor
-  function AnalyticsData(custId,apiKey,version){
-    this.custId = custId;
-    this.apiKey = apiKey;
-    this.version = version;
-    this.trackingId = _fPrint;
-    this.ruleName = "Active User";
-    this.userId = getUserId();
-    this.clientId = "";
-    this.pageData = {};
-    this.isNewUser = newUser;    
-     
-
-    /*this.pageData.url = window.location.href;
-    this.pageData.referrer = document.referrer;*/    
-  }
-  AnalyticsData.prototype ={
-    constuctor : AnalyticsData,
-    getCustId : function(){
-      alert(this.custId);
-    }
-  };
- 	// Const ends  
-    
-    var analyticsData = new AnalyticsData("owaCustomer1","apiKEY" , "1.0");
-//    analyticsData.userId = getUserId();
+  
+  //***Initialize Analytics obj and set values*//
+    var analyticsData = new AnalyticsData("bbather","apiKEY" , "1.0");
     analyticsData.pageData.url = window.location.href;
     analyticsData.pageData.host = window.location.host;
     analyticsData.pageData.hostname = window.location.hostname;
@@ -117,29 +113,25 @@ jQ(function(){
     analyticsData.pageData.navigatorAgent = navigator.userAgent;
     analyticsData.pageData.browserName = navigator.appName;
     analyticsData.pageData.platform = navigator.platform;
-//    analyticsData.pageData.geoLocation = navigator.geolocation.getCurrentPosition();
     analyticsData.pageData.cookieEnabled = navigator.cookieEnabled;
-    analyticsData.pageData.localStorageEnabled = hasStorage;
+    analyticsData.pageData.localStorageEnabled = __hasStorage;
     analyticsData.pageData.referrer = document.referrer;
-    if(hasStorage){
+    if(__hasStorage){
     	analyticsData.pageData.firstVisit = getStorageData().firstVisit;
     	analyticsData.pageData.lastVisit = getStorageData().lastVisit;
     	analyticsData.pageData.totalVisit = getStorageData().visit;
     }    
     console.log(JSON.stringify(analyticsData));
+    //***Init ends*//
     
-     pubnub.publish({
-          channel : channel,
+    //***Publish to dashboard**//
+     __PUBNUB.publish({
+          channel : _channel,
           message : analyticsData
       });
      
     function getUserId(){
-      var userId = "";
-      /*if(jQ('.quick-access .last ').find('a:first').text() == "Log Out"){
-        userId = jQ('.welcome-msg').text();
-        console.log("user id --> " + userId);
-      }  */   
-      userId = jQ('.welcome-msg').text();
-      return userId;
+    	return "unknown";
     }
+    
 });

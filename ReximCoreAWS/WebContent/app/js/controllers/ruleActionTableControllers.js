@@ -1,24 +1,25 @@
 'use strict';
 /* Controllers */
 
-angular.module('myApp.actionTableCtrl', []).
-  controller('TableCtrl',['$scope','AnalyticsData','$log','ChatService','PubnubService','Constants',
-                          function($scope,AnalyticsData,$log,ChatService,PubnubService,Constants){	  
-	 // $scope.$watch('activeUsers', function() {	
-		//console.log("IN THIS WORLD");
-		//var device = AnalyticsData.getAnalyticsData().device;	  
-	  $scope.ruleData = AnalyticsData.getAnalyticsData();	  
+angular.module('myApp.ruleActionTableCtrl', []).
+  controller('RuleTableCtrl',['$scope','RuleData','$log','ChatService','PubnubService','Constants','$location',
+                          function($scope,RuleData,$log,ChatService,PubnubService,Constants,$location){	  
+	 	  
+	  var filter = $location.search().ruleId;	  	
+	  if(filter){
+		  $scope.ruleActionData = RuleData.getRuleData(filter);
+	  }
+	  else{
+		  $scope.ruleActionData = RuleData.getRuleData();
+	  }	  
+	  
+	  console.log(filter);
 	  $scope.predicate = '-timeStamp'; 
 	  
 	  $scope.requestOptions = [	                   
 	                   {name:'Close - Chat', value:1},
 	                   {name:'Close - Push', value:2}	                   
-	                 ];	  
-	  /*$scope.$watch('ruleData.online', function(changed) {
-		  console.log("IN THIS WORLD");
-		  console.log(changed);
-	  },true);*/
-	  
+	                 ];	
 	  $scope.chat = function(trackingId,index){
 		  // change status from new to in progress
 		  ChatService.changeReqStatus(trackingId);
