@@ -35,7 +35,7 @@ angular.module('myApp.ruleActionTableCtrl', []).
 	  
 	  $scope.isChecked = function(ruleId){
 	        if (_.contains($scope.selectedRule, ruleId)) {
-	            return 'glyphicon glyphicon-ok pull-right';
+	            return 'glyphicon glyphicon-ok pull-left';
 	        }
 	        return false;		  
 	  };

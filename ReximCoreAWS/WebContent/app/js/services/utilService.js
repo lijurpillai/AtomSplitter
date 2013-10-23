@@ -6,8 +6,8 @@ utilService.value('version', '0.1');
 
 utilService.factory('Constants',['$log',function($log){
 	// env
-	//var env = "qa";
-	var env = "dev";
+	var env = "qa";
+	//var env = "dev";
 	// pubnub key
 	var publish_key = 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537';
     var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';

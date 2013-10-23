@@ -50,12 +50,16 @@ public class ReximCoreController {
 		UserProfile userProfile = new UserProfile();
 		System.out.println(user.getUserName() + "--- " + user.getPassword());
 		if(user.getUserName().equals("admin")
-				&& user.getPassword().equals("realtime")){
+				&& user.getPassword().equals("1508")){
 			userNo = 1;
 		}
 		else if(user.getUserName().equals("bondi")
-				&& user.getPassword().equals("admin")){
+				&& user.getPassword().equals("1508")){
 			userNo = 2;
+		}
+		else if(user.getUserName().equals("demoshop")
+				&& user.getPassword().equals("1508")){
+			userNo = 3;
 		}
 		switch (userNo) {
 		case 1:
@@ -63,7 +67,7 @@ public class ReximCoreController {
 			userProfile.setLastName("Admin");
 			userProfile.setRole("Admin");
 			userProfile.setOrg("Perfomatix");
-			userProfile.setOrgId("bbather");
+			userProfile.setOrgId("pmatix");
 			session.setAttribute("Constants.SESS_KEY_USER_PROFILE", userProfile);
 			return userProfile;						
 		case 2:
@@ -72,6 +76,14 @@ public class ReximCoreController {
 			userProfile.setRole("Admin");
 			userProfile.setOrg("Bondi Bather");
 			userProfile.setOrgId("bbather");
+			session.setAttribute("Constants.SESS_KEY_USER_PROFILE", userProfile);
+			return userProfile;
+		case 3:
+			userProfile.setFirstName("Demo");
+			userProfile.setLastName("Store");
+			userProfile.setRole("Admin");
+			userProfile.setOrg("Demo Store");
+			userProfile.setOrgId("dshop");
 			session.setAttribute("Constants.SESS_KEY_USER_PROFILE", userProfile);
 			return userProfile;
 		default:

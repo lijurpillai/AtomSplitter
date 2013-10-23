@@ -1,0 +1,4 @@
+[	{"ruleLen":2},
+		{"ruleId":"0001","ruleName":"Products Clicked","displayName":"Clicked: On Products and Solutions","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"Contact Clicked","displayName":"Clicked: On Contact Us","chat":"true","push":"true"}
+]

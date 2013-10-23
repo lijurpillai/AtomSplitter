@@ -11,11 +11,24 @@ myFilter.filter('interpolate', ['version','Constants', function(version,Constant
 }]);
 
 myFilter.filter('ruleTableFilter', [function() {
-	return function(data,list,search) {
+	return function(ruleData,ruleIdList) {
+		
+		if (!angular.isUndefined(ruleIdList) && ruleIdList.length > 0) {
+			var tempRuleData = [];
+			angular.forEach(ruleIdList,function(ruleId){
+				console.log(ruleId);
+				angular.forEach(ruleData,function(ruleData){
+					console.log(ruleData.ruleId);
+					/*if (angular.equals(ruleData.company.id, id)) {
+                        tempClients.push(client);
+                    }*/
+				});
+			});
+		}
+		
 	      console.log("MAGIDUSHU");
-	      console.log(data);
-	      console.log(list);
-	      console.log(search);
-	      return data;
+	      console.log(ruleData);
+	      console.log(ruleIdList);	      
+	      return ruleData;
 	    };
 }]);
