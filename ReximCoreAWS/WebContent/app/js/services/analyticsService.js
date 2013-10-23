@@ -2,24 +2,40 @@
 
 var analyticsService = angular.module('myApp.analyticsServices', []);
 
-analyticsService.factory('PresenceManager',['$log','AnalyticsData','ChatService',function($log,AnalyticsData,ChatService){	
+analyticsService.factory('PresenceManager',['$log','AnalyticsData','ChatService','RuleData'
+                                            ,function($log,AnalyticsData,ChatService,RuleData){	
 	var presence = {};	
 	return{	
 		setPresenceData:function(data){			
 			// change status from online to offline
 			presence = data;
 			var trackingId = presence.uuid;
-			if(data.action == "leave"){								
+			if(data.action == "leave"){	
+				//** need to reset online status to false for RULE and ANALYTICS**//
+				//** TO-DO Replace online login with centralized controller**//
 				var analyticsData = AnalyticsData.getAnalyticsData();
 				for (var i = 0; i < analyticsData.length; i++) {				
 					if(trackingId == analyticsData[i].trackingId){
 						analyticsData[i].online = false;					
 					};  
 				}
+				var ruleData = RuleData.getRuleData();
+				for (var i = 0; i < ruleData.length; i++) {				
+					if(trackingId == ruleData[i].trackingId){
+						ruleData[i].online = false;					
+					};  
+				}
 				//Show message in chat window when user goes offline/online
 				ChatService.displayUserStatus(trackingId,"Offline");				
 			}
 			if(data.action == "join"){
+				//** Reset online status to true on join only for RULE,for ANALYTICS it is set in analytics service setter**//
+				var ruleData = RuleData.getRuleData();
+				for (var i = 0; i < ruleData.length; i++) {				
+					if(trackingId == ruleData[i].trackingId){
+						ruleData[i].online = true;					
+					};  
+				}
 				ChatService.displayUserStatus(trackingId,"online");
 			}
 		},

@@ -2,7 +2,8 @@
 
 var commService = angular.module('myApp.commServices', []);
 
-commService.factory('ChatService',['$log','AuthService','Constants','$rootScope','AnalyticsData',function($log,AuthService,Constants,$rootScope,AnalyticsData){
+commService.factory('ChatService',['$log','AuthService','Constants','$rootScope','AnalyticsData','RuleData'
+                                   ,function($log,AuthService,Constants,$rootScope,AnalyticsData,RuleData){
 	$log.info("inside ChatService");	
 	var boxList = [];
 	var box = null;
@@ -98,11 +99,19 @@ commService.factory('ChatService',['$log','AuthService','Constants','$rootScope'
 			}
 			
 		},
-		changeReqStatus:function(trackingId){ // changing req status to inprogress on press of Chat
+		changeReqStatusAnalytics:function(trackingId){ // changing req status to inprogress on press of Chat
 			var analyticsData = AnalyticsData.getAnalyticsData();
 			for (var i = 0; i < analyticsData.length; i++) {				
 				if(trackingId == analyticsData[i].trackingId){
 					analyticsData[i].reqStatus = false;					
+				};  
+			}
+		},
+		changeReqStatusRule:function(trackingId){ // changing req status to inprogress on press of Chat
+			var ruleData = RuleData.getRuleData();
+			for (var i = 0; i < ruleData.length; i++) {				
+				if(trackingId == ruleData[i].trackingId){
+					ruleData[i].reqStatus = false;					
 				};  
 			}
 		},
