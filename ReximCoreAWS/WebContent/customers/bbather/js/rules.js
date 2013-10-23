@@ -26,9 +26,23 @@ jQ(function(){
     	this.ruleName = getRuleDetails(ruleId).rName;
     	this.ruleDesc =  getRuleDetails(ruleId).rDesc;          	    	   
       }
-	
+	if(window.location.search.indexOf("product/search&filter_name") >= 0)
+    {
+                var ruleId = "0001";
+                if(jQ('.content').text().indexOf("There is no product that matches the search criteria") >=0) {
+                var ruleData = new RuleData("bbather","apiKEY" ,"1.0",ruleId );
+                ruleData.ruleDetails = new RuleDetails(ruleId);
+                ruleData.pageData = getPageData();
+                ruleData.ruleDetails.searchParam = window.location.search.split("filter_name=").pop();
+                console.log(ruleData);
+                __PUBNUB.publish({
+                      channel : _channel,
+                      message : ruleData
+               });
+            } 
+    }
 	jQ('a[href="#portfolio-section"]').click(function(){
-	   	  var ruleId = "0001";
+	   	  var ruleId = "0002";
 	   	  var ruleData = new RuleData("bbather","apiKEY" , "1.0",ruleId);
 	   	  ruleData.ruleDetails = new RuleDetails(ruleId);
 	   	  ruleData.pageData = getPageData();
@@ -94,12 +108,12 @@ jQ(function(){
 	}
 
   	function getRuleDetails(ruleId) {
-    	switch(ruleId)
+  		switch(ruleId)
     	{
     		case "0001":
-    		 return {rName :"Prod Details" , rDesc : "Prod Details Clicked"};
+    		return {rName :"Search:No products" , rDesc : "Search returned no products"}; 
     		case "0002":
-       		 return {rName :"Prod Details" , rDesc : "Prod Details Clicked"}; 
+       		return {rName :"Prod Details" , rDesc : "Clicked on product details"}; 
     		default: return {rtype :"" , rdesc : ""};
     	}
     }

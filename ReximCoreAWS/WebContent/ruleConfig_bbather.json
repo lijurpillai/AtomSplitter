@@ -1,6 +1,4 @@
-[	{"ruleLen":3},
-		{"ruleId":"0001","ruleName":"prodDetail","displayName":"Product Details","chat":"true","push":"true"},
-		{"ruleId":"0002","ruleName":"Atom Splitter","displayName":"Atom Splitter","chat":"true","push":"true"},
-		{"ruleId":"0003","ruleName":"Strip Tease","displayName":"Strip Tease","chat":"true","push":"true"}
+[	{"ruleLen":2},
+		{"ruleId":"0001","ruleName":"NoProducts","displayName":"Search:No products","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"ProductsClicked","displayName":"Clicked: On Products and Solutions","chat":"true","push":"true"},
 ]
-
