@@ -66,5 +66,15 @@ analyticsService.factory('RuleData',['$log','UserAgentService','Constants','Util
 			}
 	    	return count;
 	    }
+	   /* getRuleFilterList:function(filter){
+	    	var filterList = [{ruleName:"All",ruleId:"0000"}];	    	
+	    	for ( var i = 0; i < ruleConfigData.length; i++) {
+	    		var tempData = {};
+	    		tempData.ruleName = ruleConfigData[i].ruleName;
+	    		tempData.ruleId = ruleConfigData[i].ruleId;
+	    		filterList.push(tempData);
+			}
+	    	return filterList;
+	    }	*/    
 	};
 }]);

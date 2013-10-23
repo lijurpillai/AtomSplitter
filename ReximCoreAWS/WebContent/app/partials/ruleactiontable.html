@@ -10,9 +10,23 @@
 						<div class="container">
 							<div class="col-xs-3">
 								<div class="input-group">
-									<span class="input-group-addon">Rule</span> <input type="text"
-										ng-model="search.ruleName" class="form-control"
-										placeholder="type to search">
+								<!-- <span  class="nullable">
+								<select ng-model="rList.name" ng-options="r.ruleId for r in ruleFilterList">												
+								</select> -->
+								<div class="btn-group" ng-class="{open: open}">
+								  <button class="btn">Filter by Rule</button>
+					                <button class="btn dropdown-toggle" data-ng-click="open=!open"><span class="caret"></span>
+					                </button>
+								  <ul class="dropdown-menu" role="menu">
+								    <li><a href="#">Rule Name</a></li>
+								    <li class="divider"></li>
+								    <li ng-repeat = "ruleList in ruleConfig">
+								    	<a ng-click = "setSelectedRule()">{{ruleList.displayName}}
+								    		<span ng-class="isChecked(ruleList.ruleId)"></span>
+								    	</a>
+								    </li>								    
+								  </ul>
+								</div>
 								</div>
 							</div>
 							<div class="col-xs-3">
@@ -87,7 +101,7 @@
 										<th>Action</th>
 									</tr>
 								</thead>
-								<tbody ng-repeat="data in ruleActionData | orderBy:predicate:reverse | filter:search">
+								<tbody ng-repeat="data in ruleActionData | orderBy:predicate:reverse | ruleTableFilter:rList:search">
 									<tr >
 										<!-- Table body -->
 										<td>{{$index+1}}</td>

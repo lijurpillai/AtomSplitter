@@ -4,22 +4,42 @@
 angular.module('myApp.ruleActionTableCtrl', []).
   controller('RuleTableCtrl',['$scope','RuleData','$log','ChatService','PubnubService','Constants','$location',
                           function($scope,RuleData,$log,ChatService,PubnubService,Constants,$location){	  
-	 	  
-	  var filter = $location.search().ruleId;	  	
+	  $scope.selectedRule = [];
+	  var filter = $location.search().ruleId;	  
 	  if(filter){
 		  $scope.ruleActionData = RuleData.getRuleData(filter);
 	  }
 	  else{
 		  $scope.ruleActionData = RuleData.getRuleData();
-	  }	  
-	  
-	  console.log(filter);
-	  $scope.predicate = '-timeStamp'; 
-	  
+	  }
+	  $scope.predicate = '-timeStamp';
 	  $scope.requestOptions = [	                   
 	                   {name:'Close - Chat', value:1},
 	                   {name:'Close - Push', value:2}	                   
 	                 ];	
+	  
+	 /* $scope.ruleFilterList = RuleData.getRuleFilterList(filter);	  
+	  $scope.rList = {name: $scope.ruleFilterList[0]};*/
+	  $scope.ruleConfig = RuleData.getRuleConfig();
+	  $scope.setSelectedRule = function(){
+		  var ruleId = this.ruleList.ruleId;
+		  console.log(ruleId);
+		  if (_.contains($scope.selectedRule, ruleId)) {
+	            $scope.selectedRule = _.without($scope.selectedRule, ruleId);
+	        } else {
+	            $scope.selectedRule.push(ruleId);
+	        }
+	        return false;
+		  
+	  };
+	  
+	  $scope.isChecked = function(ruleId){
+	        if (_.contains($scope.selectedRule, ruleId)) {
+	            return 'glyphicon glyphicon-ok pull-right';
+	        }
+	        return false;		  
+	  };
+	  
 	  $scope.chat = function(trackingId,index){
 		  // change status from new to in progress
 		  ChatService.changeReqStatus(trackingId);
