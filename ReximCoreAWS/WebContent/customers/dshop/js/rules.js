@@ -26,21 +26,33 @@ jQ(function(){
     	this.ruleName = getRuleDetails(ruleId).rName;
     	this.ruleDesc =  getRuleDetails(ruleId).rDesc;          	    	   
       }
-	if(window.location.search.indexOf("product/search&filter_name") >= 0)
+	if(window.location.pathname==("/single-item.html"))
     {
                 var ruleId = "0001";
-                if(jQ('.content').text().indexOf("There is no product that matches the search criteria") >=0) {
-                var ruleData = new RuleData("bbather","apiKEY" ,"1.0",ruleId );
+                var ruleData = new RuleData("dshop","apiKEY" ,"1.0",ruleId );
                 ruleData.ruleDetails = new RuleDetails(ruleId);
                 ruleData.pageData = getPageData();
-                ruleData.ruleDetails.searchParam = window.location.search.split("filter_name=").pop();
                 console.log(ruleData);
                 __PUBNUB.publish({
                       channel : _channel,
                       message : ruleData
                });
-            } 
+             
     }
+	if(window.location.pathname==("/checkout.html"))
+    {
+                var ruleId = "0002";
+                var ruleData = new RuleData("dshop","apiKEY" ,"1.0",ruleId );
+                ruleData.ruleDetails = new RuleDetails(ruleId);
+                ruleData.pageData = getPageData();
+                console.log(ruleData);
+                __PUBNUB.publish({
+                      channel : _channel,
+                      message : ruleData
+               });
+             
+    }
+
 	
 	//** Utils **//
 	function getUserId(){  // get user id from screen
@@ -97,9 +109,11 @@ jQ(function(){
 
   	function getRuleDetails(ruleId) {
   		switch(ruleId)
-    	{
+    	{	
     		case "0001":
-    		return {rName :"Search:No products" , rDesc : "Search returned no products"}; 
+           	return {rName :"ClickedBuy" , rDesc : "Clicked: Buy now"};
+    		case "0002":
+           	return {rName :"ClickedCheckout" , rDesc : "Clicked:Checkout"};
     		default: return {rtype :"" , rdesc : ""};
     	}
     }
