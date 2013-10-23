@@ -156,6 +156,9 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	    	    return (obj.online );
 	    	});
 	    	return activeUsers;
+	    },
+	    resetAnalyticsData:function(){	    	
+	    	analyticsData.length = 0;
 	    }
       };
 }]);

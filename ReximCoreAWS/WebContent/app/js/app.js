@@ -90,7 +90,7 @@ angular.module('myApp', ['myApp.filters',
         	          loggedin: checkLoggedin
         	        }
         	});
-    $routeProvider.otherwise({redirectTo: '/dashboard'});
+    $routeProvider.otherwise({redirectTo: '/login'});
   }])
   
   	.run(['$rootScope', '$http','SessionManager','Constants','$location',function ($rootScope, $http,SessionManager,Constants,$location) {

@@ -1,9 +1,13 @@
 angular.module('myApp.dashBoardControllers', []).
- controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager','Constants','SessionManager','RuleData'
-                            ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData){	 
+ controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager','Constants','SessionManager','RuleData','AuthService'
+                            ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData,AuthService){	 
 	 
-	 var channelName = PubnubService.PUBNUB_ANALYTICS_CHANNEL;	 
-	 console.log("Channel ----> " + PubnubService.PUBNUB_ANALYTICS_CHANNEL);
+	 var channelName = getChannelName();	 
+	 console.log("Channel ----> " + channelName);
+	 function getChannelName(){
+		 return AuthService.getUserProfile().orgId+Constants.SEPERATOR+
+		 Constants.PUBNUB_ANALYTICS_CHANNEL+Constants.SEPERATOR+Constants.ENV;
+	 }
 	//**Rule data**//
 	 $scope.ruleDetailsName = RuleData.getRuleConfig();
 	 $scope.totalRules = RuleData.getRuleData().length;
@@ -25,7 +29,6 @@ angular.module('myApp.dashBoardControllers', []).
 	 });
 	 
 	 $scope.goToRuleTable = function(ruleId){
-		 console.log("dfasd BHIJBIIIP" + ruleId);
 		 $location.path('/ruleactiontable').search({ruleId: ruleId});
 	 };
 	 

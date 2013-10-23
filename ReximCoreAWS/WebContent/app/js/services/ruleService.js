@@ -50,6 +50,9 @@ analyticsService.factory('RuleData',['$log','UserAgentService','Constants','Util
 	    resetRuleConfig:function(){	    	
 	    	ruleConfigData.length = 0;
 	    },
+	    resetRuleData:function(){	    	
+	    	ruleData.length = 0;
+	    },
 	    setRuleCountRuleConfig:function(ruleId){	    	
 	    	for ( var i = 0; i < ruleConfigData.length; i++) {
 				if(ruleConfigData[i].ruleId == ruleId){
@@ -65,16 +68,6 @@ analyticsService.factory('RuleData',['$log','UserAgentService','Constants','Util
 				}
 			}
 	    	return count;
-	    }
-	   /* getRuleFilterList:function(filter){
-	    	var filterList = [{ruleName:"All",ruleId:"0000"}];	    	
-	    	for ( var i = 0; i < ruleConfigData.length; i++) {
-	    		var tempData = {};
-	    		tempData.ruleName = ruleConfigData[i].ruleName;
-	    		tempData.ruleId = ruleConfigData[i].ruleId;
-	    		filterList.push(tempData);
-			}
-	    	return filterList;
-	    }	*/    
+	    }	   
 	};
 }]);

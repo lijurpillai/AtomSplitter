@@ -61,7 +61,7 @@ utilService.factory('Constants',['$log',function($log){
       };
 }]);
 
-utilService.factory('SessionManager',['$log','Constants','RuleData',function($log,Constants,RuleData){
+utilService.factory('SessionManager',['$log','Constants','RuleData','AnalyticsData',function($log,Constants,RuleData,AnalyticsData){
 	$log.info("inside Sessionmanager");
 	return{	
 		clearSession:function(key){
@@ -76,8 +76,13 @@ utilService.factory('SessionManager',['$log','Constants','RuleData',function($lo
 			if(sessionStorage){		  
 				sessionStorage.clear(Constants.SESS_KEY_USER_PROFILE);			
 			}
-			//** clear rule profile array **//
+			//** reset rule profile array **//
 			RuleData.resetRuleConfig();
+			//**reset rule array**//
+			RuleData.resetRuleData();
+			//**reset analtics data**//
+			AnalyticsData.resetAnalyticsData();
+			
 			
 		},
 		getSessionData:function(key){
