@@ -10,11 +10,12 @@
 
 .ui-chatbox-titlebar {
     padding: 3px;
-    height: 25px;
+    height: 20px;
     cursor: pointer;
     font-family:'Pasarela';
     colour:#FFFFFF;
     background:#000000;
+    font-size:18px;
     font-weight:bold;
 }
 
@@ -38,6 +39,8 @@
     padding: 3px;
     border-top: 1px solid grey;
     overflow: hidden;
+    font-family:'DINPro_Regular';
+    font-size:14px;
 }
 
 .ui-chatbox-input-box {
