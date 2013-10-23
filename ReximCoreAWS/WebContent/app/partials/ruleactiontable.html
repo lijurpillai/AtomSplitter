@@ -14,9 +14,7 @@
 								  <button class="btn">Filter by Rule</button>
 					                <button class="btn dropdown-toggle" data-ng-click="open=!open"><span class="caret"></span>
 					                </button>
-								  <ul class="dropdown-menu" role="menu">
-								    <li>Rule Name</li>
-								    <li class="divider"></li>
+								  <ul class="dropdown-menu" role="menu">								    
 								    <li ng-repeat = "ruleList in ruleConfig">
 								    	<a ng-click = "setSelectedRule()"><span ng-class="isChecked(ruleList.ruleId)"></span>
 								    	  &nbsp;&nbsp;{{ruleList.ruleName}}								    		
