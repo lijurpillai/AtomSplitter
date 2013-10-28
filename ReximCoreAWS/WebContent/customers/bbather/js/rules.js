@@ -41,7 +41,19 @@ jQ(function(){
                });
             } 
     }
-	
+	if(window.location.pathname==("/returns-policy"))
+    {
+                var ruleId = "0002";
+                var ruleData = new RuleData("bbather","apiKEY" ,"1.0",ruleId );
+                ruleData.ruleDetails = new RuleDetails(ruleId);
+                ruleData.pageData = getPageData();
+                console.log(ruleData);
+                __PUBNUB.publish({
+                      channel : _channel,
+                      message : ruleData
+               });
+             
+    }
 	//** Utils **//
 	function getUserId(){  // get user id from screen
 		return "unknown";
@@ -100,6 +112,8 @@ jQ(function(){
     	{
     		case "0001":
     		return {rName :"Search:No products" , rDesc : "Search returned no products"}; 
+    		case "0002":
+        	return {rName :"Clicked: Exchange&Refunds" , rDesc : "Clicked: Exchange&Refunds"}; 
     		default: return {rtype :"" , rdesc : ""};
     	}
     }

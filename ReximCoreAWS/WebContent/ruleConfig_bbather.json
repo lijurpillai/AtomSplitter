@@ -1,3 +1,4 @@
-[	{"ruleLen":1},
+[	{"ruleLen":2},
 		{"ruleId":"0001","ruleName":"NoProducts","displayName":"Search:No products","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"Clicked: Exchange&Refunds","displayName":"Clicked: Exchange&Refunds","chat":"true","push":"true"},
 ]
