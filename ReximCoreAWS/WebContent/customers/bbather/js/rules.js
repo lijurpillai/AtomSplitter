@@ -54,6 +54,22 @@ jQ(function(){
                });
              
     }
+	if(window.location.pathname==("/login"))
+    {
+              var ruleId = "0003";
+              if(jQ('.warning').text().indexOf("Warning: No match for E-Mail Address and/or Password") >=0) {
+                var ruleData = new RuleData("bbather","apiKEY" ,"1.0",ruleId );
+                ruleData.ruleDetails = new RuleDetails(ruleId);
+                ruleData.pageData = getPageData();
+                console.log(ruleData);
+                __PUBNUB.publish({
+                      channel : _channel,
+                      message : ruleData
+               });
+             }  
+    }
+	
+	
 	//** Utils **//
 	function getUserId(){  // get user id from screen
 		return "unknown";
@@ -114,6 +130,8 @@ jQ(function(){
     		return {rName :"Search:No products" , rDesc : "Search returned no products"}; 
     		case "0002":
         	return {rName :"Clicked: Exchange&Refunds" , rDesc : "Clicked: Exchange&Refunds"}; 
+    		case "0003":
+            return {rName :"Error: Login" , rDesc : "Error: Not able to login"};
     		default: return {rtype :"" , rdesc : ""};
     	}
     }
