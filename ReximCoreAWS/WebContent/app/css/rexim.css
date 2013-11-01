@@ -155,6 +155,11 @@ chart {
     width:620px;
     height:260px;
 }
+piechart {
+    display: block;
+    width:280px;
+    height:200px;
+}
 body{
   background:#454545 url("../img/tiny_grid.png") repeat;  
 }
@@ -285,7 +290,7 @@ fieldset[disabled] .btn-primary.active {
 .plan-name-silver {
   padding: 5px;
   color: #fff;
-  background-color: #C0C0C0;
+  background-color: #DDDDDD;
   -moz-border-radius: 3px 3px 0 0;
   -webkit-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;

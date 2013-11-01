@@ -7,9 +7,7 @@
 		 <div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
-          <a href="#/actiontable" class=""><h2> Active Users <span class="badge"><h3>{{activeUsers}}</h3></span></h2></a>
-
- 
+          <a href="#/actiontable" class=""><h3> Active Users <button type="button" class="btn btn-md btn-primary">{{activeUsers}}</button></h3></a>
 
           </div>
           </div>
@@ -22,7 +20,7 @@
  		 <div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
-		 	<h4>All Users <span class="badge"><h4>{{allUsers}}</h4></span></h4>
+		 	<h3>All Users <button type="button" class="btn btn-sm btn-primary">{{allUsers}}</button></h3>
 
           </div>
           </div>
@@ -31,26 +29,27 @@
 
  	
  	</div>
-	
-  			
- 		
 
-	</div><!--nav col-sm-4 col-xs-12 -->
+	</div><!--end col-sm-4 -->
 
-		<div class="col-sm-4 col-xs-12">			
-			<!-- <h4><center><strong>Alerts</strong></center></h4> -->
-	
-		</div><!--end col-sm-4 -->
+	<div class="col-sm-1">
+	</div>
+	<div class="col-sm-9 col-xs-12">
 
-	<div class="col-sm-5 col-xs-12">
-			    <div class="widget">
-                <div class="widget-head">
-                  <div class="pull-center"><span class="glyphicon glyphicon-user"></span> User Types</div>
-
-                </div>  
-
-                <div class="widget-content">			  
-				  <div class="table-responsive">
+              	  
+               
+             <div class="alert alert-info">  
+				<strong><span class="glyphicon glyphicon-user"></span> User Type</strong>	
+				<div class="row">  
+				<div class="col-sm-4">
+                <piechart ng-model="pieChartUserType"></piechart>
+                </div>	
+                
+                <div class="col-sm-4">
+                </div>	
+                
+                <div class="col-sm-7">
+                <div class="table-responsive">
 				    <table class="table table-bordered table-hover">				   
 				                    <tr>
 				                    <th class="text-center">Type</th>
@@ -63,7 +62,7 @@
 				                    <td class="text-center"><h5>Dekstop <span class="badge"><strong>{{deskTop}}</strong></span></h5></td>
 				                     <td class="text-center"><img src="img/icons/desktop.png" alt="" ></td>
 				                     <td class="text-left">Windows/Mac/Linux</td>
-				                     <td>{{deskTop}}</td>
+				                     <td><button type="button" class="btn btn-sm btn-primary">{{deskTop}}</button></td>
 				                    </tr>
 
 				                    <td rowspan="5" class="text-center"><h5>Handheld <span class="badge"><strong>{{androidDevice+iOSDevice+winDevice}}</strong></span>
@@ -73,41 +72,29 @@
 				                    <tr>
 				                      <td class="text-center"><img src="img/icons/android.png" alt="" />
 				                      <td class="text-left">Android</td>
-				                      <td>{{androidDevice}}</td>
+				                      <td><button type="button" class="btn btn-sm btn-primary">{{androidDevice}}</button></td>
 				                    </tr> 
 
 				                    <tr>
 				                      <td class="text-center"><img src="img/icons/ios.png" alt="" />
 				                      <td class="text-left">Apple iOS</td>
-				                      <td>{{iOSDevice}}</td>
+				                      <td><button type="button" class="btn btn-sm btn-primary">{{iOSDevice}}</button></td>
 				                    </tr>  
 
 				                     <tr>                                                                                     
 				                      <td class="text-center"><img src="img/icons/metro.png" alt="" />
 				                      <td class="text-left">Windows Mobile</td>
-				                      <td>{{winDevice}}</td>
+				                      <td><button type="button" class="btn btn-sm btn-primary">{{winDevice}}</button></td>
 				                    </tr>   
 
 				    </table>
+				  
 				</div><!-- end table responsive-->
-
-		</div><!-- end widget head-->
-
-	</div><!--end col-sm-4 -->
-
-				<!-- <ul class="list-group" >
-				  <li  ng-repeat="ruleDetailsName in ruleDetailsName" >				    
-				    <a href="#" class="list-group-item" >{{ruleDetailsName.displayName}}
-				    	<span class="badge"><strong>{{ruleDetailsName.ruleCount}}</strong></span>
-				    </a>
-				  </li>
-				</ul> -->
-				<!-- <div class="list-group" ng-repeat="ruleDetailsName in ruleDetailsName">
-	  				<a href="#" class="list-group-item">{{ruleDetailsName.displayName}}<span class="badge"><strong>12</strong></span></a>	  				
-				</div> -->
-
-	</div><!--end row-->
-
+		</div>
+	</div>
+	 
+</div>
+</div>
 		
 
 </div><!--end row-->
@@ -157,7 +144,4 @@
 					<chart ng-model='chartData'></chart>
 		 		</div> 
 		  </div> 
-		<!-- <chart1 graphdata="graphData" graphheight="graphHeight" graphopts="graphOpts"></chart1> -->
-	</div>
-
 </div><!--enc controller -->
