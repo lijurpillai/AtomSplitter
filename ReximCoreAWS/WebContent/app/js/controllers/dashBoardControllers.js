@@ -1,7 +1,14 @@
 angular.module('myApp.dashBoardControllers', []).
  controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager','Constants','SessionManager','RuleData','AuthService'
                             ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData,AuthService){	 
+	 //** Chart trail **//
 	 
+	 /*var daftPoints = [[1, 201], [2, 2543], [3, 1520], [4, 2354]];	    
+	 var data1 = [{data: daftPoints }];   */   
+	          
+	 
+	 
+	 //** Ends**//
 	 var channelName = getChannelName();	 
 	 console.log("Channel ----> " + channelName);
 	 function getChannelName(){
@@ -20,6 +27,14 @@ angular.module('myApp.dashBoardControllers', []).
 	       $scope.deskTop = AnalyticsData.getTotalDevice(Constants.DESKTOP);
 	       $scope.newUsers = AnalyticsData.getNewUsers();			
 	       $scope.returnUsers = AnalyticsData.getReturnUsers();	
+	       
+	       var pageCount = AnalyticsData.getPageCounts();
+	  	   //var pageCountData = [{data: pageCount,xaxis: {ticks: AnalyticsData.getPageCountConfigs()} }];
+	  	   var pageCountData =  [
+	  	                       { label: "Total Page Count", data: pageCount,color: "#5482FF"}
+	  	                     ];
+	  	 
+	  	   $scope.chartData = pageCountData;
 	                     
 	   });
 	 
@@ -51,6 +66,9 @@ angular.module('myApp.dashBoardControllers', []).
 	        	else{
 	        		AnalyticsData.setMasterAnalyticsData(data);
 	        		AnalyticsData.setAnalyticsData(data);
+	        		//** set page count **//
+	        		AnalyticsData.setPageCount(data);
+	        		//** ENDS set page count **//
 		        	console.log(AnalyticsData.getAnalyticsData());
 	        	}
 			 },

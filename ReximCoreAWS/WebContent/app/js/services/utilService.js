@@ -95,6 +95,12 @@ utilService.factory('SessionManager',['$log','Constants','RuleData','AnalyticsDa
 }]);
 
 utilService.factory('UtilService',['$log','Constants',function($log,Constants){
+	//** Page config for chart display**//
+	var pageCountConfig = [[1,"Index"], 
+	                       [2, "Home"], 
+	                       [3, "Autumn"], 
+	                       [4, "Other"]];
+	//** Ends **//
 return{
 	getDeviceImgUrl :function(device){
 		switch (device) {
@@ -114,7 +120,9 @@ return{
 			return Constants.URL_WIN;
 			break;
 		}
-	}	
+	},
+	getPageCountConfig :function(){return pageCountConfig;
+						}
 };
 	
 }]);

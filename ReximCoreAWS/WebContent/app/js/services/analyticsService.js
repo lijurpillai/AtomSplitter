@@ -50,6 +50,10 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	var analyticsData = [];	
 	var masterAnalyticsData = [];
 	var ruleData = [];
+	//** page count graph display name **//
+	var pageCounts = [];
+	var pageCountConfigs = [];
+	//** ends **//
 	function getDeviceImgUrl(device){
 		switch (device) {
 		case "Desktop":
@@ -122,7 +126,7 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 			else{
 				masterAnalyticsData.push(tempData);
 			}
-			//masterAnalyticsData.push(data);
+			
 		},
 		// Only unique data exists.
 			// when user data return for same tracking id it is removed.
@@ -175,6 +179,43 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	    },
 	    resetAnalyticsData:function(){	    	
 	    	analyticsData.length = 0;
+	    },
+	    setPageCount:function(data){
+	    	var newPage = true;
+	    	var path = data.pageData.pathname.split("/")[1];
+	    	console.log("Path Name >> " + path);
+	    	// ** set page count config **//
+	    	if(pageCountConfigs){
+	    		for ( var i = 0; i < pageCountConfigs.length; i++) {
+	    			var pageCountConfig = pageCountConfigs[i];
+	    			var pageCount = pageCounts[i];
+	    			if(path == ""){
+	    				path = "Home";
+	    			}
+					if(pageCountConfig[1] == path){
+						console.log("do nothing");
+						pageCount[1]++;						
+						newPage = false;
+					}					
+				}
+	    		if(newPage){
+	    			var tempDataPageConfig = [pageCountConfigs.length , path];
+	    			var tempDataPageCount = [pageCountConfigs.length,1];
+	    			pageCountConfigs.push(tempDataPageConfig);	    			
+	    			pageCounts.push(tempDataPageCount);
+	    		}
+	    		console.log("PAGE CIOUNT CONGI");
+	    		console.log(pageCountConfigs);
+	    		console.log(pageCounts);
+	    	}
+	    	//** set page count config ENDS **//	    	
+	    	
+	    },
+	    getPageCountConfigs : function(){
+	    	return pageCountConfigs;
+	    },
+	    getPageCounts : function(){
+	    	return pageCounts;
 	    }
       };
 }]);

@@ -151,3 +151,8 @@ a.list-group-item:focus {
   background-color: #12A5F4;
   color: #FFFFFF;
 }
+chart {
+    display: block;
+    width:500px;
+    height:300px;
+}
