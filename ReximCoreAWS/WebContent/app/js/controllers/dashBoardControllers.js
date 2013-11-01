@@ -3,9 +3,11 @@ angular.module('myApp.dashBoardControllers', []).
                             ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData,AuthService){	 
 	 //** Chart trail **//
 	 
-	 /*var daftPoints = [[1, 201], [2, 2543], [3, 1520], [4, 2354]];	    
-	 var data1 = [{data: daftPoints }];   */   
-	          
+	 $scope.pieChartUserType =
+		 [
+		     { label: "New User",  data: 10},
+		     { label: "Return User",  data: 30}		     
+		 ];	          
 	 
 	 
 	 //** Ends**//
@@ -29,12 +31,16 @@ angular.module('myApp.dashBoardControllers', []).
 	       $scope.returnUsers = AnalyticsData.getReturnUsers();	
 	       
 	       var pageCount = AnalyticsData.getPageCounts();
-	  	   //var pageCountData = [{data: pageCount,xaxis: {ticks: AnalyticsData.getPageCountConfigs()} }];
-	  	   var pageCountData =  [
-	  	                       { label: "Total Page Count", data: pageCount,color: "#5482FF"}
-	  	                     ];
-	  	 
+	  	   //** Bar chart data for page count ** //
+	  	   var pageCountData =  [{ label: "Total Page Count", data: pageCount,color: "#5482FF"}];	  	 
 	  	   $scope.chartData = pageCountData;
+	  	   //** Bar chart ends **//
+	  	   //** Pie Chart data for user type **//
+	  	/* $scope.pieChartUserType = [
+	  	                            { label: "New User",  data: AnalyticsData.getNewUsers()},
+	  	                            { label: "Return User",  data: AnalyticsData.getReturnUsers()}
+	  	                            ];*/
+	  	   //** Pie Chart ends **//
 	                     
 	   });
 	 

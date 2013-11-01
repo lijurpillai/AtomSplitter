@@ -12,26 +12,19 @@
   			<a href="#/actiontable" type="button" class="btn btn-md btn-info"><strong><span class="glyphicon glyphicon-fire"></span> Active Users <span class="badge">{{activeUsers}}</strong></span></a>
  		</div>
 
-	</div><!--nav col-sm-4 col-xs-12 -->
-
-		<div class="col-sm-3 col-xs-12">			
-			<!-- <h4><center><strong>Alerts</strong></center></h4> -->
-
-
-				
+	</div><!--nav col-sm-4 col-xs-12 -->		
+		<div class="col-sm-3 col-xs-12">				
 					<div class="btn-group">
  					 <button type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-arrow-down"></span> New Users <span class="badge"><strong>{{newUsers}}</strong></span></button>
-  					<button type="button" class="btn btn-sm btn-info"><span class="badge"><strong>{{returnUsers}}</strong></span> Return Users <span class="glyphicon glyphicon-repeat"></span></button>
-					</div>		
+  					 <button type="button" class="btn btn-sm btn-info"><span class="badge"><strong>{{returnUsers}}</strong></span> Return Users <span class="glyphicon glyphicon-repeat"></span></button>  					 
+					</div>						
 		</div><!--end col-sm-4 -->
 
 	<div class="col-sm-5 col-xs-12">
 			    <div class="widget">
                 <div class="widget-head">
                   <div class="pull-center"><span class="glyphicon glyphicon-user"></span> User Types</div>
-
-                </div>  
-
+                </div>
                 <div class="widget-content">			  
 				  <div class="table-responsive">
 				    <table class="table table-bordered table-hover">				   
@@ -73,23 +66,9 @@
 
 				    </table>
 				</div><!-- end table responsive-->
-
 		</div><!-- end widget head-->
-
-	</div><!--end col-sm-4 -->
-
-				<!-- <ul class="list-group" >
-				  <li  ng-repeat="ruleDetailsName in ruleDetailsName" >				    
-				    <a href="#" class="list-group-item" >{{ruleDetailsName.displayName}}
-				    	<span class="badge"><strong>{{ruleDetailsName.ruleCount}}</strong></span>
-				    </a>
-				  </li>
-				</ul> -->
-				<!-- <div class="list-group" ng-repeat="ruleDetailsName in ruleDetailsName">
-	  				<a href="#" class="list-group-item">{{ruleDetailsName.displayName}}<span class="badge"><strong>12</strong></span></a>	  				
-				</div> -->
-
-	</div><!--end row-->
+	</div>
+ </div>
 
 		
 
@@ -131,7 +110,8 @@
 	</div> <!-- end col-md-6 col-md-12-->
 
 	<div class=" col-md-6 col-xs-12 hidden-xs">
-		<chart ng-model='chartData'></chart>
+		<piechart ng-model="pieChartUserType"></piechart>
+		<chart ng-model='chartData'></chart>			
 		<!-- <chart1 graphdata="graphData" graphheight="graphHeight" graphopts="graphOpts"></chart1> -->
 	</div>
 
