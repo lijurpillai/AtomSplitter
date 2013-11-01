@@ -10,6 +10,7 @@
     padding: 3px;
     height: 30px;
     cursor: pointer;
+    background-color: #DDDDDD;
 }
 
 .ui-chatbox-content {
@@ -59,4 +60,12 @@
     white-space: -pre-wrap;     /* Opera <7 */
     white-space: -o-pre-wrap;   /* Opera 7 */
     word-wrap: break-word;      /* IE */
+}
+.ui-widget-header {
+	background:  #CCCCCC;
+	border-color: #CCCCCC;
+	font-weight:none;
+}
+.ui-widget-content {
+border: 1px solid #CCCCCC;
 }

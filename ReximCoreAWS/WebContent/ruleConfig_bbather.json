@@ -1,3 +1,5 @@
-[	{"ruleLen":1},
-		{"ruleId":"0001","ruleName":"NoProducts","displayName":"Search:No products","chat":"true","push":"true"},
+[{"ruleLen":3},
+		{"ruleId":"0001","ruleName":"Search:No products","displayName":"Search returned no products","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"Clicked: Exchange&Refunds","displayName":"Clicked: Exchange&Refunds","chat":"true","push":"true"},
+		{"ruleId":"0003","ruleName":"Error: Login","displayName":"Error: Not able to login","chat":"true","push":"true"},
 ]

@@ -13,10 +13,10 @@
     height: 20px;
     cursor: pointer;
     font-family:'Pasarela';
-    colour:#FFFFFF;
     background:#000000;
     font-size:18px;
     font-weight:bold;
+    color:#FFFFFF;
 }
 
 .ui-chatbox-content {
@@ -39,6 +39,7 @@
     padding: 3px;
     border-top: 1px solid grey;
     overflow: hidden;
+    background: #FFFFFF;
     font-family:'DINPro_Regular';
     font-size:14px;
 }
@@ -48,6 +49,8 @@
     border: 2px solid lightgrey;/* #6699FF */
     padding: 2px;
     height: 50px;
+    font-family:'DINPro_Regular' !important;
+    font-size:14px !important;
 }
 
 .ui-chatbox-icon {
@@ -78,7 +81,32 @@
     padding: 2px;    */ 
     z-index: 99999 !important;
 }
-.ui-state-focus{
-    color:#FFFFFF;
-    font-weight:bold;
+.dialog_style .ui-widget-header{
+	font-family:'Pasarela';
+    colour:#FFFFFF;
+    background:#000000;
+    font-size:18px;
+	border:1px solid #000000;
 }
+.dialog_style .ui-dialog-content{
+	font-family:'DINPro_Regular';
+    colour:#000000;
+    background:#FFFFFF;
+    font-size:14px;
+	}
+	.dialog_style .ui-widget .ui-state-default{
+	background:#FFFFFF;
+	border:1px solid #000000;
+	colour:#000000;
+	}
+	.dialog_style .ui-dialog-buttonpane{
+	background:#FFFFFF;
+	}
+	.dialog_style .ui-button-text-only .ui-state-default{
+	font-family:'Pasarela';
+    colour:#000000;
+    font-size:16px;
+	}
+	.dialog_style .ui-button .ui-state-hover{
+	font-weight:bold;
+	}

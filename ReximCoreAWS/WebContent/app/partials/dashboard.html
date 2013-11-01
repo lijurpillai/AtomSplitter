@@ -1,75 +1,83 @@
 <div class="container" ng-controller="PresenceCtrl">
 <div class="row">
 	
-	<div class="container">	
+
 	<div class="col-sm-4 col-xs-12">	
-		<div class="col-sm-6 col-xs-6">			
-			<!--nav pills starts -->
-	
-				<ul class="nav nav-pills nav-justified">
-					<li class="active"><a href="#/dashboard">
-					<h4>There are</h4>
-					<span class="badge">
-					 <h2><b>{{allUsers}}</b></h2>
-					</span> 
-					<span class="badge pull-right"></span>
-							<h4>users</h4> </a>
-					</li>
-				</ul>
-				<!--nav pills ends -->
-		
-		</div>	<!--nav col-sm-6 col-xs-6 -->	
-		<div class="col-sm-6 col-xs-6">
-			<!--nav pills starts -->
-			
-				<ul class="nav nav-pills nav-justified">
-					<li class="active"><a href="#/actiontable">
-						<h4>There are</h4>
-						<span class="badge"><h2><b>{{activeUsers}}</b></h2></span> <span class="badge pull-right"></span>
-						<h4><strong>active</strong> users</h4> </a></li>
-					</ul>
-				<!--nav pills ends -->
-				
-		</div><!--nav col-sm-6 col-xs-6 -->
+		<div class="col-xs-5">
+ 			<a href="#/dashboard"  type="button" class="btn btn-md btn-info"><span class="glyphicon glyphicon-globe"></span> All Users <span class="badge"><strong>{{allUsers}}</strong></span></a>
+ 		</div>
+ 		<div class="col-xs-1">
+ 		</div>
+ 		<div class="col-xs-6">		
+  			<a href="#/actiontable" type="button" class="btn btn-md btn-info"><strong><span class="glyphicon glyphicon-fire"></span> Active Users <span class="badge">{{activeUsers}}</strong></span></a>
+ 		</div>
 
 	</div><!--nav col-sm-4 col-xs-12 -->
 
-		<div class="col-sm-8">			
+		<div class="col-sm-3 col-xs-12">			
 			<!-- <h4><center><strong>Alerts</strong></center></h4> -->
-			<div class="row">
-				<div class="col-sm-5">
+
+
 				
 					<div class="btn-group">
- 					 <button type="button" class="btn btn-success">New Users <span class="badge"><strong>{{newUsers}}</strong></span></button>
-  					<button type="button" class="btn btn-primary">Return Users <span class="badge"><strong>{{returnUsers}}</strong></span></button>
+ 					 <button type="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-arrow-down"></span> New Users <span class="badge"><strong>{{newUsers}}</strong></span></button>
+  					<button type="button" class="btn btn-sm btn-info"><span class="badge"><strong>{{returnUsers}}</strong></span> Return Users <span class="glyphicon glyphicon-repeat"></span></button>
+					</div>		
+		</div><!--end col-sm-4 -->
 
-					</div>
-					
-					<h1></h1>
-					<div class="container">
-					 <button type="button" class="btn btn-lg">Active Rule Actions <span class="badge"><strong>{{totalRules}}</strong></span></button>
-					
-					</div>
-			</div><!--end col-sm-5 -->
+	<div class="col-sm-5 col-xs-12">
+			    <div class="widget">
+                <div class="widget-head">
+                  <div class="pull-center"><span class="glyphicon glyphicon-user"></span> User Types</div>
 
-			<div class="col-sm-7" >
-			<div class="alert alert-info">
-				<table class="table table-bordered table-hover">
-  					<thead>
-  						<tr>
-  							<th>Rule Name</th>
-  							<th>Rule Id</th>
-  							<th>Rule Count</th>
-  						</tr>  						
-  					</thead>
-  					<tbody ng-repeat="ruleDetails in ruleDetailsName" >
-  						<tr>
-  							<td>{{ruleDetails.displayName}}</td>
-  							<td>{{ruleDetails.ruleId}}</td>  
-  							<td><button ng-click = "goToRuleTable(ruleDetails.ruleId)" type="button" class="btn btn-sm btn-success">{{ruleDetails.ruleCount}}</button></td>
-  						</tr>
-  					</tbody>
-				</table>
+                </div>  
+
+                <div class="widget-content">			  
+				  <div class="table-responsive">
+				    <table class="table table-bordered table-hover">				   
+				                    <tr>
+				                    <th class="text-center">Type</th>
+				                      <th class="text-center">Device</th>
+				                      <th class="text-left">Operating System</th>
+				                      <th class="text-center">Visits</th>
+				                    </tr>
+
+				                    <tr>
+				                    <td class="text-center"><h5>Dekstop <span class="badge"><strong>{{deskTop}}</strong></span></h5></td>
+				                     <td class="text-center"><img src="img/icons/desktop.png" alt="" ></td>
+				                     <td class="text-left">Windows/Mac/Linux</td>
+				                     <td>{{deskTop}}</td>
+				                    </tr>
+
+				                    <td rowspan="5" class="text-center"><h5>Handheld <span class="badge"><strong>{{androidDevice+iOSDevice+winDevice}}</strong></span>
+				                    </h5>
+				                    </td>
+				
+				                    <tr>
+				                      <td class="text-center"><img src="img/icons/android.png" alt="" />
+				                      <td class="text-left">Android</td>
+				                      <td>{{androidDevice}}</td>
+				                    </tr> 
+
+				                    <tr>
+				                      <td class="text-center"><img src="img/icons/ios.png" alt="" />
+				                      <td class="text-left">Apple iOS</td>
+				                      <td>{{iOSDevice}}</td>
+				                    </tr>  
+
+				                     <tr>                                                                                     
+				                      <td class="text-center"><img src="img/icons/metro.png" alt="" />
+				                      <td class="text-left">Windows Mobile</td>
+				                      <td>{{winDevice}}</td>
+				                    </tr>   
+
+				    </table>
+				</div><!-- end table responsive-->
+
+		</div><!-- end widget head-->
+
+	</div><!--end col-sm-4 -->
+
 				<!-- <ul class="list-group" >
 				  <li  ng-repeat="ruleDetailsName in ruleDetailsName" >				    
 				    <a href="#" class="list-group-item" >{{ruleDetailsName.displayName}}
@@ -80,68 +88,51 @@
 				<!-- <div class="list-group" ng-repeat="ruleDetailsName in ruleDetailsName">
 	  				<a href="#" class="list-group-item">{{ruleDetailsName.displayName}}<span class="badge"><strong>12</strong></span></a>	  				
 				</div> -->
-			</div>
-</div><!--end alert-->
-			</div><!--end row-->
-		</div> <!--end col-sm-8 -->
+
+	</div><!--end row-->
+
 		
-</div><!--end container -->
+
 </div><!--end row-->
 
 
-			<br>
-		<div class=" col-md-6 col-xs-12">
-			<!-- <chart ng-model="data"></chart> -->
-			<div >
-				  <div class="alert alert-info">
-				  <h4><center><strong>User Type</strong></center></h4>				  
-				  <div class="table-responsive">
-				    <table class="table table-bordered table-hover">				   
-				                    <tr>
-				                    <th>Type</th>
-				                      <th>Device</th>
-				                      <th>Operating System</th>
-				                      <th>Visits</th>
-				                    </tr>
+	<div class=" col-sm-5 col-xs-12">
 
-				                    <tr>
-				                    <td><h4>Dekstop <span class="badge"><strong>{{deskTop}}</strong></span></h4></td>
-				                     <td><img src="img/icons/desktop.png" alt="" ></td>
-				                     <td>Windows/Mac/Linux</td>
-				                     <td>{{deskTop}}</td>
-				                    </tr>
-
-				                    <td rowspan="5"><h4>Handheld <span class="badge"><strong>{{androidDevice+iOSDevice+winDevice}}</strong></span>
-				                    </h4>
-				                    </td>
-				
-				                    <tr>
-				                      <td><img src="img/icons/android.png" alt="" />
-				                      <td>Android</td>
-				                      <td>{{androidDevice}}</td>
-				                    </tr> 
-
-				                    <tr>
-				                      <td><img src="img/icons/ios.png" alt="" />
-				                      <td>Apple iOS</td>
-				                      <td>{{iOSDevice}}</td>
-				                    </tr>  
-
-				                     <tr>                                                                                     
-				                      <td><img src="img/icons/metro.png" alt="" />
-				                      <td>Windows Mobile</td>
-				                      <td>{{winDevice}}</td>
-				                    </tr>   
-
-				    </table>
-				</div><!-- end table responsive-->
-			</div><!-- end alert info-->
-
+		<div class="widget">
+		<div class="widget-head">
+                  <div class="pull-center">
+                  		<div class="container">
+                  		<strong><span class="glyphicon glyphicon-list"></span> Rules</strong> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+			<a href="#/ruleactiontable" type="button" class="btn btn-sm btn-info">Total Count <span class="badge"><strong>{{totalRules}}</strong></span></a>
 		</div>
+                  </div>
+
+                </div>  
+
+             <div class="widget-content">	
+			<table class="table table-bordered table-hover">
+  					<thead>
+  						<tr>
+  							<th>Name</th>
+  							<th>Id</th>
+  							<th>Count</th>
+  						</tr>  						
+  					</thead>
+  					<tbody ng-repeat="ruleDetails in ruleDetailsName" >
+  						<tr>
+  							<td>{{ruleDetails.displayName}}</td>
+  							<td>{{ruleDetails.ruleId}}</td>  
+  							<td><button ng-click = "goToRuleTable(ruleDetails.ruleId)" type="button" class="btn btn-sm btn-primary">{{ruleDetails.ruleCount}}</button></td>
+  						</tr>
+  					</tbody>
+				</table>
+			</div>
+			 </div>
 	</div> <!-- end col-md-6 col-md-12-->
 
 	<div class=" col-md-6 col-xs-12 hidden-xs">
 		<chart ng-model='chartData'></chart>
-		<!-- <chart1 graphdata="graphData" graphheight="graphHeight" graphopts="graphOpts"></chart1> -->		
+		<!-- <chart1 graphdata="graphData" graphheight="graphHeight" graphopts="graphOpts"></chart1> -->
 	</div>
+
 </div><!--enc controller -->
