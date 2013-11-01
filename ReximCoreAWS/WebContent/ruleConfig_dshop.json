@@ -1,4 +1,7 @@
-[	{"ruleLen":2},
+[	{"ruleLen":5},
 		{"ruleId":"0001","ruleName":"ClickedBuy","displayName":"Clicked: Buy now","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"ClickedCheckout","displayName":"Clicked:Checkout","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"ClickedCheckout","displayName":"Clicked:Checkout","chat":"true","push":"true"},
+		{"ruleId":"0002","ruleName":"ClickedCheckout","displayName":"Clicked:Checkout","chat":"true","push":"true"},
 		{"ruleId":"0002","ruleName":"ClickedCheckout","displayName":"Clicked:Checkout","chat":"true","push":"true"},
 ]

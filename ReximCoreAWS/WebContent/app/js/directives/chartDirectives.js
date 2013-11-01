@@ -24,7 +24,7 @@ chartDirective.directive('chart', function(AnalyticsData){
 			            	        }
 			            	    },
 			            	    xaxis: {
-			            	    	axisLabel: "Page Count",
+			            	    	axisLabel:"",
 			            	        axisLabelUseCanvas: false,
 			            	        axisLabelFontSizePixels: 10,
 			            	        axisLabelFontFamily: 'Verdana, Arial',
