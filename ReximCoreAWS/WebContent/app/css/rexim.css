@@ -152,8 +152,8 @@ a.list-group-item:focus {
 
 chart {
     display: block;
-    width:500px;
-    height:300px;
+    width:620px;
+    height:260px;
 }
 body{
   background:#454545 url("../img/tiny_grid.png") repeat;  
@@ -237,4 +237,57 @@ fieldset[disabled] .btn-primary.active {
   background-color: #D2E2F0;
 }
 
-
+.pricing-table .plan {
+  border-radius: 3px;
+  text-align: center;
+  background-color: #f3f3f3;
+  -moz-box-shadow: 0 0 6px 2px #b0b2ab;
+  -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
+  box-shadow: 0 0 6px 2px #b0b2ab;
+}
+ 
+ .plan:hover {
+  background-color: #fff;
+  -moz-box-shadow: 0 0 12px 3px #b0b2ab;
+  -webkit-box-shadow: 0 0 12px 3px #b0b2ab;
+  box-shadow: 0 0 12px 3px #b0b2ab;
+}
+ 
+ .plan {
+  padding: 8px;
+  color: #ff;
+  background-color: #5e5f59;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+.pricing-table .plan .plan-name span {
+  font-size: 20px;
+}
+ 
+.pricing-table .plan ul {
+  list-style: none;
+  margin: 0;
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+ 
+.pricing-table .plan ul li.plan-feature {
+  padding: 5px 5px;
+  border-top: 1px solid #c5c8c0;
+}
+ 
+.pricing-three-column {
+  margin: 0 auto;
+  width: 90%;
+}
+.plan-name-silver {
+  padding: 5px;
+  color: #fff;
+  background-color: #C0C0C0;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  font-weight:bold;
+ }

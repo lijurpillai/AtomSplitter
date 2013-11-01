@@ -17,17 +17,22 @@ angular.module('myApp.chartDirectives', []).directive('chart', function(Analytic
 		            	        bars: {
 		            	            show: true,
 		            	            align: "center",
-		            	            barWidth: 0.5
+		            	            barWidth: 0.7
 		            	        }
 		            	    },
 		            	    xaxis: {
-		            	    	axisLabel: "Page Count",
-		            	        axisLabelUseCanvas: true,
-		            	        axisLabelFontSizePixels: 12,
+		            	    	axisLabel: "Pages",
+		            	        axisLabelUseCanvas: false,
+		            	        axisLabelFontSizePixels: 9,
 		            	        axisLabelFontFamily: 'Verdana, Arial',
-		            	        axisLabelPadding: 10,
-		            	        ticks: ticks				            	        
-		            	    }				            		
+		            	        axisLabelPadding: 3,
+		            	        ticks: ticks			            	        
+		            	    },	
+		            	    grid: {
+		                        hoverable: true,
+		                        borderWidth: 0,
+		                        backgroundColor: { colors: ["#ffffff", "#EDF5FF"] }
+		                       }
 		            };
 		              
             	 chart = $.plot(elem, chartData , options);                 
