@@ -4,7 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters',
                          'myApp.authServices','myApp.pubNubServices','myApp.utilServices','myApp.commServices','myApp.analyticsServices','myApp.ruleServices',
-                         'myApp.authDirectives',
+                         'myApp.authDirectives','myApp.chartDirectives',
                          'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers','myApp.actionTableCtrl','myApp.ruleActionTableCtrl',
                          'ngResource']).
   config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {

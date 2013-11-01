@@ -182,16 +182,17 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	    },
 	    setPageCount:function(data){
 	    	var newPage = true;
-	    	var path = data.pageData.pathname.split("/")[1];
+	    	var pageName = data.pageData.pathname.split("/")[1];
+	    	var path = pageName.split(".")[0];
 	    	console.log("Path Name >> " + path);
+	    	if(path == ""){
+				path = "Home";
+			}
 	    	// ** set page count config **//
 	    	if(pageCountConfigs){
 	    		for ( var i = 0; i < pageCountConfigs.length; i++) {
 	    			var pageCountConfig = pageCountConfigs[i];
-	    			var pageCount = pageCounts[i];
-	    			if(path == ""){
-	    				path = "Home";
-	    			}
+	    			var pageCount = pageCounts[i];	    			
 					if(pageCountConfig[1] == path){
 						console.log("do nothing");
 						pageCount[1]++;						
