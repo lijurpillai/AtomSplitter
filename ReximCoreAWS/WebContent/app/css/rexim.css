@@ -76,7 +76,7 @@ Copyright: 2013 Perfomatix Solutions Private Limited
   color: #666;
   font-size: 13px;
   font-weight: bold;
-    padding: 5px 9px;
+  padding: 5px 9px;
 }
 
 /* Chart */
@@ -88,15 +88,13 @@ Copyright: 2013 Perfomatix Solutions Private Limited
 
 #pie-chart,#pie-chart2,#pie-chart3{
   max-width: 300px;
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .sidebar-dropdown
 {
   background text-align: #FFFFFF;  
 }
-
-
 
 .demo-container {
   box-sizing: border-box;
@@ -151,3 +149,85 @@ a.list-group-item:focus {
   background-color: #12A5F4;
   color: #FFFFFF;
 }
+body{
+  background:#454545 url("../img/tiny_grid.png") repeat;  
+}
+
+.navbar-inverse {
+
+  background-color: #AEAEAE;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#AEAEAE));
+  background: -webkit-linear-gradient(top, #f8f8f8, #AEAEAE);
+  background: -moz-linear-gradient(top, #f8f8f8, #AEAEAE);
+  background: -ms-linear-gradient(top, #f8f8f8, #AEAEAE);
+  background: -o-linear-gradient(top, #f8f8f8, #AEAEAE);
+  background: linear-gradient(top, #f8f8f8, #AEAEAE); 
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #000000;
+
+}
+.navbar-inverse .navbar-brand {
+    color: #000000;
+}
+.navbar-inverse .navbar-text {
+    color: #000000;
+}
+.navbar-inverse .navbar-link {
+    color: #000000;
+}
+.btn-info{
+    background-color: #DDDDDD;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#DDDDDD));
+  background: -webkit-linear-gradient(top, #f8f8f8, #DDDDDD);
+  background: -moz-linear-gradient(top, #f8f8f8, #DDDDDD);
+  background: -ms-linear-gradient(top, #f8f8f8, #DDDDDD);
+  background: -o-linear-gradient(top, #f8f8f8, #DDDDDD);
+  background: linear-gradient(top, #f8f8f8, #DDDDDD); 
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #000000;
+  color: #000000;
+}
+.table tfoot > tr > th,.table tbody > tr > td, .table tfoot > tr > td {
+    padding: 2px;
+
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #000000;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #1E476A;
+}
+
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #B3D1EA;
+  border-color: #357ebd;
+}
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: #D2E2F0;
+}
+
