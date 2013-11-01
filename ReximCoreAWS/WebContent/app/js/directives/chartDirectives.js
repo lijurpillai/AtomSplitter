@@ -24,6 +24,7 @@ chartDirective.directive('chart', function(AnalyticsData){
 			            	        }
 			            	    },
 			            	    xaxis: {
+
 			            	    	axisLabel:"",
 			            	        axisLabelUseCanvas: false,
 			            	        axisLabelFontSizePixels: 10,
@@ -36,6 +37,7 @@ chartDirective.directive('chart', function(AnalyticsData){
 			                        borderWidth: 0,
 			                        backgroundColor: { colors: ["#ffffff", "#EDF5FF"] }
 			                       }
+
 			            };			              
 	            	 chart = $.plot(elem, chartData , options);                 
 	            });
@@ -77,5 +79,3 @@ chartDirective.directive('piechart', function() {
     };
 });
 
-
-	

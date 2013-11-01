@@ -160,6 +160,11 @@ piechart {
     width:280px;
     height:200px;
 }
+piechart {
+    display: block;
+    width:300px;
+    height:200px;
+}
 body{
   background:#454545 url("../img/tiny_grid.png") repeat;  
 }

@@ -3,11 +3,13 @@ angular.module('myApp.dashBoardControllers', []).
                             ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData,AuthService){	 
 	 //** Chart trail **//
 	 
+
 	/* $scope.pieChartUserType =
 		 [
 		     { label: "New User",  data: 10},
 		     { label: "Return User",  data: 30}		     
 		 ];	*/          
+
 	 
 	 
 	 //** Ends**//
@@ -36,10 +38,12 @@ angular.module('myApp.dashBoardControllers', []).
 	  	   $scope.chartData = pageCountData;
 	  	   //** Bar chart ends **//
 	  	   //** Pie Chart data for user type **//
+
 	  	 $scope.pieChartUserType = [
 	  	                            { label: "New User",  data: AnalyticsData.getNewUsers()},
 	  	                            { label: "Return User",  data: AnalyticsData.getReturnUsers()}
 	  	                            ];
+
 	  	   //** Pie Chart ends **//
 	                     
 	   });
