@@ -8,67 +8,49 @@
         <div class="plan">
 		 <div class="plan-name-silver">
           <a href="#/actiontable" class=""><h4> Active Users  <button type="button" class="btn btn-md btn-primary">{{activeUsers}}</button></h4></a>
-
-          </div>
-          </div>
-
+         </div>
+        </div>
  	</div>		
  	</div>
- 
  	<br>
  	<div class="row">
  	
- 		 <div class="pricing-table pricing-three-column">
+ 		<div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
 		 	<h4>All Users  <button type="button" class="btn btn-sm btn-primary">{{allUsers}}</button></h4>
-
           </div>
-          </div>
-
- 	</div>
-<br>
+        </div>
+ 	  </div>
+    <br>
 	<div class="row">
  	 <div class="pricing-table pricing-three-column">
         <div class="plan">
-        <div class="alert alert-info">
-		Welcome &User.
-          </div>
- </div>
+        <div class="alert alert-info">Welcome &User.</div>
+        </div>
  	</div>
  	</div>
  	
  	</div>
 
 
-	</div><!--end col-sm-4 -->
+</div><!--end col-sm-3 -->
 
 	<div class="col-sm-1">
 	</div>
 	<div class="col-sm-9 col-xs-12">
 
-              	  
                
              <div class="alert alert-info">  
 				<strong><span class="glyphicon glyphicon-user"></span> User Type</strong>	
 				<div class="row">  
-				<div class="col-sm-4">
-                <piechart ng-model="pieChartUserType"></piechart>
-                </div>	
-                
-                <div class="col-sm-4">
-                </div>	
-                
-                <div class="col-sm-7">
-                <div class="table-responsive">
-
-	</div><!--nav col-sm-4 col-xs-12 -->		
-
-
-	<div class="col-sm-8 col-xs-12">
+					<div class="col-sm-4 hidden-xs">
+                	<piechart ng-model="pieChartUserType"></piechart>
+                	</div>	
+					<div class="col-sm-1"></div>	
+		<div class="col-sm-7 col-xs-12">
 		  
 				  <div class="table-responsive">
-
 				    <table class="table table-bordered table-hover">				   
 				                    <tr>
 				                    <th class="text-center">Type</th>
@@ -105,18 +87,16 @@
 				                      <td class="text-left">Windows Mobile</td>
 				                      <td><button type="button" class="btn btn-sm btn-primary">{{winDevice}}</button></td>
 				                    </tr>   
-
 				    </table>
 				  
 				</div><!-- end table responsive-->
 
-	 
-</div>
-</div>
+		</div> <!-- end col-sm-7 col-xs-12 -->
 
-		</div><!-- end widget head-->
-	</div>
- </div>
+
+		</div><!-- end row-->
+	</div><!-- end alert-->
+ </div><!-- end col col-sm-8 col-xs-12"-->
 
 
 
@@ -127,16 +107,15 @@
 
 		<div class="widget">
 		<div class="widget-head">
-                  <div class="pull-center">
-                  		<div class="container">
+        <div class="pull-center">
+        <div class="container">
                   		<strong><span class="glyphicon glyphicon-list"></span> Rules</strong> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 			<a href="#/ruleactiontable" type="button" class="btn btn-sm btn-info">Total Count <span class="badge"><strong>{{totalRules}}</strong></span></a>
 		</div>
-                  </div>
+        </div><!--end pull center -->
+        </div><!--end widget head -->  
 
-                </div>  
-
-             <div class="widget-content">	
+            <div class="widget-content">	
 			<table class="table table-bordered table-hover">
   					<thead>
   						<tr>
@@ -153,20 +132,19 @@
   						</tr>
   					</tbody>
 				</table>
-			</div>
-			 </div>
-	</div> <!-- end col-md-6 col-md-12-->
+			</div><!-- end widget content -->
+		</div><!-- end widget  -->
+	</div> <!-- end col-sm-5 col-xs-12-->
 
 
-	<div class=" col-md-7 col-xs-12 hidden-xs">
-			<div class="widget">
+<div class=" col-md-7 hidden-xs hidden-sm">
+		<div class="widget">
                 <div class="widget-head">
-                  <div class="pull-center"><span class="glyphicon glyphicon-signal"></span> Page Visits</div>
-                </div>  
-
+                <div class="pull-center"><span class="glyphicon glyphicon-signal"></span> Page Visits</div>
+                </div>  <!--enc widget head -->
 
                 <div class="widget-content">	
-					<chart ng-model='chartData'></chart>
-		 		</div> 
-		  </div> 
+				<chart ng-model='chartData'></chart>
+		 		</div> <!--widget content-->
+		 </div> <!--end widget -->
 </div><!--enc controller -->
