@@ -153,18 +153,14 @@ a.list-group-item:focus {
 chart {
     display: block;
     width:620px;
-    height:260px;
+    height:200px;
 }
 piechart {
     display: block;
     width:280px;
     height:200px;
 }
-piechart {
-    display: block;
-    width:300px;
-    height:200px;
-}
+
 body{
   background:#454545 url("../img/tiny_grid.png") repeat;  
 }
@@ -267,12 +263,12 @@ fieldset[disabled] .btn-primary.active {
   padding: 8px;
   color: #ff;
   background-color: #5e5f59;
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
 }
 .pricing-table .plan .plan-name span {
-  font-size: 20px;
+  font-size: 15px;
 }
  
 .pricing-table .plan ul {
@@ -289,11 +285,11 @@ fieldset[disabled] .btn-primary.active {
 }
  
 .pricing-three-column {
-  margin: 0 auto;
-  width: 90%;
+  margin: 1 auto;
+  width: 100%;
 }
 .plan-name-silver {
-  padding: 5px;
+  padding: 3px;
   color: #fff;
   background-color: #DDDDDD;
   -moz-border-radius: 3px 3px 0 0;
@@ -301,3 +297,10 @@ fieldset[disabled] .btn-primary.active {
   border-radius: 3px 3px 0 0;
   font-weight:bold;
  }
+.plan-font5{
+	font-size: 11px;
+	color:#488BCA	;
+}
+.alert-info{
+	padding:10px;
+}

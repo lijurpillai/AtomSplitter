@@ -2,13 +2,25 @@
 <div class="row">
 	
 
-<div class="col-sm-3 col-xs-12">	
+<div class="col-sm-4 col-xs-12">	
+	<div class="row">
+ 
+        
+        <div class="alert alert-info">All data displayed is since <strong>{{loginTime|date:'medium'}}</strong>
+        <br>
+        <div class ="plan-font5">
+        Please do not refresh or use back button. All data will reset after logout.
+        </div>
+       </div>
+        
+
+ 	</div> 
 	<div class="row">
 		 <div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
-          <a href="#/actiontable" class=""><h4> Active Users  <button type="button" class="btn btn-md btn-primary">{{activeUsers}}</button></h4></a>
-         </div>
+          <a href="#/actiontable" ><h4><span class="glyphicon glyphicon-fire"></span> Active Users  <button type="button" class="btn btn-md btn-primary">{{activeUsers}}</button></h4></a>
+        </div>
         </div>
  	</div>		
  	</div>
@@ -18,39 +30,29 @@
  		<div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
-		 	<h4>All Users  <button type="button" class="btn btn-sm btn-primary">{{allUsers}}</button></h4>
-          </div>
+		 	<a href="#/dashboard" ><h4><span class="glyphicon glyphicon-globe"></span> All Users  <button type="button" class="btn btn-md btn-primary">{{allUsers}}</button></h4></a>
+		 	</div>
         </div>
  	  </div>
     <br>
-	<div class="row">
- 	 <div >
-        
-        <div class="alert alert-success">All data displayed is since <br> {{loginTime|date:'medium'}}
-        <br>Please do not refresh/hit back button
-        <br>Log out will reset all data<br>
-        Place mouse on "?" to get more info</div>
-        
- 	</div>
- 	</div> 	
+	
  	</div>
 
 
 </div><!--end col-sm-3 -->
 
-	<div class="col-sm-1">
-	</div>
-	<div class="col-sm-9 col-xs-12">
+	
+	<div class="col-sm-8 col-xs-12">
 
                
              <div class="alert alert-info">  
-				<strong><span class="glyphicon glyphicon-user"></span> User Type</strong>	
+				<strong><span class="glyphicon glyphicon-user"></span> User Details</strong>	
 				<div class="row">  
-					<div class="col-sm-4 hidden-xs">
+					<div class="col-sm-5 hidden-xs">
                 	<piechart ng-model="pieChartUserType"></piechart>
                 	</div>	
 					<div class="col-sm-1"></div>	
-		<div class="col-sm-7 col-xs-12">
+		<div class="col-sm-6 col-xs-12">
 		  
 				  <div class="table-responsive">
 				    <table class="table table-bordered table-hover">				   

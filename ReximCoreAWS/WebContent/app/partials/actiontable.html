@@ -142,8 +142,10 @@
 																aria-hidden="true">&times;</button>
 															<h3 class="modal-title">More info</h3>
 															<div id = "tId">
-																<h6 class="modal-title pull-right">{{data.trackingId}}</h6>
-															</div>															
+															
+																<h6 class="modal-title pull-right">Tracking Id: {{data.trackingId}}</h6>
+															
+															</div>														
 															<h6 class="modal-title">
 																<span ng-show="data.online"  class="label label-success">Online</span>
 																<span ng-show="!data.online" class="label label-danger">Offline - closing popup window</span>
@@ -195,7 +197,9 @@
 														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 														<h4 class="modal-title">Push offer code</h4>
 														<div id = "tId">
-																<h5 class="modal-title pull-right">Tracking Id - {{data.trackingId}}</h5>
+														
+																<h5 class="modal-title pull-right">Tracking Id: {{data.trackingId}}</h5>
+																
 														</div>															
 														<h6 class="modal-title">
 															<span ng-show="data.online"  class="label label-success">Online</span>
