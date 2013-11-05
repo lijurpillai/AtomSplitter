@@ -69,12 +69,10 @@ angular.module('myApp.actionTableCtrl', []).
 	          }
 	      });
 	 };// end scope.chat
-	 $scope.push = function(trackingId,msg){
-		 console.log("PUSH");
-		 //var msg = $scope.pushData;
-		 console.log(msg);
+	 $scope.push = function(trackingId,msg,index){		 
 		 var clientChannel = ChatService.getClientChannel(trackingId);
 		 PubnubService.PUBNUB_PUB(Constants.MSG_TYP_PUSH,msg,clientChannel);
-		 
+		 var modalId = '#pushModal'+index;
+		  $(modalId).modal('hide');
 	 };
   }]);

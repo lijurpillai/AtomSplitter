@@ -12,8 +12,7 @@ chartDirective.directive('chart', function(AnalyticsData){
 	            var data = scope[attrs.ngModel];            
 	            
 	            // If the data changes somehow, update it in the chart
-	            scope.$watch('chartData', function(chartData){
-	            	console.log(AnalyticsData.getPageCountConfigs());
+	            scope.$watch('chartData', function(chartData){	            	
 	            	var ticks =  AnalyticsData.getPageCountConfigs();            	
 	            	 var options = {
 			            		series: {

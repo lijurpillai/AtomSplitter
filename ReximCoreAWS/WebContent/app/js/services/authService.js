@@ -24,7 +24,7 @@ myServiceModule.factory('AuthService',['$log','$rootScope','$http','$location','
 				    	if(sessionStorage){
 				    		// setting userProfile in session storage
 				    		sessionStorage.setItem(Constants.SESS_KEY_USER_PROFILE,angular.toJson(user));
-				    		
+				    		$rootScope.loginTime = Date.now();
 				    	}
 				    	   // resetting auth error cause by incorrect login
 				    	  $rootScope.SHOW_AUTH_ERROR = false;

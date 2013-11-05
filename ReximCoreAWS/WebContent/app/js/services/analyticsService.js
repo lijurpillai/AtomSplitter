@@ -145,6 +145,15 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 			  // Remove existing data for same user.
 			for (var i = 0; i < analyticsData.length; i++) {				
 				if(trackingId == analyticsData[i].trackingId){
+					//** Closing more info modal window if open **//
+					var tId = $("[id^=moreInfoModal]").find("#tId").text().trim();
+					var modalId = $("[id^=moreInfoModal]").attr('id');
+					var selector = "#"+modalId;
+					 // ** this does not work since tId is not coming correct.
+					  // ** leaving as is since it works. TO-DO - Fix it 
+					if(tId==trackingId){
+						$(selector).modal('hide');
+					}
 					analyticsData.splice(i,1);					
 				};  
 			}
@@ -217,6 +226,10 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	    },
 	    getPageCounts : function(){
 	    	return pageCounts;
+	    },
+	    resetPageCount : function(){
+	    	pageCounts.length = 0;
+	    	pageCountConfigs.length = 0;	    	
 	    }
       };
 }]);

@@ -131,16 +131,23 @@
 											<button type="button" class="btn btn-primary btn-xs"  ng-disabled = "!data.online" ng-click="chat(data.trackingId,$index)">
 												<span class="glyphicon glyphicon-comment"></span> Chat
 											</button>																																	
-											<a data-toggle="modal" href="#pushModal{{$index}}"  class="btn btn-primary btn-xs" ng-class="{disabled:!data.online}">
+											<a data-toggle="modal"  href="#pushModal{{$index}}"  class="btn btn-primary btn-xs" ng-class="{disabled:!data.online}">
 												<span class="glyphicon glyphicon-send"></span> Push</a>
-											<div class="modal fade" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+											<div class="modal fade" data-backdrop = "false" id="moreInfoModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 												aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal"
 																aria-hidden="true">&times;</button>
-															<h3 class="modal-title">More info</h3>														
+															<h3 class="modal-title">More info</h3>
+															<div id = "tId">
+																<h6 class="modal-title pull-right">{{data.trackingId}}</h6>
+															</div>															
+															<h6 class="modal-title">
+																<span ng-show="data.online"  class="label label-success">Online</span>
+																<span ng-show="!data.online" class="label label-danger">Offline - closing popup window</span>
+															</h6>														
 														</div>
 														<div class="modal-body">
 															<div class="row">
@@ -181,18 +188,25 @@
 											</div>
 											<!-- /.modal ends -->																				
 										<!-- /.modal1 starts -->
-										<div class="modal fade" ng-model="open" id="pushModal{{$index}}" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal fade" data-backdrop = "false" ng-model="open" id="pushModal{{$index}}" tabindex="-1"	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div  class="modal-content">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 														<h4 class="modal-title">Push offer code</h4>
+														<div id = "tId">
+																<h5 class="modal-title pull-right">Tracking Id - {{data.trackingId}}</h5>
+														</div>															
+														<h6 class="modal-title">
+															<span ng-show="data.online"  class="label label-success">Online</span>
+															<span ng-show="!data.online" class="label label-danger">Offline - closing push window</span>
+														</h6>
 													</div>													
 													<div class="modal-body">
 															<textarea ng-model = "pushData"></textarea>
 													</div>
 													<div class="modal-footer">
-														<button ng-click = "push(data.trackingId,pushData)" type="button" class="btn btn-primary">Send</button>
+														<button ng-click = "push(data.trackingId,pushData,$index)" type="button" class="btn btn-primary">Send and Close</button>
 														<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													</div>													
 												</div>

@@ -82,6 +82,8 @@ utilService.factory('SessionManager',['$log','Constants','RuleData','AnalyticsDa
 			RuleData.resetRuleData();
 			//**reset analtics data**//
 			AnalyticsData.resetAnalyticsData();
+			//** reset page count bar chart data **//
+			AnalyticsData.resetPageCount();
 			
 			
 		},

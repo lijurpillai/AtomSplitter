@@ -37,8 +37,7 @@ angular.module('myApp.dashBoardControllers', []).
 	  	   var pageCountData =  [{ label: "Total Page Count", data: pageCount,color: "#5482FF"}];	  	 
 	  	   $scope.chartData = pageCountData;
 	  	   //** Bar chart ends **//
-	  	   //** Pie Chart data for user type **//
-
+	  	   //** Pie Chart data for user type **//	  	   
 	  	 $scope.pieChartUserType = [
 	  	                            { label: "New User",  data: AnalyticsData.getNewUsers()},
 	  	                            { label: "Return User",  data: AnalyticsData.getReturnUsers()}
