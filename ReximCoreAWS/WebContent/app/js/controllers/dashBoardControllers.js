@@ -1,18 +1,9 @@
 angular.module('myApp.dashBoardControllers', []).
  controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager','Constants','SessionManager','RuleData','AuthService'
                             ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData,AuthService){	 
-	 //** Chart trail **//
-	 
-
-	/* $scope.pieChartUserType =
-		 [
-		     { label: "New User",  data: 10},
-		     { label: "Return User",  data: 30}		     
-		 ];	*/          
-
-	 
-	 
-	 //** Ends**//
+	 //** tooltip trial **//
+	 $scope.pageCountTooltip = Constants.PAGE_COUNT_TXT;
+	//** tooltip trial ends **//
 	 var channelName = getChannelName();	 
 	 console.log("Channel ----> " + channelName);
 	 function getChannelName(){
@@ -31,6 +22,7 @@ angular.module('myApp.dashBoardControllers', []).
 	       $scope.deskTop = AnalyticsData.getTotalDevice(Constants.DESKTOP);
 	       $scope.newUsers = AnalyticsData.getNewUsers();			
 	       $scope.returnUsers = AnalyticsData.getReturnUsers();	
+	       $scope.totalPageCount = AnalyticsData.getTotalPageCount();
 	       
 	       var pageCount = AnalyticsData.getPageCounts();
 	  	   //** Bar chart data for page count ** //

@@ -6,7 +6,7 @@ angular.module('myApp', ['myApp.filters',
                          'myApp.authServices','myApp.pubNubServices','myApp.utilServices','myApp.commServices','myApp.analyticsServices','myApp.ruleServices',
                          'myApp.authDirectives','myApp.chartDirectives',
                          'myApp.authControllers','myApp.indexControllers','myApp.dashBoardControllers','myApp.actionTableCtrl','myApp.ruleActionTableCtrl',
-                         'ngResource']).
+                         'ngResource','ui.bootstrap']).
   config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider) {
 	
 	//================================================

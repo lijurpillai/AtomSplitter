@@ -72,7 +72,9 @@ angular.module('myApp.actionTableCtrl', []).
 	 $scope.push = function(trackingId,msg,index){		 
 		 var clientChannel = ChatService.getClientChannel(trackingId);
 		 PubnubService.PUBNUB_PUB(Constants.MSG_TYP_PUSH,msg,clientChannel);
-		 var modalId = '#pushModal'+index;
-		  $(modalId).modal('hide');
+		 var pushModalId = '#pushModal'+index;
+		  $(pushModalId).modal('hide');
+		  var moreInfoModal = '#moreInfoModal'+index;
+		  $(moreInfoModal).modal('hide');
 	 };
   }]);

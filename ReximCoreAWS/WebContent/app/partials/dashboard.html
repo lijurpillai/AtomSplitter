@@ -144,7 +144,8 @@
 <div class=" col-md-7 hidden-xs hidden-sm">
 		<div class="widget">
                 <div class="widget-head">
-                <div class="pull-center"><span class="glyphicon glyphicon-signal"></span> Page Visits Since {{loginTime|date:'medium'}}</div>                
+                <div class="pull-center"><span class="glyphicon glyphicon-signal" tooltip="{{pageCountTooltip}}"></span> Page Visits Since {{loginTime|date:'medium'}}
+                	{{totalPageCount}}</div>                
                 </div>  <!--enc widget head -->
 
                 <div class="widget-content">	

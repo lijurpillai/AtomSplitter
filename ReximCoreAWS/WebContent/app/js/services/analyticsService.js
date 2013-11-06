@@ -213,10 +213,7 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	    			var tempDataPageCount = [pageCountConfigs.length,1];
 	    			pageCountConfigs.push(tempDataPageConfig);	    			
 	    			pageCounts.push(tempDataPageCount);
-	    		}
-	    		console.log("PAGE CIOUNT CONGI");
-	    		console.log(pageCountConfigs);
-	    		console.log(pageCounts);
+	    		}	    		
 	    	}
 	    	//** set page count config ENDS **//	    	
 	    	
@@ -226,6 +223,14 @@ analyticsService.factory('AnalyticsData',['$log','UserAgentService','Constants',
 	    },
 	    getPageCounts : function(){
 	    	return pageCounts;
+	    },
+	    getTotalPageCount:function(){
+	    	var totalCount = 0;
+	    	for ( var i = 0; i < pageCounts.length; i++) {
+	    		var pageCount = pageCounts[i];
+	    		totalCount = totalCount + pageCount[1];
+			}
+	     return totalCount;
 	    },
 	    resetPageCount : function(){
 	    	pageCounts.length = 0;

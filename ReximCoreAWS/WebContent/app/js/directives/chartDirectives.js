@@ -49,7 +49,22 @@ chartDirective.directive('piechart', function() {
         restrict: 'E',        
         link: function(scope, elem, attrs) {
         	var chart = null;
-            scope.$watch('pieChartUserType', function(v){ 
+        	var isChartNull = true;
+        	var defaultOptions = {
+        			series: {
+	        	        pie: {
+	        	            show: true,
+	        	            label: {
+	        	                show: true
+	        	        }
+	        	    },
+	        	    grid: {
+	        	        hoverable: true
+	        	    }
+        	}
+        };
+        	chart = $.plot(elem, [{label : "No Users" , data: 1, color: "#C0C0C0" }], defaultOptions);
+            scope.$watch('pieChartUserType', function(pieChartData){ 
             	var options = {
             			series: {
 		        	        pie: {
@@ -68,11 +83,18 @@ chartDirective.directive('piechart', function() {
 		        	        hoverable: true
 		        	    }
             	}
-            };
-                if(v) 
-                {
-                    chart = $.plot(elem, v, options);                    
-                }
+            };            
+            for ( var i = 0; i < pieChartData.length; i++) {
+				if(pieChartData[i].data > 0){
+					isChartNull = false;
+				}
+			}
+            
+            if(!isChartNull) 
+            {
+                chart = $.plot(elem, pieChartData, options);                    
+            }
+                
             });
         }
     };

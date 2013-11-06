@@ -36,6 +36,8 @@ utilService.factory('Constants',['$log',function($log){
 		urlIOs = "img/icons/ios.png";
 	// Rule Column Name
 	var ruleColName = "Rule Name";
+	// Toot Tip Text
+	var pageCountTxt = "This is the page count";
 	return{	
 		PUB_KEY:publish_key,
 		SUB_KEY:subscribe_key,		
@@ -57,7 +59,8 @@ utilService.factory('Constants',['$log',function($log){
 		URL_IOS:urlIOs,
 		URL_WINMOB:urlWinMobile,
 		ENV:env,
-		RULE_COL_NAME:ruleColName
+		RULE_COL_NAME:ruleColName,
+		PAGE_COUNT_TXT:pageCountTxt
       };
 }]);
 
