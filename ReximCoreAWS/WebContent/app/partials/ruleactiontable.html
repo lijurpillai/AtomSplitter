@@ -179,7 +179,7 @@
 															<h4>Push offer code</h4>
 															<textarea ng-model = "pushData"></textarea>
 															<div align="center">
-																<button type="button" class="btn btn-primary btn-xs" ng-click = "push(data.trackingId,pushData)">Push</button>
+																<button type="button" class="btn btn-primary btn-xs" ng-click = "push(data.trackingId,pushData,$index)">Push and Close</button>
 																<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
 															</div>
 														</div>													
@@ -201,7 +201,7 @@
 															<textarea ng-model = "pushData"></textarea>
 													</div>
 													<div class="modal-footer">
-														<button ng-click = "push(data.trackingId,pushData)" type="button" class="btn btn-primary">Send</button>
+														<button ng-click = "push(data.trackingId,pushData,$index)" type="button" class="btn btn-primary">Push and Close</button>
 														<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 													</div>													
 												</div>

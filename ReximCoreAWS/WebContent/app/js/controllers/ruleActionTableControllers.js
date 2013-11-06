@@ -90,12 +90,14 @@ angular.module('myApp.ruleActionTableCtrl', []).
 	          }
 	      });
 	 };// end scope.chat
-	 $scope.push = function(trackingId,msg){
-		 console.log("PUSH");
+	 $scope.push = function(trackingId,msg,index){
 		 //var msg = $scope.pushData;
-		 console.log(msg);
 		 var clientChannel = ChatService.getClientChannel(trackingId);
 		 PubnubService.PUBNUB_PUB(Constants.MSG_TYP_PUSH,msg,clientChannel);
+		 var pushModalId = '#pushModal'+index;
+		 $(pushModalId).modal('hide');
+		 var moreInfoModal = '#moreInfoModal'+index;
+		 $(moreInfoModal).modal('hide');
 		 
 	 };
   }]);
