@@ -1,41 +1,34 @@
 <div class="container" ng-controller="PresenceCtrl">
 <div class="row">
-	
-
 <div class="col-sm-4 col-xs-12">	
 	<div class="row">
- 
-        
         <div class="alert alert-info">All data displayed is since <strong>{{loginTime|date:'medium'}}</strong>
         <br>
         <div class ="plan-font5">
-        Please do not refresh or use back button. All data will reset after logout.
+        Please do not refresh or use back button. All data will reset after logout.<br>
+        For help,place mouse pointer over <span class="glyphicon glyphicon-info-sign"></span> icon.
         </div>
        </div>
-        
-
  	</div> 
 	<div class="row">
 		 <div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
-          <a href="#/actiontable" ><h4><span class="glyphicon glyphicon-fire"></span> Active Users  <button type="button" class="btn btn-md btn-primary">{{activeUsers}}</button></h4></a>
+          <a href="#/actiontable" ><h4><span class="glyphicon glyphicon-info-sign" tooltip="{{activeUsersTooltip}}"></span> Active Users  <button type="button" class="btn btn-md btn-primary">{{activeUsers}}</button></h4></a>
         </div>
         </div>
  	</div>		
  	</div>
  	<br>
  	<div class="row">
- 	
  		<div class="pricing-table pricing-three-column">
         <div class="plan">
 		 <div class="plan-name-silver">
-		 	<a href="#/dashboard" ><h4><span class="glyphicon glyphicon-globe"></span> All Users  <button type="button" class="btn btn-md btn-primary">{{allUsers}}</button></h4></a>
+		 	<a href="#/dashboard" ><h4><span class="glyphicon glyphicon-info-sign" tooltip="{{allUsersTooltip}}"></span> All Users  <button type="button" class="btn btn-md btn-primary">{{allUsers}}</button></h4></a>
 		 	</div>
         </div>
  	  </div>
     <br>
-	
  	</div>
 
 
@@ -46,7 +39,8 @@
 
                
              <div class="alert alert-info">  
-				<strong><span class="glyphicon glyphicon-user"></span> User Details</strong>	
+				<strong><span class="glyphicon glyphicon-info-sign" tooltip="{{userDetailsTooltip}}"></span> User Details</strong>	
+				
 				<div class="row">  
 					<div class="col-sm-5 hidden-xs">
                 	<piechart ng-model="pieChartUserType"></piechart>
@@ -113,7 +107,7 @@
 		<div class="widget-head">
         <div class="pull-center">
         <div class="container">
-                  		<strong><span class="glyphicon glyphicon-list"></span> Rules</strong> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                  		<strong><span class="glyphicon glyphicon-info-sign" tooltip="{{ruleDetailsTooltip}}"></span> Rules</strong> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 			<a href="#/ruleactiontable" type="button" class="btn btn-sm btn-info">Total Count <span class="badge"><strong>{{totalRules}}</strong></span></a>
 		</div>
         </div><!--end pull center -->
@@ -144,8 +138,9 @@
 <div class=" col-md-7 hidden-xs hidden-sm">
 		<div class="widget">
                 <div class="widget-head">
-                <div class="pull-center"><span class="glyphicon glyphicon-signal" tooltip="{{pageCountTooltip}}"></span> Page Visits Since {{loginTime|date:'medium'}}
-                	{{totalPageCount}}</div>                
+                <div class="pull-center"><span class="glyphicon glyphicon-info-sign" tooltip="{{pageCountTooltip}}"></span> Page Visits
+                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                 Total page visits since <div class="label label-info">{{loginTime|date:'medium'}}</div> is <div class="label label-info">{{totalPageCount}}</div>               
                 </div>  <!--enc widget head -->
 
                 <div class="widget-content">	

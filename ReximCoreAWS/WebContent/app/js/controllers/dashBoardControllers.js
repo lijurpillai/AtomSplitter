@@ -1,9 +1,13 @@
 angular.module('myApp.dashBoardControllers', []).
  controller('PresenceCtrl',['$scope','$location','PubnubService','AnalyticsData','PresenceManager','Constants','SessionManager','RuleData','AuthService'
                             ,function($scope,$location,PubnubService,AnalyticsData,PresenceManager,Constants,SessionManager,RuleData,AuthService){	 
-	 //** tooltip trial **//
+	 //** tooltip**//
 	 $scope.pageCountTooltip = Constants.PAGE_COUNT_TXT;
-	//** tooltip trial ends **//
+	 $scope.allUsersTooltip = Constants.ALL_USERS_TXT;
+	 $scope.activeUsersTooltip = Constants.ACTIVE_USERS_TXT;
+	 $scope.userDetailsTooltip = Constants.USER_DETAILS_TXT;
+	 $scope.ruleDetailsTooltip = Constants.RULES_DETAILS_TXT;
+	//** tooltipends **//
 	 var channelName = getChannelName();	 
 	 console.log("Channel ----> " + channelName);
 	 function getChannelName(){
@@ -26,7 +30,7 @@ angular.module('myApp.dashBoardControllers', []).
 	       
 	       var pageCount = AnalyticsData.getPageCounts();
 	  	   //** Bar chart data for page count ** //
-	  	   var pageCountData =  [{ label: "Total Page Count", data: pageCount,color: "#5482FF"}];	  	 
+	  	   var pageCountData =  [{ label: "Page Count", data: pageCount,color: "#5482FF"}];	  	 
 	  	   $scope.chartData = pageCountData;
 	  	   //** Bar chart ends **//
 	  	   //** Pie Chart data for user type **//	  	   

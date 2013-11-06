@@ -37,7 +37,12 @@ utilService.factory('Constants',['$log',function($log){
 	// Rule Column Name
 	var ruleColName = "Rule Name";
 	// Toot Tip Text
-	var pageCountTxt = "This is the page count";
+	var allUsersTxt = "This shows the number of connected users both active and inactive.";
+	var activeUsersTxt = "Shows the list of users who are active (does some activity like clicking a link etc.).";
+	var usrDetailsTxt = "Shows the device details using which the users are connected.";
+	var rulesDetailsTxt = "Shows the list of rules configured and the number of times they are triggered.";
+	var pageCountTxt = "The number of times each page is viewed by all active users combined.";
+
 	return{	
 		PUB_KEY:publish_key,
 		SUB_KEY:subscribe_key,		
@@ -60,6 +65,10 @@ utilService.factory('Constants',['$log',function($log){
 		URL_WINMOB:urlWinMobile,
 		ENV:env,
 		RULE_COL_NAME:ruleColName,
+		ALL_USERS_TXT:allUsersTxt,
+		ACTIVE_USERS_TXT:activeUsersTxt,
+		USER_DETAILS_TXT:usrDetailsTxt,
+		RULES_DETAILS_TXT:rulesDetailsTxt,
 		PAGE_COUNT_TXT:pageCountTxt
       };
 }]);
