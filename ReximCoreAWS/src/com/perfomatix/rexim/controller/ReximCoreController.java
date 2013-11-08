@@ -61,6 +61,10 @@ public class ReximCoreController {
 				&& user.getPassword().equals("1508")){
 			userNo = 3;
 		}
+		else if(user.getUserName().equals("finahub")
+				&& user.getPassword().equals("hedge")){
+			userNo = 4;
+		}
 		switch (userNo) {
 		case 1:
 			userProfile.setFirstName("Perfomatix");
@@ -84,6 +88,14 @@ public class ReximCoreController {
 			userProfile.setRole("Admin");
 			userProfile.setOrg("Demo Store");
 			userProfile.setOrgId("dshop");
+			session.setAttribute("Constants.SESS_KEY_USER_PROFILE", userProfile);
+			return userProfile;
+		case 4:
+			userProfile.setFirstName("Finahub");
+			userProfile.setLastName("Admin");
+			userProfile.setRole("Admin");
+			userProfile.setOrg("Finahub");
+			userProfile.setOrgId("fhub");
 			session.setAttribute("Constants.SESS_KEY_USER_PROFILE", userProfile);
 			return userProfile;
 		default:
