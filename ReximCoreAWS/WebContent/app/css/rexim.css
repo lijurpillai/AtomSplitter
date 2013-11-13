@@ -304,3 +304,9 @@ fieldset[disabled] .btn-primary.active {
 .alert-info{
 	padding:10px;
 }
+.btn-info {
+
+	border-bottom: 1px solid #46b8da;
+	border-top: 1px solid #46b8da;
+	
+}
