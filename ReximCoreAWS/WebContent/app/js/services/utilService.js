@@ -9,8 +9,11 @@ utilService.factory('Constants',['$log',function($log){
 	var env = "qa";
 	//var env = "dev";
 	// pubnub key
-	var publish_key = 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537';
-    var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';
+	//var publish_key = 'pub-c-d3ac13ed-c7c1-4998-ab20-1b35279e2537';
+    //var subscribe_key = 'sub-c-2786f95e-30bc-11e3-8450-02ee2ddab7fe';
+    
+    var publish_key = 'pub-c-d4a57f9f-86b6-430b-99f8-68494e8bcabb';
+    var subscribe_key = 'sub-c-8bb20b58-4b4c-11e3-8e17-02ee2ddab7fe';
     //channels
 	var analyticsChannel = "analyticsData";
 	var chatChannel = "chat";	
