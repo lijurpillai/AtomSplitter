@@ -20,7 +20,7 @@ jQ(function() {
 		});
 	};
 	
-	jQ(".footer-container").append("<div id ='chatBox'></div>");
+	jQ("body").append("<div id ='chatBox'></div>");
 	if (box) {
 		box.chatbox("option", "boxManager").toggleBox();
 	} else {
